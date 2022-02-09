@@ -16,6 +16,7 @@ router.post('/', async(req,res) => {
 
 // be able to edit a trip
 router.put('/:id', withAuth, (req, res) => {
+    
     try{
         const [affectedRows ] = await Trip.update(req.body, {
             where: {

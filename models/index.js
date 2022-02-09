@@ -33,6 +33,7 @@ Expenditure.belongsTo(Destination, {
   onDelete: "CASCADE",
 })
 
+
 module.exports = {
   User,
   Trip,
