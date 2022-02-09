@@ -9,16 +9,16 @@ Destination.init(
             type: DataTypes.STRING, 
             allowNull: false
         }, 
-        price: {
+        date_arrived: {
+            type: DataTypes.DATEONLY, 
+            allowNull: false
+        }, 
+        date_leaving: {
+            type: DataTypes.DATEONLY, 
+            allowNull: false
+        }, 
+        budget: {
             type: DataTypes.DECIMAL(10,2), 
-            allowNull: false
-        }, 
-        dates_arrived: {
-            type: DataTypes.DATEONLY, 
-            allowNull: false
-        }, 
-        dates_leaving: {
-            type: DataTypes.DATEONLY, 
             allowNull: false
         }, 
     }, 
