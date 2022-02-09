@@ -1,2 +1,2 @@
-DROP DATABASE IF EXISTS card_db;   
-CREATE DATABASE card_db;
+DROP DATABASE IF EXISTS skyfall_db;   
+CREATE DATABASE skyfall_db;
