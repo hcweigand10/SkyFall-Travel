@@ -9,11 +9,11 @@ Trip.init(
             type: DataTypes.STRING, 
             allowNull: false
         }, 
-        dates_arrived: {
+        date_arrived: {
             type: DataTypes.DATEONLY, 
             allowNull: false
         }, 
-        dates_leaving: {
+        date_leaving: {
             type: DataTypes.DATEONLY, 
             allowNull: false
         }, 
