@@ -1,13 +1,26 @@
 const User = require('./User');
-const Card = require('./Card');
-const Wishlist = require('./Wishlist');
+const Trip = require('./Trip');
+const Destination = require('./Destination');
+const Expenditure = require('./Expenditure');
 
-User.hasMany(Card, {
+User.hasMany(Trip, {
     foreignKey: 'userId',
     onDelete: 'CASCADE'
   })
 
-Wishlist.belongsTo(User, {
-    foreignKey: 'userId',
+Trip.hasMany(Destination, {
+    foreignKey: 'tripId',
     onDelete: 'CASCADE'
-})
+  })
+
+Destination.hasMany(Expenditure, {
+    foreignKey: 'destinationId',
+    onDelete: 'CASCADE'
+  })
+
+module.exports = {
+  User,
+  Trip,
+  Destination,
+  Expenditure
+}
