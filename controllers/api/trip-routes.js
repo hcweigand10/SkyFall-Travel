@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const { Destination, Expenditure, Trip } = require('../../models/');
 const withAuth = require('../../utils/auth');
+ 
 
-
-router.post('/new', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
+  console.log('In Post');
   try {
 
     let expenditure = [];

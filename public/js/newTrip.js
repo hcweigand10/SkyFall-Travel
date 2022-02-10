@@ -1,16 +1,15 @@
 const tripFormHandler = async function(event) {
     event.preventDefault();
   
-    const name = document.querySelector('input[name="trip-name"]').value;
-    const location_name = document.querySelector('input[name="location-name"]').value;
-    const date_arrival = document.querySelector('input[name="date-arrival"]').value;
-    const date_leaving = document.querySelector('input[name="date-leaving"]').value;
-    const flight_price = document.querySelector('input[name="flight-price"]').value;
-    const food_price = document.querySelector('input[name="food-price"]').value;
-    const lodging_price = document.querySelector('input[name="lodging-price"]').value;
+    const name = document.querySelector('#trip-name').value;
+    const location_name = document.querySelector('#location-name').value;
+    const date_arrival = document.querySelector('#date-arrival').value;
+    const date_leaving = document.querySelector('#date-leaving').value;
+    const flight_price = document.querySelector('#flight-price').value;
+    const food_price = document.querySelector('#food-price').value;
+    const lodging_price = document.querySelector('#lodging-price').value;
     const extra_expenditure = document.querySelector('#extras-list').value;
 
-    if (body) {
       await fetch('/api/trip', {
         method: 'POST',
         body: JSON.stringify({
@@ -30,9 +29,7 @@ const tripFormHandler = async function(event) {
   
       document.location.reload();
     }
-  };
-  
-  document
-    .querySelector('#new-trip-form')
-    .addEventListener('submit', tripFormHandler);
+
+ 
+  document.querySelector('#tripButton').addEventListener('submit', tripFormHandler);
   
