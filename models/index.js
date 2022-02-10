@@ -34,7 +34,6 @@ Expenditure.belongsTo(Destination, {
 })
 
 
-
 module.exports = {
   User,
   Trip,
