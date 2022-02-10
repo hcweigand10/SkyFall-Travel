@@ -3,8 +3,11 @@ const { User, Trip } = require('../models/');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
+    console.log(req.session)
     try {
-        res.render('homepage', {User: req.session.user})
+        res.render('homepage', {
+            User:req.session.user
+        })
     } catch(err) {
         console.log(err);
         res.status(500).json(err)
