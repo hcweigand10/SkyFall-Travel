@@ -6,16 +6,17 @@ router.post('/', async (req, res) => {
     try {
       const newUser = await User.create({
         username: req.body.username,
+        email: req.body.email, 
         password: req.body.password,
       });
-  
-      req.session.save(() => {
-        req.session.userId = newUser.id;
-        req.session.username = newUser.username;
-        req.session.loggedIn = true;
-  
-        res.json(newUser);
-      });
+
+      req.session.user = {
+        id:newUser.id,
+        email:newUser.email,
+        username:newUser.username
+      }
+      req.session.logged_in = true;
+      res.json(newUser);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -41,13 +42,13 @@ router.post('/', async (req, res) => {
         return;
       }
   
-      req.session.save(() => {
-        req.session.userId = user.id;
-        req.session.username = user.username;
-        req.session.loggedIn = true;
-  
-        res.json({ user, message: 'You are now logged in!' });
-      });
+      req.session.user = {
+        id:user.id,
+        email:user.email,
+        username:user.username
+      }
+      req.session.logged_in = true;
+      res.json({ user, message: 'You are now logged in!' });
     } catch (err) {
       res.status(400).json({ message: 'No user account found!' });
     }

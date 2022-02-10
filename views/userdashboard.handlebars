@@ -1,0 +1,17 @@
+<div>
+  <ul>
+    {{#each User.Trips}}
+    <li>
+      <div class="card">
+        <h5 class="card-header">{{name}}</h5>
+        <div class="card-body">
+          <p class="card-text">{{budget}}</p>
+          <a href="/dashboard/trip/{{id}}" class="btn btn-primary">View Trip</a>
+        </div>
+      </div>
+    </li>
+    {{/each}}
+  </ul>
+</div>
+
+<script src="/js/logout.js"></script>
