@@ -1,7 +1,9 @@
 <form class="form new-trip-form">
+    <label for="name">Trip Name:</label>
+    <input type="text" class="name"></input>
 <div class="form-group">
-    <label for="location-name">Destination:</label>
-    <input type="text" class="location-name"></input>
+    <label for="destination-name">Destination:</label>
+    <input type="text" class="destination-name"></input>
     <label for="date-arrival">Leaving Date:</label>
     <input type="date" class="date-arrival"></input>
     <label for="date-leaving">Return Date:</label>
@@ -15,9 +17,16 @@
     <label for="lodging-price">Lodging:</label>
     <input type="number" class="lodging-price"></input>
 </div>
-
+<ul class="extras-list">
+    <li>
+        <label for="flight-price">Extra Activity:</label>
+        <input type="text"></input>
+        <label for="flight-price">Extra Price:</label>
+        <input type="number"></input>
+    </li>
+</ul>
 <div class="form-group">
-    <button class="btn btn-primary trip-button" type="submit">Generate Trip</button>
+    <input class="btn btn-primary create-trip-button" type="button">Generate Trip</input>
 </div>
 </form>
 
