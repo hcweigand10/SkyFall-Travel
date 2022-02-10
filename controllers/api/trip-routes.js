@@ -1,39 +1,49 @@
 const router = require('express').Router();
-const { Trip } = require('../../models/');
+const { Destination, Expenditure, Trip } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
-// be able to create a trip
-router.post('/', async(req,res) => {
-    const body = req.body;
 
-    try {
-        const newTrip = await Trip.create({...body, userId: req.session.userId });
-        res.json(newTrip);
-    } catch(err) {
-        res.status(500).json(err);
-    }
-})
-
-// be able to edit a trip
-router.put('/:id', withAuth, (req, res) => {
-    
-    try{
-        const [affectedRows ] = await Trip.update(req.body, {
-            where: {
-                id: req.params.id
-            }
+router.post('/', withAuth, async (req, res) => {
+  try {
+    let expenditure = [];
+    const budget = 0;
+    if (req.body.flight_price){
+      budget += req.body.flight_price;
+    } if (req.body.food_price){
+      budget += req.body.food_price;
+    } if(req.body.lodging_price){
+      budget += req.body.lodging_price;
+    } if (req.body.Expenditure && req.body.Expenditure.length > 1) {
+      const createdExpenditurePromise = req.body.Expenditure.map(element => {
+        budget += element.price;
+        return Expenditure.create({
+          ...element
         });
+      });
 
-        if (affectedRows > 0) {
-            res.status(200).end();
-        } else {
-            res.status(404).end();
-        }
-    } catch (err) {
-        res.status(500).json(err);
+      expenditure = await Promise.all(createdExpenditurePromise);
     }
+    const newDestination = await Destination.create({
+      name: req.body.name,
+      date_arrived: req.body.date_arrived,
+      date_leaving: req.body.date_leaving,
+      budget
+    });
+    const newTrip = await Trip.create({
+      name: req.body.name,
+      date_arrived: req.body.date_arrived,
+      date_leaving: req.body.date_leaving,
+      budget
+    });
+    const newlyCreated = {
+      newTrip,
+      newDestination,
+      expenditure
+    }
+    res.json(newlyCreated);
+  } catch (err) {
+    res.status(500).json(err);
+  }
 });
 
-// be able to delete a trip which will end up deleting all the information associated with it.
-
-module.exports = router;
+  module.exports = router;
