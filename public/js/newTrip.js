@@ -2,6 +2,7 @@ const tripFormHandler = async function(event) {
     event.preventDefault();
   
     const name = document.querySelector('input[name="trip-name"]').value;
+    const location_name = document.querySelector('input[name="location-name"]').value;
     const date_arrival = document.querySelector('input[name="date-arrival"]').value;
     const date_leaving = document.querySelector('input[name="date-leaving"]').value;
     const flight_price = document.querySelector('input[name="flight-price"]').value;
@@ -14,6 +15,7 @@ const tripFormHandler = async function(event) {
         method: 'POST',
         body: JSON.stringify({
           name,
+          location_name,
           date_arrival,
           date_leaving,
           flight_price,

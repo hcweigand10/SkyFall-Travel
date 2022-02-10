@@ -3,8 +3,9 @@ const { Destination, Expenditure, Trip } = require('../../models/');
 const withAuth = require('../../utils/auth');
 
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/new', withAuth, async (req, res) => {
   try {
+
     let expenditure = [];
     const budget = 0;
     if (req.body.flight_price){
