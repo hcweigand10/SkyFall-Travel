@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
       expenditure = await Promise.all(createdExpenditurePromise);
     }
     const newDestination = await Destination.create({
-      name: req.body.name,
+      name: req.body.destination_name,
       date_arrived: req.body.date_arrived,
       date_leaving: req.body.date_leaving,
       budget
