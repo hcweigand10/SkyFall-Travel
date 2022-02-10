@@ -1,10 +1,12 @@
 const router = require('express').Router();
 const { Destination, Expenditure, Trip } = require('../../models/');
 const withAuth = require('../../utils/auth');
+ 
 
-
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
+  console.log('In Post');
   try {
+
     let expenditure = [];
     const budget = 0;
     if (req.body.flight_price){
@@ -24,7 +26,7 @@ router.post('/', withAuth, async (req, res) => {
       expenditure = await Promise.all(createdExpenditurePromise);
     }
     const newDestination = await Destination.create({
-      name: req.body.name,
+      name: req.body.destination_name,
       date_arrived: req.body.date_arrived,
       date_leaving: req.body.date_leaving,
       budget

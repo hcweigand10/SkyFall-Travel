@@ -35,6 +35,16 @@ router.get("/login", (req, res) => {
     }
     res.render('loginSignup');
 })
-
+router.get('/api/trip', async (req, res) => {
+    // add withAuth later
+    try {
+        res.render('createTrip', {
+            layout: 'dashboard'
+        });
+    } catch(err) {
+        console.log(err); 
+        res.status(500).json(err);
+    }
+})
 
 module.exports = router;
