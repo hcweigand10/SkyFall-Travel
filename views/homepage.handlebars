@@ -5,9 +5,15 @@
       <button class="btn btn-info me-md-2 mr-2" type="button">
         <a class="nav-link active" aria-current="page" href="dashboard/user/1">Plan Trip</a>
       </button>
-      <button class="btn btn-warning me-md-2" type="button">
+      {{#if req.session.user}}
+      <button class="btn btn-info me-md-2" type="button">
+        <a class="nav-link" href="#" id="#logout-link">Log out</a>
+      </button>
+      {{else}}
+      <button class="btn btn-info me-md-2" type="button">
         <a class="nav-link" href="/login">Log In / Signup</a>
       </button>
+      {{/if}}
     </div>
   </div>
 </nav>
