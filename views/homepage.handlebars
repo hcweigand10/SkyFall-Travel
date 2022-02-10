@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <div class="navbar-text text-info display-6"><strong>Skyfall</strong></div>
+    <div class="navbar-text text-link display-3 fw-bold"><em>Skyfall</em></div>
     <div class="navbar-nav d-grid gap-2 d-md-flex justify-content-md-end">
-      <button class="btn btn-warning me-md-2" type="button">
+      <button class="btn btn-info me-md-2 mr-2" type="button">
         <a class="nav-link active" aria-current="page" href="dashboard/user/1">Plan Trip</a>
       </button>
       {{#if req.session.user}}
@@ -59,9 +59,9 @@
   </a>
 </div>
 
-<div class="card">
+{{!-- <div class="card">
   <div class="card-header">
-    Featured
+    <h2>Featured</h2>
   </div>
   <div class="card-body">
     <h5 class="card-title">Special title treatment</h5>
@@ -69,13 +69,13 @@
       additional content.</p>
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
-</div>
+</div> --}}
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire
-      horizontal space of its parent.</p>
+    <h1 class="display-4">Featured Location</h1>
+    <p class="lead">This is a description of the featured location.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div>
 
