@@ -11,6 +11,9 @@
                 <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{id}}" aria-expanded="false" aria-controls="collapseExample">
                     Button with data-target
                 </button>
+                <button class="btn btn-primary" type="button">
+                <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View Destination</a>
+                </button>
             </p>
             <div class="collapse" id="collapseExample{{id}}">
                 <div class="card card-body">
@@ -18,12 +21,12 @@
                 </div>
             </div>
         </div>
-      </div>
-    </li>
-    {{/each}}
-  </ul>
-</div>
-{{!-- can we have a chart or graph on how much the user has been spending or something easy for graph?  --}}
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+  {{!-- can we have a chart or graph on how much the user has been spending or something easy for graph?  --}}
+
 
 <div id="map"></div>
 
