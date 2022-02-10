@@ -9,11 +9,20 @@ router.get('/user/:id', async (req, res) => {
         const userData = await User.findByPk(req.params.id, {
             include: [Trip]
         });
+        const tripData = await Trip.findAll( {
+            include: [Destination],
+            where: {
+                userId: req.params.id
+            }
+        });
         const userRaw = userData.get({ plain: true });
-        console.log(userRaw);
+        const tripRaw = tripData.map(trip=>trip.get({plain:true}))
+
+        console.log(tripRaw[0].Destinations);
         res.render('userDashboard', {
             layout: 'dashboard',
-            User: userRaw
+            User: userRaw,
+            Trips: tripRaw
         });
     } catch(err) {
         console.log(err); 
@@ -24,8 +33,7 @@ router.get('/user/:id', async (req, res) => {
 router.get('/trip/:id', async (req, res) => {
     try {
         const tripData = await Trip.findByPk(req.params.id, {
-            include: [Destination], 
-            layout: 'dashboard'
+            include: [Destination]
         })
 
 
@@ -34,7 +42,9 @@ router.get('/trip/:id', async (req, res) => {
         const rawTrip = await tripData.get({plain: true});
 
         console.log(rawTrip);
-        res.render('tripView', {TripData: rawTrip})
+        res.render('tripView', {
+            layout: 'dashboard',
+            TripData: rawTrip})
     } catch(err) {
         console.log(err); 
         res.status(500).json(err);
