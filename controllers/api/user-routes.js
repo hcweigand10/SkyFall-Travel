@@ -3,9 +3,11 @@ const { User } = require('../../models/');
 
 
 router.post('/', async (req, res) => {
+    console.log("signup attempt")
+    console.log(req.body)
     try {
       const newUser = await User.create({
-        username: req.body.username,
+        name: req.body.name,
         email: req.body.email, 
         password: req.body.password,
       });
@@ -13,9 +15,8 @@ router.post('/', async (req, res) => {
       req.session.user = {
         id:newUser.id,
         email:newUser.email,
-        username:newUser.username
+        name:newUser.name
       }
-      req.session.logged_in = true;
       res.json(newUser);
     } catch (err) {
       res.status(500).json(err);
@@ -46,7 +47,7 @@ router.post('/', async (req, res) => {
       req.session.user = {
         id:user.id,
         email:user.email,
-        username:user.username
+        name:user.name
       }
       res.json({ user, message: 'You are now logged in!' });
     } catch (err) {

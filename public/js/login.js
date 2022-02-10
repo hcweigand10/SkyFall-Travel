@@ -27,14 +27,18 @@ loginForm.addEventListener('submit', loginFormHandler);
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const username = document.getElementById('username-signup').value.trim();
-  const email = document.getElementById('email-signup').value.trim();
-  const password = document.getElementById('password-signup').value.trim();
+  const nameEl = document.getElementById('name-signup').value.trim();
+  const emailEl = document.getElementById('email-signup').value.trim();
+  const passwordEl = document.getElementById('password-signup').value.trim();
 
-  if (username && email && password) {
-    const response = await fetch('/api/users', {
+  if (nameEl && emailEl && passwordEl) {
+    const response = await fetch('/api/user', {
       method: 'POST',
-      body: JSON.stringify({ username, email, password }),
+      body: JSON.stringify({
+         name:nameEl, 
+         email:emailEl, 
+         password:passwordEl
+      }),
       headers: { 'Content-Type': 'application/json' },
     });
 
