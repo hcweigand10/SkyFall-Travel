@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Trip } = require('../models/');
-
+const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     console.log(req.session)
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
     
 });
 
-router.get('dashboard/user/:id', async (req, res) => {
+router.get('dashboard/user/:id', withAuth, async (req, res) => {
     // add withAuth later
     try {
         res.render('userDashboard', {
