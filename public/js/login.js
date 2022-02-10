@@ -1,34 +1,35 @@
 const loginFormHandler = async function(event) {
     event.preventDefault();
   
-    const usernameEl = document.querySelector('#username-input-login');
-    const passwordEl = document.querySelector('#password-input-login');
+    const emailEl = document.getElementById('email-login');
+    const passwordEl = document.getElementById('password-login');
   
     const response = await fetch('/api/user/login', {
       method: 'POST',
       body: JSON.stringify({
-        username: usernameEl.value,
+        email: emailEl.value,
         password: passwordEl.value,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
   
     if (response.ok) {
-      document.location.replace('/dashboard');
+      location.href='/dashboard';
     } else {
       alert('Failed to login');
     }
   };
   
-document.querySelector('#login-form').addEventListener('submit', loginFormHandler);
+const loginForm = document.getElementById('login-form')
+loginForm.addEventListener('submit', loginFormHandler);
   
 
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const username = document.querySelector('#username-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
+  const username = document.getElementById('username-signup').value.trim();
+  const email = document.getElementById('email-signup').value.trim();
+  const password = document.getElementById('password-signup').value.trim();
 
   if (username && email && password) {
     const response = await fetch('/api/users', {
@@ -38,7 +39,7 @@ const signupFormHandler = async (event) => {
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      location.href='/dashboard';
     } else {
       alert('Failed to sign up.');
     }
@@ -46,5 +47,5 @@ const signupFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.signup-form')
+  .getElementById('signup-form')
   .addEventListener('submit', signupFormHandler);

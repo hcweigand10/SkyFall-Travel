@@ -27,7 +27,7 @@ router.get('dashboard/user/:id', async (req, res) => {
 router.get("/login", (req, res) => {
     console.log(req.session.loggedIn);
     if (req.session.loggedIn) {
-        res.redirect('/');
+        res.redirect('/dashboard');
         return;
     }
     res.render('loginSignup');
