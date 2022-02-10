@@ -2,12 +2,12 @@
   <div class="container-fluid">
     <div class="navbar-text text-link display-3 fw-bold"><em>Skyfall</em></div>
     <div class="navbar-nav d-grid gap-2 d-md-flex justify-content-md-end">
+      {{#if User}}
       <button class="btn btn-info me-md-2 mr-2" type="button">
-        <a class="nav-link active" aria-current="page" href="dashboard/user/1">Plan Trip</a>
+        <a class="nav-link active" aria-current="page" href="/dashboard">Dashboard</a>
       </button>
-      {{#if req.session.user}}
       <button class="btn btn-info me-md-2" type="button">
-        <a class="nav-link" href="#" id="#logout-link">Log out</a>
+        <a class="nav-link" href="#" id="logout-link">Log out</a>
       </button>
       {{else}}
       <button class="btn btn-info me-md-2" type="button">
@@ -130,3 +130,4 @@
         </div>
     </div>
 </footer>
+

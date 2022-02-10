@@ -26,12 +26,12 @@
             <a class="nav-link" href="#">Profile</a>
           </button>
           <button class="btn btn-primary me-md-2" type="button">
-            <a class="nav-link" href="#" id="#logout-link">Logout</a>
+            <a class="nav-link" href="#" id="logout-link">Logout</a>
           </button>
         </div>
       </div>
     </nav>
-    <h2><strong>Welcome, {{User.name}}!</strong></h2>
+    <h2><strong>Welcome, {{loggedInUser.name}}!</strong></h2>
     {{{body}}}
 
     <script src="/js/logout.js"></script>

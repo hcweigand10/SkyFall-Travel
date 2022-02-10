@@ -17,7 +17,9 @@
   <body>
     {{{body}}}
 
-    <script src="/js/logout.js"></script>
+    {{#if User}}
+      <script src="/js/logout.js"></script>
+    {{/if}}
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -35,7 +37,6 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
   </body>
 
 </html>

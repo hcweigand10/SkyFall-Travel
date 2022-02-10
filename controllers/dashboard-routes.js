@@ -18,7 +18,8 @@ router.get('/', withAuth, async (req, res) => {
         const userRaw = userData.get({ plain: true });
         res.render('userDashboard', {
             layout: 'dashboard',
-            User: userRaw
+            User: userRaw, 
+            loggedInUser: req.session.user
         });
     } catch(err) {
         console.log(err); 
@@ -42,7 +43,8 @@ router.get('/trip/:id', withAuth, async (req, res) => {
 
         res.render('tripView', {
             layout: 'dashboard',
-            TripData: rawTrip})
+            TripData: rawTrip, 
+            loggedInUser: req.session.user})
     } catch(err) {
         console.log(err); 
         res.status(500).json(err);
@@ -69,9 +71,10 @@ router.get("/trip/:id/destination/:id2", async (req, res) => {
       console.log(destinationRaw);
       console.log(expenditureRaw);
       res.render("destination-view", {
-        laytout: "dashboard",
+        layout: "dashboard",
         destination: destinationRaw,
-        // expenditure: expenditureRaw
+        expenditure: expenditureRaw, 
+        loggedInUser: req.session.user
       });
     } catch (err) {
       console.log(err);
