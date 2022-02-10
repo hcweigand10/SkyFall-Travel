@@ -1,0 +1,12 @@
+[
+  {
+      "name": "1080 Hostel",
+      "event_type": "Lodging",
+      "price": 160
+  },
+  {
+      "name": "Beer Hall",
+      "event_type": "Food and Drinks",
+      "price": 20
+  }
+]
