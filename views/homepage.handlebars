@@ -5,13 +5,15 @@
       <button class="btn btn-warning me-md-2" type="button">
         <a class="nav-link active" aria-current="page" href="dashboard/user/1">Plan Trip</a>
       </button>
+      {{#if req.session.user}}
+      <button class="btn btn-info me-md-2" type="button">
+        <a class="nav-link" href="#" id="#logout-link">Log out</a>
+      </button>
+      {{else}}
       <button class="btn btn-info me-md-2" type="button">
         <a class="nav-link" href="/login">Log In / Signup</a>
       </button>
-      {{!-- <button class="btn btn-primary me-md-2" type="button">
-        {{!-- /user/{{req.session.userId}} put where href is --}}
-        {{!-- <a class="nav-link" href="#">Sign Up</a>
-      </button> --}} 
+      {{/if}}
     </div>
   </div>
 </nav>

@@ -48,7 +48,6 @@ router.post('/', async (req, res) => {
         email:user.email,
         username:user.username
       }
-      req.session.logged_in = true;
       res.json({ user, message: 'You are now logged in!' });
     } catch (err) {
       res.status(400).json({ message: 'No user account found!' });
@@ -56,7 +55,7 @@ router.post('/', async (req, res) => {
   });
   
   router.post('/logout', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.user) {
       req.session.destroy(() => {
         res.status(204).end();
       });
