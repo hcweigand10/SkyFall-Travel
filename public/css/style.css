@@ -4,8 +4,11 @@ body {
     font-family: 'Alegreya Sans', sans-serif;
 }
 
-/* Sticky footer position and size
--------------------------------------------------- */
+
+
+/*? ================================ */
+  /*? FOOTER SECTION*/
+/* Sticky footer position and size */
 html {
   position: relative;
   min-height: 100%;
@@ -32,8 +35,7 @@ body {
     }
 }
 
-/* Sticky footer style and color
--------------------------------------------------- */
+/* Sticky footer style and color */
 footer {
   padding-top: 30px;
   background-color: #292c2f;
