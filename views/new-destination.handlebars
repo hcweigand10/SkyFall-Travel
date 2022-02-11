@@ -1,20 +1,21 @@
 <div class="post card">
   <div class="card-header">
-    <h2>Create New Post</h2>
+    <h2>Create New Destination</h2>
   </div>
   <form id="new-post-form" class="card-body">
-    <label class="form-label" for="post-title">Name</label>
+    <label class="form-label" for="name">Destination</label>
     <input type="text" id="name" class="form-input" />
 
-    <label class="form-label" for="post-title">Date Arrived</label>
+    <label class="form-label" for="date-arrived">Date Arrived</label>
     <input type="date" id="date-arrived" class="form-input" />
 
-    <label class="form-label" for="post-title">Date Leaving</label>
+    <label class="form-label" for="date-leaving">Date Leaving</label>
     <input type="date" id="date-leaving" class="form-input" />
 
-    <label class="form-label" for="post-title">Budget</label>
+    <label class="form-label" for="budget">Budget</label>
     <input type="text" id="budget" class="form-input" />
-
+    
+    <input type="hidden" id="tripId" class="form-input" value="{{TripId}}" />
     <button type="submit" class="btn">Create</button>
   </form>
 </div>

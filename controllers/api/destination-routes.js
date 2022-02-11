@@ -5,10 +5,11 @@ const withAuth = require('../../utils/auth');
 
 // be able to create
 router.post('/', withAuth, async(req, res) => {
+    console.log("sometig");
     const body = req.body; 
-
     try {
-        const newDestination = await Destination.create({...body, User: req.session.user});
+        const newDestination = await Destination.create({...body});
+        console.log(newDestination);
         req.json(newDestination)
     } catch(err) {
         console.log(err); 

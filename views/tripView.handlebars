@@ -9,53 +9,21 @@
       <div class="card">
         <h5 class="card-header">{{name}}</h5>
         <div class="card-body">
-          <p class="card-text">{{date_arrived}}</p>
-          <p class="card-text">{{date_leaving}}</p>
-          <p class="card-text">{{budget}}</p>
-          <p>
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{id}}" aria-expanded="false" aria-controls="collapseExample">
-                Button with data-target
-            </button>
-            <button class="btn btn-primary" type="button">
-            <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View Destination</a>
-            </button>
-          </p>
-
-          {{!-- form stuff that collapses --}}
-          <div class="collapse" id="collapseExample{{id}}">
-            <div class="card card-body">
-              <div class="col-md-6">
-                <h2>Edit Destination</h2>
-                <form class="form edit-form">
-                  <div class="form-group">
-                    <label for="edity-name">Name:</label>
-                    <input class="form-input" type="text" id="edit-name" value={{name}} />
-                  </div>
-                  <div class="form-group">
-                    <label for="edit-arriving-date">Date Arriving:</label>
-                    <input class="form-input" type="text" id="edit-arriving-date" value={{date_arrived}} />
-                  </div>
-                  <div class="form-group">
-                    <label for="edit-departure">Date Leaving:</label>
-                    <input class="form-input" type="text" id="edit-departure" value={{date_leaving}} />
-                  </div>
-                  <div class="form-group">
-                    <label for="edit-budget">Budget:</label>
-                    <input class="form-input" type="text" id="edit-budget" value={{budget}} />
-                  </div>
-                  <input class="form-input" type="hidden" id="destinationId" value={{id}} />
-                  <input class="form-input" type="hidden" id="tripId" value={{../TripData.id}} />
-                  <div class="form-group">
-                    <button class="btn btn-primary" type="submit">Update</button>
-                  </div>
-                </form>
-              </div>
-          </div>
+          <h5 class="card-text">{{date_arrived}}</h5>
+          <h5 class="card-text">{{date_leaving}}</h5>
+          <h5 class="card-text">{{budget}}</h5>
+          <button class="btn btn-primary" type="button">
+          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View Destination</a>
+          </button>
+          <button class="btn btn-primary" type="button">
+          {{!-- this button will later lead you to a page to update the information or delete it --}}
+          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">Edit Destination</a>
+          </button>
         </div>
     </li>
     {{/each}}
   </ul>
 </div>
 
-<script src="/js/edit-destination.js"></script>
+{{!-- <script src="/js/edit-destination.js"></script> --}}
 

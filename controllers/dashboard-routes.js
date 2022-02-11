@@ -29,9 +29,19 @@ router.get('/', withAuth, async (req, res) => {
 })
 
 // create new destination
-router.get('trip/:id/new', withAuth, (req, res) => {
+router.get('/trip/:id/new', withAuth, (req, res) => {
   res.render('new-destination', {
     layout: 'dashboard',
+    TripId: req.params.id
+  });
+});
+
+// create new expenditure
+router.get('/trip/:id/destination/:id2/new', withAuth, (req, res) => {
+  res.render('new-expenditure', {
+    layout: 'dashboard',
+    TripId: req.params.id, 
+    DestinationId: req.params.id2
   });
 });
 
@@ -61,6 +71,8 @@ router.get('/trip/:id', withAuth, async (req, res) => {
 
 router.get("/trip/:id/destination/:id2", async (req, res) => {
     try {
+
+      const tripData = await Trip.findByPk(req.params.id);
       const destinationData = await Destination.findByPk(req.params.id2, {
         include: [Expenditure],
       });
@@ -70,7 +82,8 @@ router.get("/trip/:id/destination/:id2", async (req, res) => {
           destinationId: req.params.id2,
         },
       });
-  
+      
+      const tripRaw = tripData.get({plain: true});
       const destinationRaw = destinationData.get({ plain: true });
       const expenditureRaw = expenditureData.map((expenditure) =>
         expenditure.get({ plain: true })
@@ -80,6 +93,7 @@ router.get("/trip/:id/destination/:id2", async (req, res) => {
       console.log(expenditureRaw);
       res.render("destination-view", {
         layout: "dashboard",
+        trip: tripRaw,
         destination: destinationRaw,
         expenditure: expenditureRaw, 
         loggedInUser: req.session.user
