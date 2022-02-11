@@ -1,4 +1,7 @@
 <h3>{{TripData.name}}</h3>
+<div class="flex-row justify-center">
+  <a href="/dashboard/trip/{{TripData.id}}/new">➕ New Post</a>
+</div>
 <div>
   <ul>
     {{#each TripData.Destinations}}
@@ -6,54 +9,21 @@
       <div class="card">
         <h5 class="card-header">{{name}}</h5>
         <div class="card-body">
-            <p class="card-text">{{budget}}</p>
-            <p>
-                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{id}}" aria-expanded="false" aria-controls="collapseExample">
-                    Button with data-target
-                </button>
-                <button class="btn btn-primary" type="button">
-                <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View Destination</a>
-                </button>
-            </p>
-            <div class="collapse" id="collapseExample{{id}}">
-                <div class="card card-body">
-                    <form class="form" id="signup-form">
-        <div class="col-md-6">
-          <h2>Signup</h2>
-          <form class="form signup-form">
-            <div class="form-group">
-              <label for="name-signup">name:</label>
-              <input class="form-input" type="text" id="name-signup" />
-            </div>
-            <div class="form-group">
-              <label for="email-signup">email:</label>
-              <input class="form-input" type="text" id="email-signup" />
-            </div>
-            <div class="form-group">
-              <label for="password-signup">password:</label>
-              <input class="form-input" type="password" id="password-signup" />
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary" type="submit">signup</button>
-            </div>
-          </form>
-                </div>
-            </div>
+          <h5 class="card-text">{{date_arrived}}</h5>
+          <h5 class="card-text">{{date_leaving}}</h5>
+          <h5 class="card-text">{{budget}}</h5>
+          <button class="btn btn-primary" type="button">
+          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View Destination</a>
+          </button>
+          <button class="btn btn-primary" type="button">
+          {{!-- this button will later lead you to a page to update the information or delete it --}}
+          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">Edit Destination</a>
+          </button>
         </div>
-      </li>
-      {{/each}}
-    </ul>
-  </div>
-  {{!-- can we have a chart or graph on how much the user has been spending or something easy for graph?  --}}
+    </li>
+    {{/each}}
+  </ul>
+</div>
 
+{{!-- <script src="/js/edit-destination.js"></script> --}}
 
-<div id="map"></div>
-
-{{!-- weather stuff  --}}
-<div></div>
-
-<script src="/js/map.js"></script>
-
-{{!-- <script src="/js/logout.js"></script> --}}
-
-{{> expenditure-view }}

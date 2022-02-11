@@ -1,7 +1,18 @@
 const router = require('express').Router();
 const { Destination, Expenditure, Trip } = require('../../models/');
 const withAuth = require('../../utils/auth');
- 
+
+router.get('/newtrip', async (req, res) => {
+  try {
+    res.render('createTrip', {
+      layout: 'dashboard', 
+      User: req.session.user
+    })
+  } catch(err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 router.post('/', async (req, res) => {
   try {

@@ -1,0 +1,22 @@
+<div class="post card">
+  <div class="card-header">
+    <h2>Create New Expenditure</h2>
+  </div>
+  <form id="new-post-form" class="card-body">
+    <label class="form-label" for="name">Expenditure</label>
+    <input type="text" id="name" class="form-input" />
+
+    <label class="form-label" for="event-type">Event type</label>
+    <input type="text" id="event-type" class="form-input" />
+
+    <label class="form-label" for="price">Price</label>
+    <input type="text" id="price" class="form-input" />
+    
+    <input type="hidden" id="destinationId" class="form-input" value="{{DestinationId}}" />
+    <input type="hidden" id="tripId" class="form-input" value="{{TripId}}" />
+    
+    <button type="submit" class="btn">Create</button>
+  </form>
+</div>
+
+<script src="/js/new-expenditure.js"></script>

@@ -16,6 +16,7 @@ router.get('/', withAuth, async (req, res) => {
             }
         });
         const userRaw = userData.get({ plain: true });
+        // fix naming fool
         res.render('userDashboard', {
             layout: 'dashboard',
             User: userRaw, 
@@ -26,6 +27,23 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 })
+
+// create new destination
+router.get('/trip/:id/new', withAuth, (req, res) => {
+  res.render('new-destination', {
+    layout: 'dashboard',
+    TripId: req.params.id
+  });
+});
+
+// create new expenditure
+router.get('/trip/:id/destination/:id2/new', withAuth, (req, res) => {
+  res.render('new-expenditure', {
+    layout: 'dashboard',
+    TripId: req.params.id, 
+    DestinationId: req.params.id2
+  });
+});
 
 router.get('/trip/:id', withAuth, async (req, res) => {
     try {
@@ -53,6 +71,8 @@ router.get('/trip/:id', withAuth, async (req, res) => {
 
 router.get("/trip/:id/destination/:id2", async (req, res) => {
     try {
+
+      const tripData = await Trip.findByPk(req.params.id);
       const destinationData = await Destination.findByPk(req.params.id2, {
         include: [Expenditure],
       });
@@ -62,7 +82,8 @@ router.get("/trip/:id/destination/:id2", async (req, res) => {
           destinationId: req.params.id2,
         },
       });
-  
+      
+      const tripRaw = tripData.get({plain: true});
       const destinationRaw = destinationData.get({ plain: true });
       const expenditureRaw = expenditureData.map((expenditure) =>
         expenditure.get({ plain: true })
@@ -70,6 +91,31 @@ router.get("/trip/:id/destination/:id2", async (req, res) => {
   
       console.log(destinationRaw);
       console.log(expenditureRaw);
+      res.render("destination-view", {
+        layout: "dashboard",
+        trip: tripRaw,
+        destination: destinationRaw,
+        expenditure: expenditureRaw, 
+        loggedInUser: req.session.user
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
+  router.get("/trip/:id/destination/:id2/expenditure/:id3", async (req, res) => {
+    try {
+      const expenditureData = await Expenditure.findByPk(req.params.id3);
+  
+      const destinationData = await Destination.findByPk(req.params.id2);
+  
+      const destinationRaw = destinationData.get({ plain: true });
+      const expenditureRaw = expenditureData.get({ plain: true });
+  
+      console.log(destinationRaw);
+      console.log(expenditureRaw);
+      
       res.render("destination-view", {
         layout: "dashboard",
         destination: destinationRaw,

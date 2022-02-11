@@ -14,7 +14,7 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
 
-  <body>
+  <body class="flex-column min-100-vh">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <div class="container-fluid">
         <div class="navbar-text text-info display-6"><a href="/">Skyfall</a></div>
@@ -23,7 +23,7 @@
             <a class="nav-link active" aria-current="page" href="#">New Trip</a>
           </button>
           <button class="btn btn-info m-2 me-md-2" type="button">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="/dashboard">Dashboard</a>
           </button>
           <button class="btn btn-primary me-md-2" type="button">
             <a class="nav-link" href="#" id="logout-link">Logout</a>
@@ -33,6 +33,7 @@
     </nav>
     <h2><strong>Welcome, {{loggedInUser.name}}!</strong></h2>
     
+    {{{ body }}}
 
     <script src="/js/logout.js"></script>
 
@@ -51,6 +52,5 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    {{{body}}}
   </body>
 </html>
