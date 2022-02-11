@@ -1,6 +1,6 @@
 <h3>{{TripData.name}}</h3>
 <div class="flex-row justify-center">
-  <a href="/dashboard/trip/{{TripData.id}}/new">➕ New Post</a>
+  <a href="/dashboard/trip/{{TripData.id}}/new">➕ Add Destination</a>
 </div>
 <div>
   <ul>
@@ -13,11 +13,7 @@
           <h5 class="card-text">{{date_leaving}}</h5>
           <h5 class="card-text">{{budget}}</h5>
           <button class="btn btn-primary" type="button">
-          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View Destination</a>
-          </button>
-          <button class="btn btn-primary" type="button">
-          {{!-- this button will later lead you to a page to update the information or delete it --}}
-          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">Edit Destination</a>
+          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View/Edit Destination</a>
           </button>
         </div>
     </li>

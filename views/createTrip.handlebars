@@ -1,32 +1,70 @@
-<form class="form new-trip-form">
+{{!-- <form class="form new-trip-form">
     <label for="name">Trip Name:</label>
-    <input type="text" class="name"></input>
-    <div class="form-group">
-        <label for="destination-name">Destination:</label>
-        <input type="text" class="destination-name"></input>
-        <label for="date-arrival">Leaving Date:</label>
-        <input type="date" class="date-arrival"></input>
-        <label for="date-leaving">Return Date:</label>
-        <input type="date" class="date-leaving"></input>
-    </div>
-    <div class="form-group">
-        <label for="flight-price">Flight Price:</label>
-        <input type="number" class="flight-price"></input>
-        <label for="food-price">Food Price:</label>
-        <input type="number" class="food-price"></input>
-        <label for="lodging-price">Lodging:</label>
-        <input type="number" class="lodging-price"></input>
-    </div>
-    <ul class="extras-list">
-        <li>
-            <label for="flight-price">Extra Activity:</label>
-            <input type="text"></input>
-            <label for="flight-price">Extra Price:</label>
-            <input type="number"></input>
-        </li>
-    </ul>
-    <div class="form-group">
-        <input class="btn btn-primary create-trip-button" type="button">Generate Trip</input>
-    </div>
+    <input type="text" class="name input-lg"></input>
+<div class="form-group">
+    <label for="destination-name">Destination:</label>
+    <input type="text" class="destination-name"></input>
+    <label for="date-arrival">Leaving Date:</label>
+    <input type="date" class="date-arrival"></input>
+    <label for="date-leaving">Return Date:</label>
+    <input type="date" class="date-leaving"></input>
+</div>
+<div class="form-group">
+    <label for="flight-price">Flight Price:</label>
+    <input type="number" class="flight-price"></input>
+    <label for="food-price">Food Price:</label>
+    <input type="number" class="food-price"></input>
+    <label for="lodging-price">Lodging:</label>
+    <input type="number" class="lodging-price"></input>
+</div>
+<ul class="extras-list">
+    <label for="extras-list">Extra Activity:</label>
+
+    <button class="btn btn-primary additional-extra" type="button"></button>
+</ul>
+<div class="form-group">
+    <button class="btn btn-primary create-trip-button" type="button">Generate Trip</button>
+</div>
 </form>
 <script src="/js/newTrip.js"></script>
+ --}}
+<div class="container">
+    <form class="form" id="new-trip-form">
+        <div id="main" class="form-group" style="font-size:large">
+            <label for="name">Trip Name:</label>
+            <input type="text" class="input-lg col-2" id="name"></input>
+
+            <label for="date-arrival">Start Date:</label>
+            <input type="date" id="date-arrival"></input>
+
+            <label for="date-leaving">End Date:</label>
+            <input type="date" id="date-leaving"></input>
+        </div>
+
+        <hr>
+        
+        <div id="destinations">
+            <div class="form-group">
+                <label for="destination-name">Destination:</label>
+                <input type="text" id="destination-name-1"></input>
+
+                <label for="date-arrival">Start Date:</label>
+                <input type="date" id="date-arrival-1"></input>
+
+                <label for="date-leaving">End Date:</label>
+                <input type="date" id="date-leaving-1"></input>
+
+                <label for="budget">Budget:</label>
+                <span>$</span>
+                <input type="number" id="budget-1"></input>
+                <span>.00</span>
+            </div>
+        </div>
+        <div style="display: flex;">
+            <button class="btn btn-primary" id="additional-destination" type="button">Add Destination</button>
+            <button class="btn btn-primary" id="create-trip-button" type="button" style="float: right;">Generate Trip</button>
+        </div>
+    </form>
+</div>
+<script src="/js/newTrip.js"></script>
+

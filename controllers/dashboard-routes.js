@@ -28,6 +28,18 @@ router.get('/', withAuth, async (req, res) => {
     }
 })
 
+// create trip
+router.get('/trip/new', withAuth, async (req, res) => {
+  try {
+      res.render('createTrip', {
+          layout: 'dashboard'
+      });
+  } catch(err) {
+      console.log(err); 
+      res.status(500).json(err);
+  }
+})
+
 // create new destination
 router.get('/trip/:id/new', withAuth, (req, res) => {
   res.render('new-destination', {
@@ -47,17 +59,16 @@ router.get('/trip/:id/destination/:id2/new', withAuth, (req, res) => {
 
 router.get('/trip/:id', withAuth, async (req, res) => {
     try {
-        console.log(req.session.user.id)
-        const tripData = await Trip.findAll({
+        const trip = await Trip.findOne({
             where: {
-                userId: req.session.user.id
+                id: req.params.id
             },
             include: [Destination]
         })
 
 
         // need to get for each desitantion the expenditures and get the total cost that the user is going to use for the trip
-        const rawTrip = await tripData[req.params.id-1].get({plain: true});
+        const rawTrip = await trip.get({plain: true});
 
         res.render('tripView', {
             layout: 'dashboard',
@@ -127,6 +138,8 @@ router.get("/trip/:id/destination/:id2", async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+
 
 // need to render expenditures based on destination that the user desires to go to 
 
