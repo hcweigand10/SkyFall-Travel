@@ -14,13 +14,13 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
 
-  <body>
+  <body class="flex-column min-100-vh">
     <nav class="navbar navbar-expand-lg navbar-light bg-dark">
       <div class="container-fluid">
         <div class="navbar-text text-info display-6"><a href="/">Skyfall</a></div>
         <div class="navbar-nav d-grid gap-2 d-md-flex justify-content-md-end">
           <button class="btn btn-warning m-2 me-md-2" type="button">
-            <a class="nav-link active" aria-current="page" href="/api/trip">New Trip</a>
+            <a class="nav-link active" aria-current="page" href="/dashboard/trip/new">New Trip</a>
           </button>
           <button class="btn btn-info m-2 me-md-2" type="button">
             <a class="nav-link" href="/dashboard">Dashboard</a>
@@ -51,6 +51,8 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script>
-    {{{body}}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {{{ body }}}
+
   </body>
 </html>

@@ -51,7 +51,7 @@ const withAuth = require("../../utils/auth");
 //   }
 // });
 
-router.post("/", withAuth, async (req, res) => {
+router.post("/new", withAuth, async (req, res) => {
     console.log("new trip attempt")
     try {  
       const newTrip = await Trip.create({
@@ -69,9 +69,10 @@ router.post("/", withAuth, async (req, res) => {
           budget: req.body.destinations[i].budget,
           tripId: newTrip.id
         });
-        console.log(newDestination);
       };
-      res.json(newTrip);
+      const tripRaw = newTrip.get({plain:true})
+      console.log(tripRaw)
+      res.json(tripRaw);
     } catch (err) {
       res.status(500).json(err);
       console.log(err)

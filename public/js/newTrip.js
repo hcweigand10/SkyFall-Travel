@@ -64,13 +64,12 @@ let destinations = [];
 
 const tripFormHandler = async function(event) {
   event.stopImmediatePropagation();
+  let tripId;
   const name = document.querySelector('#name').value;
   const date_arrival = document.querySelector('#date-arrival').value;
   const date_leaving = document.querySelector('#date-leaving').value;
   let budget = 0;
-  console.log(destinationsCount)
   for (let i = 1; i < destinationsCount+1; i++) {
-    console.log(i)
     budget += parseInt(document.querySelector(`#budget-${i}`).value);
     const destinationObj = {
       name: document.querySelector(`#destination-name-${i}`).value,
@@ -78,13 +77,11 @@ const tripFormHandler = async function(event) {
       date_leaving: document.querySelector(`#date-leaving-${i}`).value,
       budget: parseInt(document.querySelector(`#budget-${i}`).value)
     }
-    console.log(destinationObj)
-    console.log(destinations)
+
     destinations.push(destinationObj)
   }
-  console.log(destinations)
   
-  await fetch('/api/trip', {
+  await fetch('/api/trip/new', {
       method: 'POST',
       body: JSON.stringify({
         name,
@@ -96,11 +93,17 @@ const tripFormHandler = async function(event) {
       headers: {
         'Content-Type': 'application/json'
       }
+    }).then((res) => {
+      return res.json()
+    }).then((data)=> {
+      console.log(data.id)
+      tripId = data.id
     });
+    
+  location.href=`/dashboard/trip/${tripId}`;
+};
 
-}
-
-  $('#additional-destination').on('click',function(){
+  $("#additional-destination").on('click',function(){
     destinationsCount++;
     $('#destinations').append(
     `<div class="form-group">
