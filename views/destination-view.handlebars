@@ -1,0 +1,22 @@
+<h3>{{destination.name}}</h3>
+<div class="flex-row justify-center">
+  <a href="/dashboard/trip/{{trip.id}}/destination/{{destination.id}}/new">➕ New Post</a>
+</div>
+<div>
+  <ul>
+    {{#each expenditure}}
+    <li>
+      <div class="card">
+        <h5 class="card-header">{{name}}</h5>
+        <div class="card-body">
+          <p class="card-text">{{event_type}}</p>
+          <p class="card-text">{{price}}</p>
+          <button class="btn btn-primary" type="button">
+            {{!-- this button will later lead you to a page to update the information or delete it --}}
+            <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">Edit Destination</a>
+          </button>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
