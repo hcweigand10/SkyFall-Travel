@@ -16,6 +16,7 @@ router.get('/', withAuth, async (req, res) => {
             }
         });
         const userRaw = userData.get({ plain: true });
+        // fix naming fool
         res.render('userDashboard', {
             layout: 'dashboard',
             User: userRaw, 
@@ -26,6 +27,13 @@ router.get('/', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 })
+
+// create new destination
+router.get('trip/:id/new', withAuth, (req, res) => {
+  res.render('new-destination', {
+    layout: 'dashboard',
+  });
+});
 
 router.get('/trip/:id', withAuth, async (req, res) => {
     try {
@@ -70,6 +78,30 @@ router.get("/trip/:id/destination/:id2", async (req, res) => {
   
       console.log(destinationRaw);
       console.log(expenditureRaw);
+      res.render("destination-view", {
+        layout: "dashboard",
+        destination: destinationRaw,
+        expenditure: expenditureRaw, 
+        loggedInUser: req.session.user
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  });
+
+  router.get("/trip/:id/destination/:id2/expenditure/:id3", async (req, res) => {
+    try {
+      const expenditureData = await Expenditure.findByPk(req.params.id3);
+  
+      const destinationData = await Destination.findByPk(req.params.id2);
+  
+      const destinationRaw = destinationData.get({ plain: true });
+      const expenditureRaw = expenditureData.get({ plain: true });
+  
+      console.log(destinationRaw);
+      console.log(expenditureRaw);
+      
       res.render("destination-view", {
         layout: "dashboard",
         destination: destinationRaw,

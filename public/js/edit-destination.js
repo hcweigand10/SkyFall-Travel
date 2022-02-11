@@ -1,6 +1,7 @@
 async function editFormHandler(event) {
     event.preventDefault();
     console.log("hello this is a updates");
+
     const name = document.querySelector('#edit-name').value;
     const date_arrived = document.querySelector('#edit-arriving-date').value;
     const date_leaving = document.querySelector('#edit-departure').value;
@@ -15,6 +16,7 @@ async function editFormHandler(event) {
         date_arrived,
         date_leaving,
         budget,
+        tripId
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -26,10 +28,11 @@ async function editFormHandler(event) {
     if (response.ok) {
         console.log(destinationId);
         console.log('=============');
-        document.location.replace(`/dashboard/trip/${tripId}`);
+        // document.location.replace(`/dashboard/trip/${tripId}`);
     } else {
       alert('Failed to edit dish');
     }
   }
   
-  document.querySelector('#edit-destination-form').addEventListener('submit', editFormHandler);
+document.querySelector('.edit-form').addEventListener('submit', editFormHandler);
+
