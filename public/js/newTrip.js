@@ -1,38 +1,61 @@
+
 const tripFormHandler = async function(event) {
-  console.log('In handler');
+  event.stopImmediatePropagation();
+  const name = document.querySelector('.name').value;
+  const destination_name = document.querySelector('.destination-name').value;
+  const date_arrival = document.querySelector('.date-arrival').value;
+  const date_leaving = document.querySelector('.date-leaving').value;
+  const flight_price = document.querySelector('.flight-price').value;
+  const food_price = document.querySelector('.food-price').value;
+  const lodging_price = document.querySelector('.lodging-price').value;
+  let extra_expenditure_items = document.querySelector('.extras-list').getElementsByTagName('li');
+  extra_expenditure_items = Array.from(extra_expenditure_items);
+  const extra_expenditure = extra_expenditure_items.map(element => {
+    const extra_spending = {}
+    let liList = element.getElementsByTagName('input');
+    liList = Array.from(liList);
+    for(let i =0; i<liList.length; i++) {
+      if (i == 0){
+        extra_spending['name'] = liList[i].value;
 
-    event.stopImmediatePropagation();
-    console.log('In handler');
-
-
-    const name = document.querySelector('.name').value;
-    const destination_name = document.querySelector('.destination-name').value;
-    const date_arrival = document.querySelector('.date-arrival').value;
-    const date_leaving = document.querySelector('.date-leaving').value;
-    const flight_price = document.querySelector('.flight-price').value;
-    const food_price = document.querySelector('.food-price').value;
-    const lodging_price = document.querySelector('.lodging-price').value;
-    const extra_expenditure = document.querySelector('.extras-list').value;
-    const newTrip =  await fetch('/api/trip', {
-        method: 'POST',
-        body: JSON.stringify({
-          name,
-          destination_name,
-          date_arrival,
-          date_leaving,
-          flight_price,
-          food_price,
-          lodging_price,
-          extra_expenditure
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-  
-      document.location.reload();
+      }else if (i == 1){
+        extra_spending['event_type'] = liList[i].value;
+      }
+      else{
+        extra_spending['price'] = liList[i].value;
+      } 
     }
+    return extra_spending;
+  });
+  
+  await fetch('/api/trip', {
+      method: 'POST',
+      body: JSON.stringify({
+        name,
+        destination_name,
+        date_arrival,
+        date_leaving,
+        flight_price,
+        food_price,
+        lodging_price,
+        extra_expenditure
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-console.log('getting button');
-document.querySelector('.create-trip-button').addEventListener('click', tripFormHandler);
+}
+  $('.additional-extra').on('click',function(){
+    $('.extras-list').append(`<li>
+        <label for="extras-price">Name:</label>
+        <input type="text"></input>
+        <label for="extras-price">Description:</label>
+        <input type="text"></input>
+        <label for="extras-price">Price:</label>
+        <input type="number"></input>
+    </li>`);
+  });
+  
+$('.create-trip-button').on('click', tripFormHandler);
   
