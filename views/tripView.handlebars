@@ -17,26 +17,32 @@
             </p>
             <div class="collapse" id="collapseExample{{id}}">
                 <div class="card card-body">
-                    <form class="form" id="signup-form">
-        <div class="col-md-6">
-          <h2>Signup</h2>
-          <form class="form signup-form">
-            <div class="form-group">
-              <label for="name-signup">name:</label>
-              <input class="form-input" type="text" id="name-signup" />
-            </div>
-            <div class="form-group">
-              <label for="email-signup">email:</label>
-              <input class="form-input" type="text" id="email-signup" />
-            </div>
-            <div class="form-group">
-              <label for="password-signup">password:</label>
-              <input class="form-input" type="password" id="password-signup" />
-            </div>
-            <div class="form-group">
-              <button class="btn btn-primary" type="submit">signup</button>
-            </div>
-          </form>
+                    <form class="form" id="edit-destination-form" >
+                <div class="col-md-6">
+                  <h2>Edit Destination</h2>
+                  <form class="form edit-form">
+                    <div class="form-group">
+                      <label for="edity-name">Name:</label>
+                      <input class="form-input" type="text" id="edit-name" value={{name}} />
+                    </div>
+                    <div class="form-group">
+                      <label for="edit-arriving-date">Date Arriving:</label>
+                      <input class="form-input" type="text" id="edit-arriving-date" value={{date_arrived}} />
+                    </div>
+                    <div class="form-group">
+                      <label for="edit-departure">Date Leaving:</label>
+                      <input class="form-input" type="text" id="edit-departure" value={{date_leaving}} />
+                    </div>
+                    <div class="form-group">
+                      <label for="edit-budget">Budget:</label>
+                      <input class="form-input" type="text" id="edit-budget" value={{budget}} />
+                    </div>
+                    <input class="form-input" type="hidden" id="destinationId" value={{id}} />
+                    <input class="form-input" type="hidden" id="tripId" value={{../TripData.id}} />
+                    <div class="form-group">
+                      <button class="btn btn-primary" type="submit">Update</button>
+                    </div>
+                  </form>
                 </div>
             </div>
         </div>
@@ -47,13 +53,13 @@
   {{!-- can we have a chart or graph on how much the user has been spending or something easy for graph?  --}}
 
 
-<div id="map"></div>
+{{!-- <div id="map"></div> --}}
 
 {{!-- weather stuff  --}}
-<div></div>
+{{!-- <div></div> --}}
 
-<script src="/js/map.js"></script>
+{{!-- <script src="/js/map.js"></script> --}} 
 
-{{!-- <script src="/js/logout.js"></script> --}}
+<script src="/js/edit-destination.js"></script>
 
 {{> expenditure-view }}
