@@ -35,7 +35,8 @@ router.get("/login", (req, res) => {
     }
     res.render('loginSignup');
 })
-router.get('/api/trip', async (req, res) => {
+
+router.get('/api/trip', withAuth, async (req, res) => {
     // add withAuth later
     try {
         res.render('createTrip', {
