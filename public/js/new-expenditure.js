@@ -4,7 +4,7 @@ const newFormHandler = async function() {
     const price = document.querySelector('#price').value;
     const tripId = document.querySelector('#tripId').value;
     const destinationId = document.querySelector('#destinationId').value;
-    await fetch('/api/expenditure', {
+    await fetch(`/api/expenditure/${tripId}/${destinationId}`, {
       method: 'POST',
       body: JSON.stringify({
         name,

@@ -11,7 +11,7 @@ async function deleteDestinationHandler(event) {
       }
     });
     console.log(response);
-    location.reload();
+    document.location.replace(`/dashboard/trip/${tripId}`);
 
   }
 
