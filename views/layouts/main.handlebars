@@ -12,10 +12,89 @@
     />
     <link rel="stylesheet" type="text/css" href="/css/jass.css" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+    />
   </head>
 
   <body>
-    {{{body}}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <div class="navbar-text text-link display-3 fw-bold"><em
+          >Skyfall</em></div>
+        <div class="navbar-nav d-grid gap-2 d-md-flex justify-content-md-end">
+          {{#if User}}
+            <button class="btn btn-info me-md-2 mr-2" type="button">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="/dashboard"
+              >Dashboard</a>
+            </button>
+            <button class="btn btn-info me-md-2" type="button">
+              <a class="nav-link" href="#" id="logout-link">Log out</a>
+            </button>
+          {{else}}
+            <button class="btn btn-info me-md-2" type="button">
+              <a class="nav-link" href="/login">Log In / Signup</a>
+            </button>
+          {{/if}}
+        </div>
+      </div>
+    </nav>
+    
+    <main>
+      {{{body}}}
+    </main>
+
+    <div class="footer-light">
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-md-3 item">
+              <h3>Services</h3>
+              <ul>
+                <li><a href="#">Web design</a></li>
+                <li><a href="#">Development</a></li>
+                <li><a href="#">Hosting</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-md-3 item">
+              <h3>About</h3>
+              <ul>
+                <li><a href="#">Company</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Careers</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 item text">
+              <h3>Company Name</h3>
+              <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula.
+                Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
+                tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
+                in justo.</p>
+            </div>
+            <div class="col item social"><a href="#"><i
+                  class="icon ion-social-facebook"
+                ></i></a><a href="#"><i
+                  class="icon ion-social-twitter"
+                ></i></a><a href="#"><i
+                  class="icon ion-social-snapchat"
+                ></i></a><a href="#"><i
+                  class="icon ion-social-instagram"
+                ></i></a></div>
+          </div>
+          <p class="copyright">Company Name © 2018</p>
+        </div>
+      </footer>
+    </div>
 
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -33,9 +112,8 @@
       crossorigin="anonymous"
     ></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    
+
     {{#if User}}
-      <h3>Logged in {{User}}</h3>
       <script src="/js/logout.js"></script>
     {{/if}}
   </body>

@@ -20,26 +20,26 @@
   </head>
 
   <body class="flex-column min-100-vh">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <div class="navbar-text text-info display-6"><a href="/">Skyfall</a></div>
         <div class="navbar-nav d-grid gap-2 d-md-flex justify-content-md-end">
+          <button class="btn btn-info m-2 me-md-2" type="button">
+            <a class="nav-link" href="/dashboard">Welcome, {{User.name}}!</a>
+          </button>
           <button class="btn btn-warning m-2 me-md-2" type="button">
             <a class="nav-link active" aria-current="page" href="/dashboard/trip/new">New Trip</a>
           </button>
-          <button class="btn btn-info m-2 me-md-2" type="button">
-            <a class="nav-link" href="/dashboard">Dashboard</a>
-          </button>
-          <button class="btn btn-primary me-md-2" type="button">
+          <button class="btn btn-warning m-2 me-md-2" type="button">
             <a class="nav-link" href="#" id="logout-link">Logout</a>
           </button>
         </div>
       </div>
     </nav>
-    <h2><strong>Welcome, {{User.name}}!</strong></h2>
     
 
     <script src="/js/logout.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     {{!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
 
     {{!-- <script
@@ -52,9 +52,50 @@
       integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
       crossorigin="anonymous"
     ></script> --}}
-
-    {{{ body }}}
-
+    <main>
+      {{{ body }}}
+    </main>
+    
+    <div class="footer-light">
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-6 col-md-3 item">
+              <h3>Services</h3>
+              <ul>
+                <li><a href="#">Web design</a></li>
+                <li><a href="#">Development</a></li>
+                <li><a href="#">Hosting</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-6 col-md-3 item">
+              <h3>About</h3>
+              <ul>
+                <li><a href="#">Company</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Careers</a></li>
+              </ul>
+            </div>
+            <div class="col-md-6 item text">
+              <h3>Company Name</h3>
+              <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula.
+                Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis
+                tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel
+                in justo.</p>
+            </div>
+            <div class="col item social"><a href="#"><i
+                  class="icon ion-social-facebook"
+                ></i></a><a href="#"><i
+                  class="icon ion-social-twitter"
+                ></i></a><a href="#"><i
+                  class="icon ion-social-snapchat"
+                ></i></a><a href="#"><i
+                  class="icon ion-social-instagram"
+                ></i></a></div>
+          </div>
+          <p class="copyright">Company Name © 2018</p>
+        </div>
+      </footer>
       
 
   </body>
