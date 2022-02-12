@@ -7,7 +7,9 @@
     {{#each TripData.Destinations}}
     <li>
       <div class="card">
-        <h5 class="card-header">{{name}}</h5>
+        <h5 class="card-header">{{name}}
+          <button class='btn delete-destination-button' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Destination</button>
+        </h5>
         <div class="card-body">
           <h5 class="card-text">{{date_arrived}}</h5>
           <h5 class="card-text">{{date_leaving}}</h5>
@@ -21,5 +23,5 @@
   </ul>
 </div>
 
-{{!-- <script src="/js/edit-destination.js"></script> --}}
+<script src="/js/delete-destination.js"></script>
 

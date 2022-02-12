@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Expenditure } = require('../../models');
+const { Expenditure, Trip, Destination } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // be able to create
@@ -59,12 +59,27 @@ router.post("/", async (req, res) => {
 //     }
 // });
 
-router.delete("/:id", withAuth, async (req, res) => {
-    console.log('in Delete');
-    console.log(req.params.id);
-  try {
+router.delete("/:id/:tripId/:destinationId", withAuth, async (req, res) => {
+  try {      
+    let exPrice = 0;
+    await Expenditure.findOne({where: {id : req.params.id}
+    }).then(expenditure => {
+        expenditure = expenditure.get({ plain: true });
+        exPrice = expenditure['price'];
+    });
+    console.log(exPrice);
     Expenditure.destroy({
         where: {id : req.params.id}
+    });
+    await Trip.findOne({where: {id : req.params.tripId}
+    }).then(trip => {
+        trip = trip.get({ plain: true });
+        trip['budget'] = (trip['budget'] - parseFloat(exPrice));
+    });
+    await Destination.findOne({where: {id : req.params.destinationId}
+    }).then(destination => {
+        destination = destination.get({ plain: true });
+        destination['budget'] = (destination['budget'] - parseFloat(exPrice));
     });
     res.json();
   } catch (err) {

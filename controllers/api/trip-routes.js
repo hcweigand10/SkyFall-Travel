@@ -31,5 +31,18 @@ router.post("/new", withAuth, async (req, res) => {
       console.log(err)
     }
   });
-
+// be able to delete
+router.delete('/:id', async (req, res) => {
+  try{
+      await Trip.destroy( {
+          where: {
+              id: req.params.id,
+          }
+      });    
+      res.json();
+  } catch(err) {
+      console.log(err); 
+      res.status(500).json(err);
+  }
+})
 module.exports = router;

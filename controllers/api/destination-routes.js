@@ -1,24 +1,6 @@
 const router = require('express').Router();
-const { Destination } = require('../../models/');
+const { Destination, Trip } = require('../../models/');
 const withAuth = require('../../utils/auth');
-
-
-// router.post("/", withAuth, async (req, res) => {
-//     try {  
-//       const newTrip = await Trip.create({
-//         name: req.body.name,
-//         date_arrived: req.body.date_arrival,
-//         date_leaving: req.body.date_leaving,
-//         budget: budget,
-//         userId: req.session.user.id,
-//       });
-//       res.json(newTrip);
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   });
-
-
 
   // be able to update
   
@@ -26,7 +8,6 @@ const withAuth = require('../../utils/auth');
 
 // be able to create
 router.post('/', withAuth, async(req, res) => {
-    console.log("sometig");
     const body = req.body; 
     try {
         const newDestination = await Destination.create({...body});
@@ -60,5 +41,31 @@ router.put('/:id', async (req, res) => {
     }
 })
 // be able to delete
+router.delete('/:id/:tripId', async (req, res) => {
+    try{
+        let destinationPrice = 0;
+        await Destination.findOne({where: {id : req.params.id}
+        }).then(destination => {
+            destination = destination.get({ plain: true });
+            destinationPrice = destination['budget'];
+        });
+        await Trip.findOne({where: {id : req.params.tripId}
+        }).then(trip => {
+            console.log(trip['budget']);
+            trip = trip.get({ plain: true });
+            trip['budget'] = (trip['budget'] - parseFloat(destinationPrice));
+            console.log(trip['budget']);
 
+        });
+        await Destination.destroy( {
+            where: {
+                id: req.params.id,
+            }
+        });    
+        res.json();
+    } catch(err) {
+        console.log(err); 
+        res.status(500).json(err);
+    }
+})
 module.exports = router;

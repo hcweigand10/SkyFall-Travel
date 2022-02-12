@@ -22,7 +22,11 @@ const deleteFormHandler = async function(event) {
 
  console.log(event.target.id);
   let id = event.target.id;
-  await fetch(`/api/expenditure/${id}`, {
+  const element = document.getElementById(id);
+  const tripId = element.dataset.tripId;
+  const destinationId = element.dataset.destinationId;
+  console.log(element.dataset)
+  await fetch(`/api/expenditure/${id}/${tripId}/${destinationId}`, {
     method: 'delete',
     headers: { 'Content-Type': 'application/json' },
   });
