@@ -46,18 +46,7 @@
 //     });
 
 // }
-//   $('.additional-extra').on('click',function(){
-//     $('.extras-list').append(`<li>
-//         <label for="extras-price">Name:</label>
-//         <input type="text"></input>
-//         <label for="extras-price">Description:</label>
-//         <input type="text"></input>
-//         <label for="extras-price">Price:</label>
-//         <input type="number"></input>
-//     </li>`);
-//   });
-  
-// $('.create-trip-button').on('click', tripFormHandler);
+
 
 let destinationsCount = 1;
 let destinations = [];
@@ -124,4 +113,6 @@ const tripFormHandler = async function(event) {
   });
   
 $('#create-trip-button').on('click', tripFormHandler);
+
+
 
