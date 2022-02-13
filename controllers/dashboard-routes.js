@@ -18,8 +18,8 @@ router.get("/", withAuth, async (req, res) => {
     // fix naming fool
     res.render("userDashboard", {
       layout: "dashboard",
-      User: userRaw,
-      loggedInUser: req.session.user,
+      userData: userRaw,
+      User: req.session.user,
     });
   } catch (err) {
     console.log(err);
@@ -32,6 +32,7 @@ router.get("/trip/new", withAuth, async (req, res) => {
   try {
     res.render("createTrip", {
       layout: "dashboard",
+      User: req.session.user,
     });
   } catch (err) {
     console.log(err);
@@ -44,6 +45,7 @@ router.get("/trip/:id/new", withAuth, (req, res) => {
   res.render("new-destination", {
     layout: "dashboard",
     TripId: req.params.id,
+    User: req.session.user,
   });
 });
 
@@ -53,6 +55,7 @@ router.get("/trip/:id/destination/:id2/new", withAuth, (req, res) => {
     layout: "dashboard",
     TripId: req.params.id,
     DestinationId: req.params.id2,
+    User: req.session.user,
   });
 });
 
@@ -71,7 +74,7 @@ router.get("/trip/:id", withAuth, async (req, res) => {
       res.render("trip-view", {
         layout: "dashboard",
         TripData: rawTrip,
-        loggedInUser: req.session.user,
+        User: req.session.user,
       });
     } else {
       res.render("modalError", {
@@ -111,7 +114,7 @@ router.get("/trip/:id/destination/:id2", async (req, res) => {
       trip: tripRaw,
       destination: destinationRaw,
       expenditure: expenditureRaw,
-      loggedInUser: req.session.user,
+      User: req.session.user,
     });
   } catch (err) {
     console.log(err);
