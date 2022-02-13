@@ -1,41 +1,35 @@
 const router = require('express').Router();
-const { Destination } = require('../../models/');
+const { Destination, Trip } = require('../../models/');
 const withAuth = require('../../utils/auth');
-
-
-// router.post("/", withAuth, async (req, res) => {
-//     try {  
-//       const newTrip = await Trip.create({
-//         name: req.body.name,
-//         date_arrived: req.body.date_arrival,
-//         date_leaving: req.body.date_leaving,
-//         budget: budget,
-//         userId: req.session.user.id,
-//       });
-//       res.json(newTrip);
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   });
-
-
 
   // be able to update
   
   // be able to delete
 
 // be able to create
-router.post('/', withAuth, async(req, res) => {
-    console.log("sometig");
+router.post('/new', withAuth, async(req, res) => {
     const body = req.body; 
     try {
         const newDestination = await Destination.create({...body});
-        console.log(newDestination);
-        req.json(newDestination)
+        let tripPrice = parseInt(req.body.budget);
+        const tripId = req.body.tripId;
+        console.log("tripId:  ======================================  ");
+        console.log(tripId);
+        let foundTrip = await Trip.findOne({where: {id : tripId}
+        })
+        foundTrip = foundTrip.get({ plain: true });
+        tripPrice += parseInt(foundTrip['budget']);
+        console.log(tripPrice);
+        await Trip.update(
+            {budget: tripPrice},
+            {where: {id : tripId}
+        });
+        res.json(newDestination)
     } catch(err) {
         console.log(err); 
         res.status(500).json(err);
     }
+
 });
 
 // be able to update
@@ -60,5 +54,32 @@ router.put('/:id', async (req, res) => {
     }
 })
 // be able to delete
-
+router.delete('/:id/:tripId', async (req, res) => {
+    try{
+        let tripPrice = 0;
+        await Trip.findOne({where: {id : req.params.tripId}
+        }).then(Trip => {
+            Trip = Trip.get({ plain: true });
+            tripPrice = Trip['budget'];
+        });
+        await Destination.findOne({where: {id : req.params.id}
+        }).then(destination => {
+            destination = destination.get({ plain: true });
+            tripPrice -= destination['budget'];
+        });
+        await Trip.update(
+            {budget: tripPrice},
+            {where: {id : req.params.tripId}
+        });
+        await Destination.destroy( {
+            where: {
+                id: req.params.id,
+            }
+        });    
+        res.json();
+    } catch(err) {
+        console.log(err); 
+        res.status(500).json(err);
+    }
+})
 module.exports = router;
