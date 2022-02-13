@@ -20,14 +20,11 @@
       </div>
           {{#each expenditure}}
             <div class="card">
-              <h5 class="card-header">{{name}}</h5>
               <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
                 <p class="card-text">{{event_type}}</p>
                 <p class="card-text">{{price}}</p>
-                <button class="btn btn-primary" type="button">
-                  {{!-- this button will later lead you to a page to update the information or delete it --}}
-                  <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">Edit Destination</a>
-                </button>
+                <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}" class="btn btn-primary">Edit Destination</a>
               </div>
             </div>
           {{/each}}

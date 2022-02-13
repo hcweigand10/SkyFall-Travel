@@ -19,14 +19,12 @@
           {{#each TripData.Destinations}}
             <div class="card">
               <input type="hidden" value="{{budget}}">
-              <h5 class="card-header">{{name}}</h5>
               <div class="card-body">
-                <h5 class="card-text">{{date_arrived}}</h5>
-                <h5 class="card-text">{{date_leaving}}</h5>
-                <h5 class="card-text budget" id="budget-price">{{budget}}</h5>
-                <button class="btn btn-primary" type="button">
-                <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View/Edit Destination</a>
-                </button>
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">{{date_arrived}}</p>
+                <p class="card-text">{{date_leaving}}</p>
+                <p class="card-text budget" id="budget-price">{{budget}}</p>
+                <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}" class="btn btn-primary">View/Edit Destination</a>
               </div>
             </div>
           {{/each}}
@@ -34,11 +32,14 @@
   </div>
 
   <div id="chart">
-    <canvas id="myChart"></canvas>
+    <canvas id="budgetChart"></canvas>
   </div>
-
 </div>
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/graph.js"></script>
+
 {{!-- <script src="/js/edit-destination.js"></script> --}}
 

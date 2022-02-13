@@ -4,6 +4,17 @@ body {
   font-family: "Alegreya Sans", sans-serif;
 }
 
+* {
+  margin: 0; 
+  padding: 0;
+  box-sizing: border-box
+}
+
+.jumbotron {
+  background-image: url('/assets/R.jpg');
+  background-size: cover;
+  height: 50vh;
+}
 
 .trip-view-jumbo {
   /* margin: 15px 30px 0px 30px; */
@@ -39,99 +50,41 @@ html{
   margin: 2% auto;
 }
 
-main {
-  margin-top: 20px;
-  margin-bottom: 40px;
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: var(--color-darkblue);
+   background-image: /*linear-gradient(
+      115deg,
+      rgba(211, 184, 184, 0.8),
+      rgba(235, 235, 253, 0.7)
+    ), */
+    url("/assets/wp2394308.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-
-/* footer styling */
-.footer-light {
-  padding:50px 0;
-  color:#000000;
-  background-color:#c6cfe0;
+.card {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  opacity: 80%;
 }
 
-.footer-light h3 {
-  margin-top:0;
-  margin-bottom:12px;
-  font-weight:bold;
-  font-size:16px;
+.navbar-brand {
+  font-size: 1000px;
 }
 
-.footer-light ul {
-  padding:0;
-  list-style:none;
-  line-height:1.6;
-  font-size:14px;
-  margin-bottom:0;
+footer {
+  background: none;
 }
 
-.footer-light ul a {
-  color:inherit;
-  text-decoration:none;
-  opacity:0.6;
-}
-
-.footer-light ul a:hover {
-  opacity:0.8;
-}
-
-@media (max-width:767px) {
-  .footer-light .item:not(.social) {
-    text-align:center;
-    padding-bottom:20px;
-  }
-}
-
-.footer-light .item.text {
-  margin-bottom:36px;
-}
-
-@media (max-width:767px) {
-  .footer-light .item.text {
-    margin-bottom:0;
-  }
-}
-
-.footer-light .item.text p {
-  opacity:0.6;
-  margin-bottom:0;
-}
-
-.footer-light .item.social {
-  text-align:center;
-}
-
-@media (max-width:991px) {
-  .footer-light .item.social {
-    text-align:center;
-    margin-top:20px;
-  }
-}
-
-.footer-light .item.social > a {
-  font-size:20px;
-  width:36px;
-  height:36px;
-  line-height:36px;
-  display:inline-block;
-  text-align:center;
-  border-radius:50%;
-  box-shadow:0 0 0 1px rgba(0, 0, 0, 0.4);
-  margin:0 8px;
-  color:rgb(0, 0, 0);
-  opacity:0.75;
-}
-
-.footer-light .item.social > a:hover {
-  opacity:0.9;
-}
-
-.footer-light .copyright {
-  text-align:center;
-  padding-top:24px;
-  opacity:0.3;
-  font-size:13px;
-  margin-bottom:0;
+.bg-white {
+  border-radius: 15px;
 }
