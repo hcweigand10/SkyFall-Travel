@@ -7,7 +7,7 @@ const withAuth = require('../../utils/auth');
   // be able to delete
 
 // be able to create
-router.post('/', withAuth, async(req, res) => {
+router.post('/new', withAuth, async(req, res) => {
     const body = req.body; 
     try {
         const newDestination = await Destination.create({...body});
