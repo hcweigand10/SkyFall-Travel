@@ -22,7 +22,8 @@
             <div class="card">
               <input type="hidden" value="{{budget}}">
               <div class="card-body">
-                <h5 class="card-title">{{name}}</h5>
+                <h5 class="card-title">{{name}} </h5>
+                <button class='btn delete-destination-button' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Destination</button>
                 <p class="card-text">{{date_arrived}}</p>
                 <p class="card-text">{{date_leaving}}</p>
                 <p class="card-text budget" id="budget-price">{{budget}}</p>
@@ -44,4 +45,5 @@
 <script src="/js/graph.js"></script>
 
 {{!-- <script src="/js/edit-destination.js"></script> --}}
+<script src="/js/delete-destination.js"></script>
 

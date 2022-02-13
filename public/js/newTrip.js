@@ -1,112 +1,100 @@
-
-// const tripFormHandler = async function(event) {
-//   event.stopImmediatePropagation();
-//   const name = document.querySelector('.name').value;
-//   const destination_name = document.querySelector('.destination-name').value;
-//   const date_arrival = document.querySelector('.date-arrival').value;
-//   const date_leaving = document.querySelector('.date-leaving').value;
-//   const flight_price = document.querySelector('.flight-price').value;
-//   const food_price = document.querySelector('.food-price').value;
-//   const lodging_price = document.querySelector('.lodging-price').value;
-//   let extra_expenditure_items = document.querySelector('.extras-list').getElementsByTagName('li');
-//   extra_expenditure_items = Array.from(extra_expenditure_items);
-//   const extra_expenditure = extra_expenditure_items.map(element => {
-//     const extra_spending = {}
-//     let liList = element.getElementsByTagName('input');
-//     liList = Array.from(liList);
-//     for(let i =0; i<liList.length; i++) {
-//       if (i == 0){
-//         extra_spending['name'] = liList[i].value;
-
-//       }else if (i == 1){
-//         extra_spending['event_type'] = liList[i].value;
-//       }
-//       else{
-//         extra_spending['price'] = liList[i].value;
-//       } 
-//     }
-//     return extra_spending;
-//   });
-  
-//   await fetch('/api/trip', {
-//       method: 'POST',
-//       body: JSON.stringify({
-//         name,
-//         destination_name,
-//         date_arrival,
-//         date_leaving,
-//         flight_price,
-//         food_price,
-//         lodging_price,
-//         extra_expenditure
-//       }),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
-
-// }
-//   $('.additional-extra').on('click',function(){
-//     $('.extras-list').append(`<li>
-//         <label for="extras-price">Name:</label>
-//         <input type="text"></input>
-//         <label for="extras-price">Description:</label>
-//         <input type="text"></input>
-//         <label for="extras-price">Price:</label>
-//         <input type="number"></input>
-//     </li>`);
-//   });
-  
-// $('.create-trip-button').on('click', tripFormHandler);
-
+const now = moment();
 let destinationsCount = 1;
 let destinations = [];
 
-const tripFormHandler = async function(event) {
+const tripFormHandler = async function (event) {
   event.stopImmediatePropagation();
   let tripId;
-  const name = document.querySelector('#name').value;
-  const date_arrival = document.querySelector('#date-arrival').value;
-  const date_leaving = document.querySelector('#date-leaving').value;
+  destinations = [];
+  const name = document.querySelector("#name").value.trim();
+  const date_arrival = document.querySelector("#date-arrival").value;
+  const date_leaving = document.querySelector("#date-leaving").value;
+  if (moment(date_arrival).isBefore(moment().format("YYYY-MM-DD"))) {
+    alert("Invalid Trip Arrival Date");
+    return;
+  } else if (moment(date_leaving).isBefore(moment(date_arrival))) {
+    alert("Invalid Trip Departure Date");
+    return;
+  } else if (!name) {
+    alert("Missing Trip Name");
+  }
   let budget = 0;
-  for (let i = 1; i < destinationsCount+1; i++) {
+  console.log(destinationsCount);
+  // for loop for each additional destination
+  for (let i = 1; i < destinationsCount + 1; i++) {
+    console.log(i);
     budget += parseInt(document.querySelector(`#budget-${i}`).value);
     const destinationObj = {
-      name: document.querySelector(`#destination-name-${i}`).value,
+      name: document.querySelector(`#destination-name-${i}`).value.trim(),
       date_arrived: document.querySelector(`#date-arrival-${i}`).value,
       date_leaving: document.querySelector(`#date-leaving-${i}`).value,
-      budget: parseInt(document.querySelector(`#budget-${i}`).value)
+      budget: parseInt(document.querySelector(`#budget-${i}`).value),
+    };
+    if (!destinationObj.name) {
+      alert(`Missing name on Destination #${i}`);
+      return;
     }
-
-    destinations.push(destinationObj)
-  }
-  
-  await fetch('/api/trip/new', {
-      method: 'POST',
-      body: JSON.stringify({
-        name,
-        date_arrival,
-        date_leaving,
-        budget,
-        destinations
-      }),
-      headers: {
-        'Content-Type': 'application/json'
+    // checking for valid dates (not before departure date of prior destination or before main arrival)
+    if (i == 1) {
+      if (
+        moment(destinationObj.date_arrived).isBefore(moment(date_arrival)) ||
+        moment(date_leaving).isBefore(destinationObj.date_arrived)
+      ) {
+        alert(`Invalid Arrival Date on Destination #${i}`);
+        return;
+      } else if (
+        moment(destinationObj.date_leaving).isBefore(moment(destinationObj.date_arrived)) ||
+        moment(date_leaving).isBefore(destinationObj.date_leaving)
+      ) {
+        alert(`Invalid Departure Date on Destination #${i}`);
+        return;
       }
-    }).then((res) => {
-      return res.json()
-    }).then((data)=> {
-      console.log(data.id)
-      tripId = data.id
+    } else {
+      if (
+        moment(destinationObj.date_arrived).isBefore(moment(destinations[i - 2].date_leaving)) ||
+        moment(date_leaving).isBefore(destinationObj.date_arrived)
+      ) {
+        alert(`Invalid Arrival Date on Destination #${i}`);
+        return;
+      } else if (
+        moment(destinationObj.date_leaving).isBefore(moment(destinationObj.date_arrived)) ||
+        moment(date_leaving).isBefore(destinationObj.date_leaving)
+      ) {
+        alert(`Invalid Departure Date on Destination #${i}`);
+        return;
+      }
+    }
+    destinations.push(destinationObj);
+  }
+
+  await fetch("/api/trip/new", {
+    method: "POST",
+    body: JSON.stringify({
+      name,
+      date_arrival,
+      date_leaving,
+      budget,
+      destinations,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data.id);
+      tripId = data.id;
     });
-    
-  location.href=`/dashboard/trip/${tripId}`;
+
+  location.href = `/dashboard/trip/${tripId}`;
 };
 
-  $("#additional-destination").on('click',function(){
-    destinationsCount++;
-    $('#destinations').append(
-    `<div class="form-group">
+$("#additional-destination").on("click", function () {
+  destinationsCount++;
+  $("#destinations").append(
+    `<div class="form-group" id="destination-${destinationsCount}">
     <label for="destination-name">Destination:</label>
     <input type="text" id="destination-name-${destinationsCount}"></input>
 
@@ -120,8 +108,13 @@ const tripFormHandler = async function(event) {
     <span>$</span>
     <input type="number" id="budget-${destinationsCount}"></input>
     <span>.00</span>
-</div>`);
-  });
-  
-$('#create-trip-button').on('click', tripFormHandler);
+    <button class="btn btn-danger btn-sm" onclick="deleteDestination(${destinationsCount})">Delete</button>
+</div>`
+  );
+});
 
+const deleteDestination = (count) => {
+  $(`#destination-${count}`).remove();
+};
+
+$("#create-trip-button").on("click", tripFormHandler);

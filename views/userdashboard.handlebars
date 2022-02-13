@@ -14,10 +14,12 @@
                 <h5 class="card-title">{{name}}</h5>
                 <p class="card-text">{{budget}}</p>
                 <a href="/dashboard/trip/{{id}}" class="btn btn-primary">View Trip</a>
+                <button class='btn delete-trip-button' type="click" id="{{id}}">Delete Trip</button>
               </div>
             </div>
       {{/each}}
     </div>
   </div>
 </div>
-
+            
+<script src="/js/trip-delete.js"></script>

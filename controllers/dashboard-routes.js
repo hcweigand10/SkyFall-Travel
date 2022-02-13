@@ -71,7 +71,7 @@ router.get("/trip/:id", withAuth, async (req, res) => {
       // need to get for each desitantion the expenditures and get the total cost that the user is going to use for the trip
       const rawTrip = await trip.get({ plain: true });
 
-      res.render("tripView", {
+      res.render("trip-view", {
         layout: "dashboard",
         TripData: rawTrip,
         User: req.session.user,

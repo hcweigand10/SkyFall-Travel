@@ -24,6 +24,7 @@
                 <h5 class="card-title">{{name}}</h5>
                 <p class="card-text">{{event_type}}</p>
                 <p class="card-text">{{price}}</p>
+                <button type="click" class="btn btn-sm delete-expenditure" id="{{id}}" data-trip-id="{{../trip.id}}" data-destination-id="{{../destination.id}}">Delete</button>
                 <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}" class="btn btn-primary">Edit Destination</a>
               </div>
             </div>
@@ -33,3 +34,5 @@
 
 
 </div>
+
+<script src="/js/new-expenditure.js"></script>

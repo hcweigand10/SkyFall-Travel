@@ -45,7 +45,6 @@ const signupFormHandler = async (event) => {
         }),
         headers: { "Content-Type": "application/json" },
       });
-      console.log("test")
       if (response.ok) {
         console.log("response ok")
         location.href = "/dashboard";
