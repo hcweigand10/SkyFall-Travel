@@ -30,7 +30,7 @@ const deleteFormHandler = async function(event) {
     method: 'delete',
     headers: { 'Content-Type': 'application/json' },
   });
-  location.reload();
+  // location.reload();
 };
 
   $('.extra-expenditure').on('click',function(){
