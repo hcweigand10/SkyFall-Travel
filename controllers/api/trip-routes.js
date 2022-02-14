@@ -32,6 +32,8 @@ router.post("/new", withAuth, async (req, res) => {
       console.log(err)
     }
   });
+
+
 // be able to delete
 router.delete('/:id', async (req, res) => {
   try{

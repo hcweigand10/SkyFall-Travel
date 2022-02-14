@@ -1,4 +1,4 @@
-<div class="post card">
+{{!-- <div class="post card">
   <div class="card-header">
     <h2>Create New Expenditure</h2>
   </div>
@@ -20,6 +20,44 @@
     <button type="click" class="btn  btn-sm submit-form">Create</button>
     <button type="click" class="btn  btn-sm extra-expenditure">Additional Expenditures</button>
   </div>
-</div>
+</div> --}}
+
+<div class="registration-form">
+        <form id="new-post-form">
+            <div class="form-icon">
+                <span><i class="bi bi-calendar-plus" id="trip-icon"></i></span>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="name" placeholder="Stop Name">
+            </div>
+            <div class="form-group">
+                {{!-- <input type="text" class="form-control item" id="event-type" placeholder="Event Type"></input> --}}
+                <select id="event-type" name="role" class="form-control item" required>
+                  <option disabled selected value>Select current role</option>
+
+                  <option value="attractions">Attractions</option>
+                  <option value="food">Food</option>
+                  <option value="leiser">Leisure</option>
+                  <option value="entertainment">Entertainment</option>
+                  <option value="accomodations">Travel Cost</option>
+                  <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control item" id="end-date"></input>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="budget" placeholder="Budget"></input>
+            </div>
+            <input type="hidden" id="stopId" class="form-input" value="{{StopId}}" />
+            <input type="hidden" id="tripId" class="form-input" value="{{TripId}}" />
+
+            <div class="form-group">
+                <button type="button" class="btn btn-block create-account" id="create-trip-button">Create a New Expenditure</button>
+                <button type="click" class="btn  btn-block extra-expenditure create-account">Additional Expenditures</button>
+            </div>
+        </form>
+    </div>
+
 
 <script src="/js/newExpenditure.js"></script>

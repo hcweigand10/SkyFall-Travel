@@ -220,6 +220,7 @@ body::before {
 
 footer {
   background: whitesmoke;
+  position: relative;
 }
 
 .main{
@@ -359,4 +360,37 @@ hr {
 
 main{
   margin-bottom: 15px;
+}
+
+
+.bi-signpost-split::before, .bi-calendar-plus::before {
+  transform: translateY(30px);
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: calc(2.25rem + 6px);
+}
+
+.chart-container {
+  margin: 0 auto 0 0;
+}
+
+@media screen and (max-width: 340px) {
+  body {
+    text-align: center;
+  }
+
+  .jumbo-btn {
+    margin-left: 0;
+  }
+}
+
+
+.trip-card {
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  opacity: 80%;
+  width: 60%;
+  margin: 0 auto 10px;
+  text-align: center;
 }
