@@ -71,11 +71,12 @@ router.get("/trip/:id", withAuth, async (req, res) => {
       res.render("trip-view", {
         layout: "dashboard",
         TripData: rawTrip,
-        loggedInUser: req.session.user,
+        User: req.session.user,
       });
     } else {
       res.render("modalError", {
         layout: "dashboard",
+        User: req.session.user,
         text: "This isn't your trip!"
       })
     }
