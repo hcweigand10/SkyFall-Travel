@@ -23,11 +23,11 @@
               <input type="hidden" value="{{budget}}">
               <div class="card-body">
                 <h5 class="card-title">{{name}} </h5>
-                <button class='btn delete-destination-button' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Destination</button>
-                <p class="card-text">{{date_arrived}}</p>
-                <p class="card-text">{{date_leaving}}</p>
-                <p class="card-text budget" id="budget-price">{{budget}}</p>
+                <p class="card-text">Arrival Date: {{date_arrived}}</p>
+                <p class="card-text">Departure Date: {{date_leaving}}</p>
+                <p class="card-text" id="budget-price">Total Budget: <span class="budget">{{budget}}</span></p>
                 <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}" class="btn btn-primary">View/Edit Destination</a>
+                <button class='btn btn-primary delete-destination-button' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Destination</button>
               </div>
             </div>
           {{/each}}

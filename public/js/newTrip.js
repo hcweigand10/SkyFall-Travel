@@ -43,7 +43,9 @@ const tripFormHandler = async function (event) {
         alert(`Invalid Arrival Date on Destination #${i}`);
         return;
       } else if (
-        moment(destinationObj.date_leaving).isBefore(moment(destinationObj.date_arrived)) ||
+        moment(destinationObj.date_leaving).isBefore(
+          moment(destinationObj.date_arrived)
+        ) ||
         moment(date_leaving).isBefore(destinationObj.date_leaving)
       ) {
         alert(`Invalid Departure Date on Destination #${i}`);
@@ -51,13 +53,17 @@ const tripFormHandler = async function (event) {
       }
     } else {
       if (
-        moment(destinationObj.date_arrived).isBefore(moment(destinations[i - 2].date_leaving)) ||
+        moment(destinationObj.date_arrived).isBefore(
+          moment(destinations[i - 2].date_leaving)
+        ) ||
         moment(date_leaving).isBefore(destinationObj.date_arrived)
       ) {
         alert(`Invalid Arrival Date on Destination #${i}`);
         return;
       } else if (
-        moment(destinationObj.date_leaving).isBefore(moment(destinationObj.date_arrived)) ||
+        moment(destinationObj.date_leaving).isBefore(
+          moment(destinationObj.date_arrived)
+        ) ||
         moment(date_leaving).isBefore(destinationObj.date_leaving)
       ) {
         alert(`Invalid Departure Date on Destination #${i}`);
@@ -94,24 +100,63 @@ const tripFormHandler = async function (event) {
 $("#additional-destination").on("click", function () {
   destinationsCount++;
   $("#destinations").append(
-    `<div class="form-group" id="destination-${destinationsCount}">
+    `  <div class="form-group" id="destination-${destinationsCount}">
     <label for="destination-name">Destination:</label>
-    <input type="text" id="destination-name-${destinationsCount}"></input>
+    <input
+      type="text"
+      id="destination-name-${destinationsCount}"
+      class="form-control item"
+    ></input>
 
     <label for="date-arrival">Arrival Date:</label>
-    <input type="date" id="date-arrival-${destinationsCount}"></input>
+    <input type="date" id="date-arrival-${destinationsCount}" class="form-control item"></input>
 
-    <label for="date-leaving">Departure Date:</label>
-    <input type="date" id="date-leaving-${destinationsCount}"></input>
+    <label for="date-arrival">Departure Date:</label>
+    <input type="date" id="date-leaving-${destinationsCount}" class="form-control item"></input>
 
     <label for="budget">Budget:</label>
     <span>$</span>
-    <input type="number" id="budget-${destinationsCount}"></input>
-    <span>.00</span>
-    <button class="btn btn-danger btn-sm" onclick="deleteDestination(${destinationsCount})">Delete</button>
-</div>`
+    <input type="number" id="budget-${destinationsCount}" class="form-control item"></input>
+    <button class="btn btn-danger btn-block" onclick="deleteDestination(${destinationsCount})">Delete</button>
+  </div>`
   );
 });
+// `<div class="form-group" id="destination-${destinationsCount}">
+//     <label for="destination-name">Destination:</label>
+//     <input type="text" id="destination-name-${destinationsCount}"></input>
+
+//     <label for="date-arrival">Arrival Date:</label>
+//     <input type="date" id="date-arrival-${destinationsCount}"></input>
+
+//     <label for="date-leaving">Departure Date:</label>
+//     <input type="date" id="date-leaving-${destinationsCount}"></input>
+
+//     <label for="budget">Budget:</label>
+//     <span>$</span>
+//     <input type="number" id="budget-${destinationsCount}"></input>
+//     <span>.00</span>
+//     <button class="btn btn-danger btn-sm" onclick="deleteDestination(${destinationsCount})">Delete</button>
+// </div>`
+
+  // <div class="form-group" id="destination-${destinationsCount}">
+  //   <label for="destination-name">Destination:</label>
+  //   <input
+  //     type="text"
+  //     id="destination-name-${destinationsCount}"
+  //     class="form-control item"
+  //   ></input>
+
+  //   <label for="date-arrival">Arrival Date:</label>
+  //   <input type="date" id="date-arrival-${destinationsCount}" class="form-control item"></input>
+
+  //   <label for="date-arrival">Departure Date:</label>
+  //   <input type="date" id="date-leaving-${destinationsCount}" class="form-control item"></input>
+
+  //   <label for="budget">Budget:</label>
+  //   <span>$</span>
+  //   <input type="number" id="budget-${destinationsCount}" class="form-control item"></input>
+  // </div>
+
 
 const deleteDestination = (count) => {
   $(`#destination-${count}`).remove();
