@@ -1,8 +1,8 @@
-let destinationBudget = document.getElementsByClassName("budget");
-let destinationNames = document.getElementsByClassName("card-title");
+let stopBudget = document.getElementsByClassName("budget");
+let stopNames = document.getElementsByClassName("card-title");
 
 const budgetArr = [];
-const destinationArr = [];
+const stopArr = [];
 const colorArr = [];
 
 function randomInteger(max) {
@@ -27,21 +27,21 @@ function randomHexColor() {
 }
 let totalBudget = 0;
 
-// loop to grab information of each destination name and its budget
-for (let i = 0; i < destinationBudget.length; i++) {
-  budgetArr.push(parseInt(destinationBudget[i].innerHTML));
-  totalBudget += parseInt(destinationBudget[i].innerHTML);
-  destinationArr.push(destinationNames[i].innerHTML);
+// loop to grab information of each stop name and its budget
+for (let i = 0; i < stopBudget.length; i++) {
+  budgetArr.push(parseInt(stopBudget[i].innerHTML));
+  totalBudget += parseInt(stopBudget[i].innerHTML);
+  stopArr.push(stopNames[i].innerHTML);
   colorArr.push(randomHexColor());
 }
 
 console.log(budgetArr);
-console.log(destinationArr);
+console.log(stopArr);
 console.log(colorArr);
 console.log(totalBudget);
 
 const data = {
-  labels: destinationArr,
+  labels: stopArr,
   datasets: [
     {
       label: "My First Dataset",

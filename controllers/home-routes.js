@@ -40,6 +40,13 @@ router.get('/login', (req, res) => {
     res.render('login');
 })
 
+router.get("/about-us", (req, res) => {
+    res.render('aboutUs', {
+        layout: "dashboard",
+        User: req.session.user
+    });
+})
+
 
 
 module.exports = router;
