@@ -1,25 +1,25 @@
 const { Sequelize, Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Destination extends Model{}
+class Stop extends Model{}
 
-Destination.init( 
+Stop.init( 
     {
         name: {
             type: DataTypes.STRING, 
             allowNull: false
         }, 
-        date_arrived: {
+        start_date: {
             type: DataTypes.DATEONLY, 
             allowNull: false
         }, 
-        date_leaving: {
+        end_date: {
             type: DataTypes.DATEONLY, 
             allowNull: false
         }, 
         budget: {
             type: DataTypes.DECIMAL(10,2), 
-            allowNull: false
+            allowNull: true
         }, 
     }, 
     {
@@ -28,4 +28,4 @@ Destination.init(
 );
 
 
-module.exports = Destination;
+module.exports = Stop;

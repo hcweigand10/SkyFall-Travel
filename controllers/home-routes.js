@@ -36,6 +36,13 @@ router.get("/login", (req, res) => {
     res.render('loginSignup');
 })
 
+router.get("/about-us", (req, res) => {
+    res.render('aboutUs', {
+        layout: "dashboard",
+        User: req.session.user
+    });
+})
+
 
 
 module.exports = router;

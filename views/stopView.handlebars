@@ -3,8 +3,8 @@
     <div class="col">
       <div class="jumbotron jumbotron-fluid trip-view-jumbo">
         <div class="container">
-          <h1 class="display-2">Expenditures for {{destination.name}}</h1>
-          <p class="lead">Add and edit your dream Destination!</p>
+          <h1 class="display-2">Expenditures for {{stop.name}}</h1>
+          <p class="lead">Add and edit your dream Stop!</p>
           <button class="btn btn-outline-danger">This is a Button</button>
         </div>
       </div>
@@ -14,7 +14,7 @@
   <div class="row justify-content-center">
     <div class="col justify-content-center">
       <div class=" flex-row justify-center">
-        <button class="button-73" role="button"><a href="/dashboard/trip/{{trip.id}}/destination/{{destination.id}}/new">➕ New Expenditure</a></button>
+        <button class="button-73" role="button"><a href="/dashboard/trip/{{trip.id}}/stop/{{stop.id}}/new">➕ New Expenditure</a></button>
       </div>
           {{#each expenditure}}
             <div class="card">
@@ -22,8 +22,8 @@
                 <h5 class="card-title">{{name}}</h5>
                 <p class="card-text">{{event_type}}</p>
                 <p class="card-text">{{price}}</p>
-                <button type="click" class="btn btn-sm delete-expenditure" id="{{id}}" data-trip-id="{{../trip.id}}" data-destination-id="{{../destination.id}}">Delete</button>
-                <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}" class="btn btn-primary">Edit Destination</a>
+                <button type="click" class="btn btn-sm delete-expenditure" id="{{id}}" data-trip-id="{{../trip.id}}" data-stop-id="{{../stop.id}}">Delete</button>
+                <a href="/dashboard/trip/{{../TripData.id}}/stop/{{id}}" class="btn btn-primary">Edit Stop</a>
               </div>
             </div>
           {{/each}}
@@ -33,4 +33,4 @@
 
 </div>
 
-<script src="/js/new-expenditure.js"></script>
+<script src="/js/newExpenditure.js"></script>

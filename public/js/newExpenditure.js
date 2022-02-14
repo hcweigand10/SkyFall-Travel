@@ -3,19 +3,19 @@ const newFormHandler = async function() {
     const event_type = document.querySelector('#event-type').value;
     const price = document.querySelector('#price').value;
     const tripId = document.querySelector('#tripId').value;
-    const destinationId = document.querySelector('#destinationId').value;
-    await fetch(`/api/expenditure/${tripId}/${destinationId}`, {
+    const stopId = document.querySelector('#stopId').value;
+    await fetch(`/api/expenditure/${tripId}/${stopId}`, {
       method: 'POST',
       body: JSON.stringify({
         name,
         event_type, 
         price, 
-        destinationId,
+        stopId,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
   
-    document.location.replace(`/dashboard/trip/${tripId}/destination/${destinationId}`);
+    document.location.replace(`/dashboard/trip/${tripId}/stop/${stopId}`);
 };
 
 const deleteFormHandler = async function(event) {
@@ -24,9 +24,9 @@ const deleteFormHandler = async function(event) {
   let id = event.target.id;
   const element = document.getElementById(id);
   const tripId = element.dataset.tripId;
-  const destinationId = element.dataset.destinationId;
+  const stopId = element.dataset.stopId;
   console.log(element.dataset)
-  await fetch(`/api/expenditure/${id}/${tripId}/${destinationId}`, {
+  await fetch(`/api/expenditure/${id}/${tripId}/${stopId}`, {
     method: 'delete',
     headers: { 'Content-Type': 'application/json' },
   });
@@ -43,7 +43,7 @@ const deleteFormHandler = async function(event) {
     <label class="form-label" for="price">Price</label>
     <input type="text" id="price" class="form-input" />
 
-    <input type="hidden" id="destinationId" class="form-input" value="{{DestinationId}}" />
+    <input type="hidden" id="stopId" class="form-input" value="{{StopId}}" />
     <input type="hidden" id="tripId" class="form-input" value="{{TripId}}" />`);
   });
  

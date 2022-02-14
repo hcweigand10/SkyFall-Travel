@@ -1,80 +1,83 @@
 const now = moment();
-let destinationsCount = 1;
-let destinations = [];
+let stopsCount = 1;
+let stops = [];
 
 const tripFormHandler = async function (event) {
   event.stopImmediatePropagation();
   let tripId;
-  destinations = [];
+  stops = [];
   const name = document.querySelector("#name").value.trim();
-  const date_arrival = document.querySelector("#date-arrival").value;
-  const date_leaving = document.querySelector("#date-leaving").value;
-  if (moment(date_arrival).isBefore(moment().format("YYYY-MM-DD"))) {
-    alert("Invalid Trip Arrival Date");
+  const start_date = document.querySelector("#start-date").value;
+  const end_date = document.querySelector("#end-date").value;
+  if (moment(start_date).isBefore(moment().format("YYYY-MM-DD"))) {
+    alert("Invalid Trip Start Date");
     return;
-  } else if (moment(date_leaving).isBefore(moment(date_arrival))) {
-    alert("Invalid Trip Departure Date");
+  } else if (moment(end_date).isBefore(moment(start_date))) {
+    alert("Invalid Trip End Date");
     return;
   } else if (!name) {
     alert("Missing Trip Name");
   }
   let budget = 0;
-  console.log(destinationsCount);
-  // for loop for each additional destination
-  for (let i = 1; i < destinationsCount + 1; i++) {
-    console.log(i);
-    budget += parseInt(document.querySelector(`#budget-${i}`).value);
-    const destinationObj = {
-      name: document.querySelector(`#destination-name-${i}`).value.trim(),
-      date_arrived: document.querySelector(`#date-arrival-${i}`).value,
-      date_leaving: document.querySelector(`#date-leaving-${i}`).value,
-      budget: parseInt(document.querySelector(`#budget-${i}`).value),
-    };
-    if (!destinationObj.name) {
-      alert(`Missing name on Destination #${i}`);
+  // for loop for each additional stop
+  const stopForms = document.querySelectorAll(".form-group-stop");
+  let i = 0;
+  stopForms.forEach(element => {
+    i++;
+    const stopObj = {
+      name: element.children[1].value.trim(),
+      start_date: element.children[3].value,
+      end_date: element.children[5].value,
+      budget: parseInt(element.children[8].value)
+    }
+    console.log(stopObj)
+    console.log(start_date)
+    if (!stopObj.name) {
+      alert(`Missing name on Stop #${i}`);
       return;
     }
-    // checking for valid dates (not before departure date of prior destination or before main arrival)
+    // checking for valid dates (not before end date of prior stop or before main arrival)
     if (i == 1) {
       if (
-        moment(destinationObj.date_arrived).isBefore(moment(date_arrival)) ||
-        moment(date_leaving).isBefore(destinationObj.date_arrived)
+        moment(stopObj.start_date).isBefore(moment(start_date)) ||
+        moment(end_date).isBefore(stopObj.start_date)
       ) {
-        alert(`Invalid Arrival Date on Destination #${i}`);
+        alert(`Invalid Start Date on Stop #${i}`);
         return;
       } else if (
-        moment(destinationObj.date_leaving).isBefore(moment(destinationObj.date_arrived)) ||
-        moment(date_leaving).isBefore(destinationObj.date_leaving)
+        moment(stopObj.end_date).isBefore(moment(stopObj.start_date)) ||
+        moment(end_date).isBefore(stopObj.end_date)
       ) {
-        alert(`Invalid Departure Date on Destination #${i}`);
+        alert(`Invalid End Date on Stop #${i}`);
         return;
       }
     } else {
       if (
-        moment(destinationObj.date_arrived).isBefore(moment(destinations[i - 2].date_leaving)) ||
-        moment(date_leaving).isBefore(destinationObj.date_arrived)
+        moment(stopObj.start_date).isBefore(moment(stops[i - 2].end_date)) ||
+        moment(end_date).isBefore(stopObj.start_date)
       ) {
-        alert(`Invalid Arrival Date on Destination #${i}`);
+        alert(`Invalid Start Date on Stop #${i}`);
         return;
       } else if (
-        moment(destinationObj.date_leaving).isBefore(moment(destinationObj.date_arrived)) ||
-        moment(date_leaving).isBefore(destinationObj.date_leaving)
+        moment(stopObj.end_date).isBefore(moment(stopObj.start_date)) ||
+        moment(end_date).isBefore(stopObj.end_date)
       ) {
-        alert(`Invalid Departure Date on Destination #${i}`);
+        alert(`Invalid End Date on Stop #${i}`);
         return;
       }
     }
-    destinations.push(destinationObj);
-  }
+    budget += stopObj.budget;
+    stops.push(stopObj);
+  })
 
   await fetch("/api/trip/new", {
     method: "POST",
     body: JSON.stringify({
       name,
-      date_arrival,
-      date_leaving,
+      start_date,
+      end_date,
       budget,
-      destinations,
+      stops
     }),
     headers: {
       "Content-Type": "application/json",
@@ -91,30 +94,31 @@ const tripFormHandler = async function (event) {
   location.href = `/dashboard/trip/${tripId}`;
 };
 
-$("#additional-destination").on("click", function () {
-  destinationsCount++;
-  $("#destinations").append(
-    `<div class="form-group" id="destination-${destinationsCount}">
-    <label for="destination-name">Destination:</label>
-    <input type="text" id="destination-name-${destinationsCount}"></input>
+$("#additional-stop").on("click", function () {
+  stopsCount++;
+  $("#stops").append(
+    `<div class="form-group-stop" id="stop-${stopsCount}">
+    <label for="stop-name">Stop:</label>
+    <input type="text" id="stop-name-${stopsCount}"></input>
 
-    <label for="date-arrival">Arrival Date:</label>
-    <input type="date" id="date-arrival-${destinationsCount}"></input>
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date-${stopsCount}"></input>
 
-    <label for="date-leaving">Departure Date:</label>
-    <input type="date" id="date-leaving-${destinationsCount}"></input>
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date-${stopsCount}"></input>
 
     <label for="budget">Budget:</label>
     <span>$</span>
-    <input type="number" id="budget-${destinationsCount}"></input>
+    <input type="number" id="budget-${stopsCount}" value="0"></input>
     <span>.00</span>
-    <button class="btn btn-danger btn-sm" onclick="deleteDestination(${destinationsCount})">Delete</button>
+    <button class="btn btn-danger btn-sm" onclick="deleteStop(${stopsCount})">Delete</button>
 </div>`
   );
 });
 
-const deleteDestination = (count) => {
-  $(`#destination-${count}`).remove();
+const deleteStop = (count) => {
+  stopsCount--;
+  $(`#stop-${count}`).remove();
 };
 
 $("#create-trip-button").on("click", tripFormHandler);

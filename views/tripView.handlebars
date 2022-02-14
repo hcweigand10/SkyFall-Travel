@@ -3,8 +3,8 @@
     <div class="col">
       <div class="jumbotron jumbotron-fluid trip-view-jumbo">
         <div class="container">
-          <h1 class="display-2">Destinations</h1>
-          <p class="lead">Add and edit your dream destinations to {{TripData.name}}</p>
+          <h1 class="display-2">Stops</h1>
+          <p class="lead">Add and edit your dream stops to {{TripData.name}}</p>
           <button class="btn btn-outline-danger"><a href="#chart">View Budget Distribution</a></button>
         </div>
       </div>
@@ -16,19 +16,18 @@
       <!-- HTML !-->
       
       <div class=" flex-row justify-center">
-        <button class="button-73" role="button"><a href="/dashboard/trip/{{TripData.id}}/new">➕ Add Destination</a></button>
+        <button class="button-73" role="button"><a href="/dashboard/trip/{{TripData.id}}/new">➕ Add Stop</a></button>
       </div>
-      
-          {{#each TripData.Destinations}}
+          {{#each TripData.Stops}}
             <div class="card">
               <input type="hidden" value="{{budget}}">
               <div class="card-body">
                 <h5 class="card-title">{{name}} </h5>
-                <button class='btn delete-destination-button' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Destination</button>
-                <p class="card-text">{{date_arrived}}</p>
-                <p class="card-text">{{date_leaving}}</p>
+                <p class="card-text">{{start_date}}</p>
+                <p class="card-text">{{end_date}}</p>
                 <p class="card-text budget" id="budget-price">{{budget}}</p>
-                <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}" class="btn btn-primary">View/Edit Destination</a>
+                <a href="/dashboard/trip/{{../TripData.id}}/stop/{{id}}" class="btn btn-primary">View/Edit Stop</a>
+                <button class='btn delete-stop-button btn-danger' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Stop</button>
               </div>
             </div>
           {{/each}}
@@ -45,6 +44,6 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/graph.js"></script>
 
-{{!-- <script src="/js/edit-destination.js"></script> --}}
-<script src="/js/delete-destination.js"></script>
+{{!-- <script src="/js/edit-stop.js"></script> --}}
+<script src="/js/deleteStop.js"></script>
 
