@@ -15,7 +15,7 @@ router.get("/", withAuth, async (req, res) => {
       },
     });
     const userRaw = userData.get({ plain: true });
-    // fix naming fool
+
     res.render("userDashboard", {
       layout: "dashboard",
       userData: userRaw,

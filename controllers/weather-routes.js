@@ -1,11 +1,12 @@
 var APIKey = process.env.API
 var baseURL = 'https://api.openweathermap.org/data/2.5/';
 const router = require('express').Router();
-const axios =require('axios');
+const axios = require('axios');
 //Takes the city name or zip code from the user and searches for the weather.
 router.get('/:city', async (req, res) => {
     const city=toTitleCase(req.params.city);
-    return  await getWeatherReportByCity(city);
+    console.log('In get weather')
+    return await getWeatherReportByCity(city);
 })
 
 
@@ -53,6 +54,8 @@ function getWeatherByLongAndLat(lat, long) {
         data = response['data'];
         const currentWeather = data['current'];
         //Adds the current weather information to the forecast object before returning the object
+        console.log('In getWeather')
+        console.log(data);
         return {
             curTemp : currentWeather['temp'],
             feelsLinkTemp: currentWeather['feels_like'],
