@@ -22,31 +22,61 @@
     ></script>
   </head>
 
-  <body class="flex-column min-100-vh">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid">
-        <div class="navbar-text text-info display-6"><a
-            href="/"
-          >Skyfall</a></div>
-        <div class="navbar-nav d-grid gap-2 d-md-flex justify-content-md-end">
-          <button class="btn btn-info m-2 me-md-2" type="button">
-            <a class="nav-link" href="/dashboard">Welcome, {{User.name}}!</a>
-          </button>
-          <button class="btn btn-warning m-2 me-md-2" type="button">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              href="/dashboard/trip/new"
-            >New Trip</a>
-          </button>
-          <button class="btn btn-warning m-2 me-md-2" type="button">
-            <a class="nav-link" href="#" id="logout-link">Logout</a>
-          </button>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <div class="container nav-content">
+        <a class="navbar-brand" href="#">SkyFall</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-0">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+
+          <ul class="navbar-nav ml-auto">
+            {{#if User}}
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/dashboard"
+                >Welcome, {{User.name}}!</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="logout-link">Log out</a>
+              </li>
+            {{else}}
+              <li class="nav-item">
+                <a class="nav-link" href="/login">Log In / Signup</a>
+              </li>
+            {{/if}}
+          </ul>
         </div>
       </div>
     </nav>
 
-    <main>
+    <main class="main">
       {{{body}}}
     </main>
 
@@ -134,7 +164,7 @@
       </div>
 
       <!-- Copyrights -->
-      <div class="bg-light py-4">
+      <div class="copyright py-4">
         <div class="container text-center">
           <p class="text-muted mb-0 py-2">© 2019 Bootstrapious All rights
             reserved.</p>
