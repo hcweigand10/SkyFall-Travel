@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Expenditure, Trip, Destination } = require('../../models');
+const { Expenditure, Trip, Stop } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // be able to create
-router.post('/:tripId/:destinationId', async (req, res) => {
+router.post('/:tripId/:stopId', async (req, res) => {
     const body = req.body; 
     try {
         let newExpenditure = await Expenditure.create({...body});
@@ -11,16 +11,16 @@ router.post('/:tripId/:destinationId', async (req, res) => {
 
         const exPrice = parseInt(newExpenditure['price']);
         let updateTrip = await Trip.findOne({where: {id : req.params.tripId} });
-        let updateDestination = await Destination.findOne({where: {id : req.params.destinationId} });
-        updateDestination = updateDestination.get({ plain: true });
+        let updateStop = await Stop.findOne({where: {id : req.params.stopId} });
+        updateStop = updateStop.get({ plain: true });
         updateTrip = updateTrip.get({ plain: true });
-        destBudge = parseInt(updateDestination['budget']) + exPrice;
+        destBudge = parseInt(updateStop['budget']) + exPrice;
         tripBudge = parseInt(updateTrip['budget']) + exPrice;
 
-        await Destination.update( 
+        await Stop.update( 
           {budget: destBudge},
           {where: {
-            id: req.params.destinationId,
+            id: req.params.stopId,
           }
         }); 
         await Trip.update(
@@ -35,7 +35,7 @@ router.post('/:tripId/:destinationId', async (req, res) => {
     }
 });
 
-router.delete("/:id/:tripId/:destinationId", withAuth, async (req, res) => {
+router.delete("/:id/:tripId/:stopId", withAuth, async (req, res) => {
   try {      
     let exPrice = 0;
     await Expenditure.findOne({where: {id : req.params.id}
@@ -45,15 +45,15 @@ router.delete("/:id/:tripId/:destinationId", withAuth, async (req, res) => {
     });
     console.log(exPrice);
     const updateTrip = await Trip.findOne({where: {id : req.params.tripId} });
-    const updateDestination = await Destination.findOne({where: {id : req.params.tripId} });
-    updateDestination = updateDestination.get({ plain: true });
+    const updateStop = await Stop.findOne({where: {id : req.params.tripId} });
+    updateStop = updateStop.get({ plain: true });
     updateTrip = updateTrip.get({ plain: true });
-    destBudge = updateDestination['budget'] - exPrice;
+    destBudge = updateStop['budget'] - exPrice;
     tripBudge = updateTrip['budget'] - exPrice;
-    await Destination.update( 
+    await Stop.update( 
       {budget: destBudge},
       {where: {
-        id: req.params.destinationId,
+        id: req.params.stopId,
       }
     }); 
     await Trip.update(

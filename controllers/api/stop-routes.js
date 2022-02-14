@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Destination, Trip } = require('../../models/');
+const { Stop, Trip } = require('../../models');
 const withAuth = require('../../utils/auth');
 
   // be able to update
@@ -10,7 +10,7 @@ const withAuth = require('../../utils/auth');
 router.post('/new', withAuth, async(req, res) => {
     const body = req.body; 
     try {
-        const newDestination = await Destination.create({...body});
+        const newStop = await Stop.create({...body});
         let tripPrice = parseInt(req.body.budget);
         const tripId = req.body.tripId;
         console.log("tripId:  ======================================  ");
@@ -24,7 +24,7 @@ router.post('/new', withAuth, async(req, res) => {
             {budget: tripPrice},
             {where: {id : tripId}
         });
-        res.json(newDestination)
+        res.json(newStop)
     } catch(err) {
         console.log(err); 
         res.status(500).json(err);
@@ -37,7 +37,7 @@ router.post('/new', withAuth, async(req, res) => {
 // route might be off since we are editing on the page itself
 router.put('/:id', async (req, res) => {
     try{
-        const [affectedRows] = await Destination.update(req.body, {
+        const [affectedRows] = await Stop.update(req.body, {
             where: {
                 id: req.params.id,
             }
@@ -62,16 +62,16 @@ router.delete('/:id/:tripId', async (req, res) => {
             Trip = Trip.get({ plain: true });
             tripPrice = Trip['budget'];
         });
-        await Destination.findOne({where: {id : req.params.id}
-        }).then(destination => {
-            destination = destination.get({ plain: true });
-            tripPrice -= destination['budget'];
+        await Stop.findOne({where: {id : req.params.id}
+        }).then(stop => {
+            stop = stop.get({ plain: true });
+            tripPrice -= stop['budget'];
         });
         await Trip.update(
             {budget: tripPrice},
             {where: {id : req.params.tripId}
         });
-        await Destination.destroy( {
+        await Stop.destroy( {
             where: {
                 id: req.params.id,
             }

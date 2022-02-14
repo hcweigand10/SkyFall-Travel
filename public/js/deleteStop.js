@@ -1,10 +1,10 @@
-async function deleteDestinationHandler(event) {
+async function deleteStopHandler(event) {
     let id = event.target.id;
     const element = document.getElementById(id);
     const tripId = element.dataset.tripId;
-    const destinationId = event.target.id;
-    console.log(destinationId);
-    const response = await fetch(`/api/destination/${destinationId}/${tripId}`, {
+    const stopId = event.target.id;
+    console.log(stopId);
+    const response = await fetch(`/api/stop/${stopId}/${tripId}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -15,5 +15,5 @@ async function deleteDestinationHandler(event) {
 
   }
 
-$('.delete-destination-button').on('click', deleteDestinationHandler);
+$('.delete-stop-button').on('click', deleteStopHandler);
 

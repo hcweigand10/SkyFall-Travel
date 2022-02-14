@@ -1,9 +1,9 @@
 const sequelize = require('../config/connection');
-const { User, Trip, Destination, Expenditure } = require('../models');
+const { User, Trip, Stop, Expenditure } = require('../models');
 
 const userData = require('./userData.json');
 const tripData = require('./tripData.json');
-const destinationData = require('./destinationData.json');
+const stopData = require('./stopData.json');
 const expenditureData = require('./expenditureData.json');
 
 const seedDatabase = async () => {
@@ -21,9 +21,9 @@ const seedDatabase = async () => {
     });
   }
 
-  for (const destination of destinationData) {
-    await Destination.create({
-      ...destination,
+  for (const stop of stopData) {
+    await Stop.create({
+      ...stop,
       tripId: 1,
     });
   }
@@ -31,7 +31,7 @@ const seedDatabase = async () => {
   for (const expenditure of expenditureData) {
     await Expenditure.create({
       ...expenditure,
-      destinationId: 1,
+      stopId: 1,
     });
   }
 
