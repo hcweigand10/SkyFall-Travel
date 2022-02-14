@@ -9,17 +9,18 @@ Trip.init(
             type: DataTypes.STRING, 
             allowNull: false
         }, 
-        date_arrived: {
+        start_date: {
             type: DataTypes.DATEONLY, 
             allowNull: false
         }, 
-        date_leaving: {
+        end_date: {
             type: DataTypes.DATEONLY, 
             allowNull: false
         }, 
         budget: {
             type: DataTypes.DECIMAL(10,2),
-            allowNull: true
+            allowNull: false,
+            defaultValue: 0.0
         }
     }, 
     {
