@@ -115,6 +115,42 @@ $("#additional-stop").on("click", function () {
 </div>`
   );
 });
+// `<div class="form-group" id="destination-${destinationsCount}">
+//     <label for="destination-name">Destination:</label>
+//     <input type="text" id="destination-name-${destinationsCount}"></input>
+
+//     <label for="date-arrival">Arrival Date:</label>
+//     <input type="date" id="date-arrival-${destinationsCount}"></input>
+
+//     <label for="date-leaving">Departure Date:</label>
+//     <input type="date" id="date-leaving-${destinationsCount}"></input>
+
+//     <label for="budget">Budget:</label>
+//     <span>$</span>
+//     <input type="number" id="budget-${destinationsCount}"></input>
+//     <span>.00</span>
+//     <button class="btn btn-danger btn-sm" onclick="deleteDestination(${destinationsCount})">Delete</button>
+// </div>`
+
+  // <div class="form-group" id="destination-${destinationsCount}">
+  //   <label for="destination-name">Destination:</label>
+  //   <input
+  //     type="text"
+  //     id="destination-name-${destinationsCount}"
+  //     class="form-control item"
+  //   ></input>
+
+  //   <label for="date-arrival">Arrival Date:</label>
+  //   <input type="date" id="date-arrival-${destinationsCount}" class="form-control item"></input>
+
+  //   <label for="date-arrival">Departure Date:</label>
+  //   <input type="date" id="date-leaving-${destinationsCount}" class="form-control item"></input>
+
+  //   <label for="budget">Budget:</label>
+  //   <span>$</span>
+  //   <input type="number" id="budget-${destinationsCount}" class="form-control item"></input>
+  // </div>
+
 
 const deleteStop = (count) => {
   stopsCount--;
