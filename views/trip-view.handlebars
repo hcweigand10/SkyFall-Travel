@@ -1,27 +1,49 @@
-<h3>{{TripData.name}}</h3>
-<div class="flex-row justify-center">
-  <a href="/dashboard/trip/{{TripData.id}}/new">➕ Add Destination</a>
-</div>
-<div>
-  <ul>
-    {{#each TripData.Destinations}}
-    <li>
-      <div class="card">
-        <h5 class="card-header">{{name}}
-          <button class='btn delete-destination-button' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Destination</button>
-        </h5>
-        <div class="card-body">
-          <h5 class="card-text">{{date_arrived}}</h5>
-          <h5 class="card-text">{{date_leaving}}</h5>
-          <h5 class="card-text">{{budget}}</h5>
-          <button class="btn btn-primary" type="button">
-          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View/Edit Destination</a>
-          </button>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron jumbotron-fluid trip-view-jumbo">
+        <div class="container">
+          <h1 class="display-2">Destinations</h1>
+          <p class="lead">Add and edit your dream destinations to {{TripData.name}}</p>
+          <button class="btn btn-outline-danger"><a href="#chart">View Budget Distribution</a></button>
         </div>
-    </li>
-    {{/each}}
-  </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <!-- HTML !-->
+      
+      <div class=" flex-row justify-center">
+        <button class="button-73" role="button"><a href="/dashboard/trip/{{TripData.id}}/new">➕ Add Destination</a></button>
+      </div>
+          {{#each TripData.Destinations}}
+            <div class="card">
+              <input type="hidden" value="{{budget}}">
+              <div class="card-body">
+                <h5 class="card-title">{{name}} </h5>
+                <button class='btn delete-destination-button' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Destination</button>
+                <p class="card-text">{{date_arrived}}</p>
+                <p class="card-text">{{date_leaving}}</p>
+                <p class="card-text budget" id="budget-price">{{budget}}</p>
+                <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}" class="btn btn-primary">View/Edit Destination</a>
+              </div>
+            </div>
+          {{/each}}
+    </div>
+  </div>
+
+  <div id="chart">
+    <canvas id="budgetChart"></canvas>
+  </div>
 </div>
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/graph.js"></script>
+
+{{!-- <script src="/js/edit-destination.js"></script> --}}
 <script src="/js/delete-destination.js"></script>
 
