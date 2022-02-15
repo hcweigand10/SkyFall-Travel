@@ -1,64 +1,454 @@
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:300);
 
-body {
-    font-family: 'Alegreya Sans', sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-weight: bold;
+}
 
+.container-fluid > h3 {
+  text-align: center;
+  color: whitesmoke;
+}
 
-/*? ================================ */
-  /*? FOOTER SECTION*/
-/* Sticky footer position and size */
+.bg-cover {
+  background-size: cover !important;
+}
+.jumbo-main {
+  background-image: url(/assets/japan.jpg);
+  background-repeat: no-repeat;
+  background-size: auto;
+  /* background-attachment: fixed; */
+  background-position: center;
+}
+
+.trip-view-jumbo {
+  /* margin: 15px 30px 0px 30px; */
+  border-radius: 10px;
+  background-image: linear-gradient(
+      rgba(0, 0, 250, 0.25),
+      rgba(125, 250, 250, 0.45)
+    ),
+    url(https://source.unsplash.com/1600x1050/?nature);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  color: whitesmoke !important;
+  font-weight: bold;
+  height: 340px;
+}
+
 html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 300px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 300px;
+  scroll-behavior: smooth;
 }
 
-/* Taller footer on small screens */
-@media (max-width: 567em) {
-    body {
-      margin-bottom: 700px;
-    }
-    .footer {
-      height: 700px;
-    }
+.main-content {
+  width: 80%;
+  max-width: 1280px;
+  margin: 0px auto;
 }
 
-/* Sticky footer style and color */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background: var(--color-darkblue);
+  background-image: /*linear-gradient(
+      115deg,
+      rgba(211, 184, 184, 0.8),
+      rgba(235, 235, 253, 0.7)
+    ), */ url("/assets/clouds.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  opacity: 80%;
+}
+
+.bg-white {
+  border-radius: 15px;
+}
+
+/* CSS button*/
+.button-73 {
+  appearance: none;
+  background-color: #ffffff;
+  border-radius: 40em;
+  border-style: none;
+  box-shadow: #adcfff 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.24px;
+  margin: 0;
+  outline: none;
+  padding: 1rem 1.3rem;
+  quotes: auto;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-bottom: 20px;
+}
+
+.button-73:hover {
+  background-color: #ffc229;
+  box-shadow: #ff6314 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+.button-73:active {
+  transform: scale(1.025);
+}
+
+@media (min-width: 768px) {
+  .button-73 {
+    font-size: 1.5rem;
+    padding: 0.75rem 2rem;
+  }
+}
+
+/* navbar css */
+
+nav {
+  max-height: 78px;
+}
+.navbar-light .navbar-brand {
+  /* color: #fff; */
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+/* .navbar-light .navbar-nav .active > .nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show > .nav-link {
+  color: #fff;
+} */
+
+/* .navbar-light .navbar-nav .nav-link {
+  color: #fff;
+} */
+
+.navbar-toggler {
+  background: #fff;
+}
+
+.navbar-nav {
+  text-align: center;
+}
+
+.nav-link {
+  padding: 0.2rem 1rem;
+}
+
+/* .nav-link.active,
+.nav-link:focus {
+  color: #fff;
+} */
+
+.navbar-toggler {
+  padding: 1px 5px;
+  font-size: 18px;
+  line-height: 0.3;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: skyblue;
+} 
+
+.nav-link:hover {
+  border-bottom: 2px solid skyblue;
+}
+
+.nav-content {
+  margin-top: 2%;
+}
+
+
+/* carousel styling */
+.carousel {
+  margin: 20px auto;
+}
+.carousel-item {
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background: contain; 
+  width: auto; /* make sure to define width to fill container */
+  height: 45vh;
+}
+
+.carousel-caption {
+  bottom: 270px;
+}
+
+.carousel-caption h5 {
+  font-size: 45px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: 25px;
+}
+
+.carousel-caption p {
+  width: 75%;
+  margin: auto;
+  font-size: 18px;
+  line-height: 1.9;
+}
+
+.navbar {
+  background: whitesmoke;
+}
+
 footer {
-  padding-top: 30px;
-  background-color: #292c2f;
-  color: #bbb;
+  background: whitesmoke;
+  position: relative;
 }
 
-footer a {
-  color: #999;
-  text-decoration:none;
+.main{
+   margin-top: 15px;
+   margin-bottom: 15px;
+   min-height: 600px;
 }
 
-footer a:hover, footer a:focus {
-  color: #aaa;
-  text-decoration:none;
-  border-bottom:1px dotted #999;
+
+
+.copyright {
+  background: whitesmoke;
 }
 
-footer .form-control {
-    background-color: #1f2022;
-    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+.nav-link {
+  font-size: 20px;
+}
+
+.login {
+  height: fit-content;
+}
+
+/* login style */
+.registration-form{
+	padding: 50px 0;
+}
+
+.registration-form form{
+    background-color: #fff;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px 70px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .form-icon{
+	text-align: center;
+    background-color: #5891ff;
+    border-radius: 50%;
+    font-size: 40px;
+    color: white;
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    margin-bottom: 50px;
+    line-height: 100px;
+}
+
+.registration-form .item{
+	border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+}
+
+.registration-form .create-account{
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #5791ff;
     border: none;
-    resize: none;
-    color: #d1d2d2;
-    padding: 0.7em 1em;
+    color: white;
+    margin-top: 20px;
 }
 
+.registration-form .social-media{
+    max-width: 600px;
+    background-color: #fff;
+    margin: auto;
+    padding: 35px 0;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: #9fadca;
+    border-top: 1px solid #dee9ff;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+
+.registration-form .social-icons{
+    margin-top: 30px;
+    margin-bottom: 16px;
+}
+
+.registration-form .social-icons a{
+    font-size: 23px;
+    margin: 0 3px;
+    color: #5691ff;
+    border: 1px solid;
+    border-radius: 50%;
+    width: 45px;
+    display: inline-block;
+    height: 45px;
+    text-align: center;
+    background-color: #fff;
+    line-height: 45px;
+}
+
+.registration-form .social-icons a:hover{
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+@media (max-width: 576px) {
+    .registration-form form{
+        padding: 50px 20px;
+    }
+
+    .registration-form .form-icon{
+        width: 70px;
+        height: 70px;
+        font-size: 30px;
+        line-height: 70px;
+    }
+}
+
+h5 {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+hr {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.card-link {
+  text-decoration: none;
+  color: black;
+}
+
+.h3 {
+  color: whitesmoke; 
+  text-align: center;
+}
+
+main{
+  margin-bottom: 15px;
+}
+.city-name{
+  display: flex; 
+  align-items: center;
+  justify-content: space-evenly;
+}
+.weather-card.card{
+  display: flex; 
+  margin: 15px 0;
+  font-size: 1.5rem;
+  min-width: 75%;
+  max-width: 75%;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  background:linear-gradient(
+    rgba(218, 216, 211, 0.841) 35%,
+    rgb(231, 231, 226) 100%
+    rgba(117, 117, 115, 0.633) 0%,
+  );
+}
+.card-img-top{
+  max-width: 20%;
+}
+.weather-card.row{
+  min-width: 5%;
+}
+.weather-card> .card-body{
+  margin: 0;
+  padding: 1% 0;
+  min-width: 50%;
+  max-width: 50%;
+}
+.weather-card> p{
+  padding: 0;
+  
+}
+.bi-signpost-split::before, .bi-calendar-plus::before {
+  transform: translateY(30px);
+}
+
+select.form-control:not([size]):not([multiple]) {
+  height: calc(2.25rem + 6px);
+}
+
+.chart-container {
+  margin: 0 auto 0 0;
+}
+
+@media screen and (max-width: 340px) {
+  body {
+    text-align: center;
+  }
+
+  .jumbo-btn {
+    margin-left: 0;
+  }
+}
+
+.trip-card {
+  border-radius: 10px;
+  box-shadow: rgb(0 0 0 / 24%) 0px 3px 8px;
+  opacity: 80%;
+  margin: 0 auto 10px;
+  text-align: center;
+}
+
+
+.dashboardJumbo {
+  background-image: url(/assets/travel.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
+  background-position: center;
+  height: 300px;
+  border-radius: 20px;
+  width: 100%;
+}
+
+.card-text {
+  text-align: center;
+}

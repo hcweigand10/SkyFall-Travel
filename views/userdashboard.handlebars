@@ -1,23 +1,35 @@
 <div class="container">
-    <div>
-    <ul>
-      {{#each User.Trips}}
-      <li>
-        <div class="card">
-          <h5 class="card-header">{{name}}</h5>
-          <div class="card-body">
-            <p class="card-text">{{budget}}</p>
-            <a href="/dashboard/trip/{{id}}" class="btn btn-primary">View Trip</a>
-          </div>
-        </div>
-      </li>
-      {{/each}}
-    </ul>
+  <div class="flex-row justify-content-center">
+    <div class="col-sm-12 col-md-6">
+      <div class="jumbotron jumbotron-fluid dashboardJumbo">
+      </div>
+    </div>
+    
   </div>
 
   <div class="row">
     <div class="col-12">
-      <button class="btn btn-primary" type="button"><a href="/trip/new">Add Trip</a></button>
+      <div class=" flex-row justify-center">
+        <button class="button-73" role="button"><a href="/dashboard/trip/new">➕ Add Trip</a></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex-row justify-content-center">
+    <div class="col-sm-12 col-md-8">
+      {{#each userData.Trips}}
+        <div class="card trip-card">
+              <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">{{budget}}</p>
+                <a href="/dashboard/trip/{{id}}" class="btn btn-primary">View Trip</a>
+                <button class='btn delete-trip-button btn-primary' type="click" id="{{id}}">Delete Trip</button>
+              </div>
+            </div>
+      {{/each}}
     </div>
   </div>
 </div>
+            
+<script src="/js/deleteTrip.js"></script>
+

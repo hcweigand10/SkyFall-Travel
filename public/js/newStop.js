@@ -3,17 +3,17 @@ const newFormHandler = async function(event) {
     console.log('all good');
 
     const name = document.querySelector('#name').value;
-    const date_arrived = document.querySelector('#date-arrived').value;
-    const date_leaving = document.querySelector('#date-leaving').value;
+    const start_date = document.querySelector('#start-date').value;
+    const end_date = document.querySelector('#end-date').value;
     const budget = document.querySelector('#budget').value;
     const tripId = document.querySelector('#tripId').value;
   
-    await fetch('/api/destination', {
+    await fetch('/api/stop/new', {
       method: 'POST',
       body: JSON.stringify({
         name,
-        date_arrived, 
-        date_leaving, 
+        start_date, 
+        end_date, 
         budget, 
         tripId,
       }),

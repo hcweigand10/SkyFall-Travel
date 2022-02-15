@@ -1,25 +1,72 @@
-<h3>{{TripData.name}}</h3>
-<div class="flex-row justify-center">
-  <a href="/dashboard/trip/{{TripData.id}}/new">➕ Add Destination</a>
-</div>
-<div>
-  <ul>
-    {{#each TripData.Destinations}}
-    <li>
-      <div class="card">
-        <h5 class="card-header">{{name}}</h5>
-        <div class="card-body">
-          <h5 class="card-text">{{date_arrived}}</h5>
-          <h5 class="card-text">{{date_leaving}}</h5>
-          <h5 class="card-text">{{budget}}</h5>
-          <button class="btn btn-primary" type="button">
-          <a href="/dashboard/trip/{{../TripData.id}}/destination/{{id}}">View/Edit Destination</a>
-          </button>
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-md-7 col-sm-12">
+      <div class="jumbotron jumbotron-fluid trip-view-jumbo">
+        <div class="container">
+          <h3 class="display-2">Your {{TripData.name}} Trip</h3>
+          <p class="lead">Add and edit your dream stops to {{TripData.name}}</p>
+          <a class="btn btn-primary" href="/dashboard/trip/{{TripData.id}}/update">Edit Trip</a>
         </div>
-    </li>
-    {{/each}}
-  </ul>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <canvas id="budgetChart"></canvas>
+    </div>
+  </div>
+
+  <h4>All Stops:</h4>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+  {{#each StopData}}
+  <div class="accordion-item">
+    <h1 class="accordion-header" id="flush-heading-{{id}}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+        {{name}}
+      </button>
+    </h1>
+    <div id="flush-collapse-{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body row">
+        <div class="col-4">
+          <div class="start-date-block date-block">
+            <p style="font-size: 14px; font-weight: lighter;" class="mb-1">Start Date:</p>  
+            <p id="start-date-{{id}}-visible"></p>  
+          </div>
+          <div class="end-date-block date-block">
+            <p style="font-size: 14px; font-weight: lighter;" class="mb-1">End Date:</p>  
+            <p id="end-date-{{id}}-visible"></p>  
+          </div>
+        </div>
+        <div class="col-6">
+          <p style="font-size: 14px; font-weight: lighter;" >Cost Breakdown</p>
+          <ul style="list-style-type: none">
+            <li>Acommodation: ${{Expenditure.accomodation}}.00</li>
+            <li>Travel Costs: ${{Expenditure.travel_costs}}.00</li>
+            <li>Food and Entertainment: ${{Expenditure.food_entertainment}}.00</li>
+            <li>Other: ${{Expenditure.other}}.00</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
+    
+
 </div>
 
-{{!-- <script src="/js/edit-destination.js"></script> --}}
+{{!-- hidden expenditure data for the first stop if only 1 present --}}
+  {{#each StopData}}
+  <input type="hidden" value="{{Expenditure.accomodation}}" class="accomodation">
+  <input type="hidden" value="{{Expenditure.travel_costs}}" class="travel_costs">
+  <input type="hidden" value="{{Expenditure.food_entertainment}}" class="food_entertainment">
+  <input type="hidden" value="{{Expenditure.other}}" class="other">
+  <input type="hidden" value="{{start_date}}" class="start-date" id="start-date-{{id}}"> 
+  <input type="hidden" value="{{end_date}}" class="end-date" id="end-date-{{id}}">
+  {{/each}}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/graph.js"></script>
+<script src="/js/tripView.js"></script>
+
+{{!-- <script src="/js/edit-stop.js"></script> --}}
+<script src="/js/deleteStop.js"></script>
 

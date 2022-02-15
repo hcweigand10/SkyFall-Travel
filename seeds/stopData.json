@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Berlin", 
+        "start_date": "2022-06-25", 
+        "end_date": "2022-06-27", 
+        "budget": 450
+    }, 
+    {
+        "name": "Zagreb", 
+        "start_date": "2022-06-27", 
+        "end_date": "2022-06-29", 
+        "budget": 250
+    }
+]

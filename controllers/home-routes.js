@@ -27,13 +27,30 @@ router.get('dashboard/user/:id', withAuth, async (req, res) => {
     }
 })
 
-router.get("/login", (req, res) => {
+router.get("/signup", (req, res) => {
     console.log(req.session.user);
     if (req.session.user) {
         res.redirect('/dashboard');
         return;
-    }
-    res.render('loginSignup');
+    } 
+    res.render('signup');
+})
+
+router.get('/login', (req, res) => {
+    res.render('login');
+})
+
+router.get("/about-us", (req, res) => {
+    res.render('aboutUs', {
+        layout: "dashboard",
+        User: req.session.user
+    });
+})
+
+router.get('/404', (req, res) => {
+    res.render('404', {
+        layout: '404page'
+    });
 })
 
 
