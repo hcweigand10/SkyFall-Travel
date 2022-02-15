@@ -17,6 +17,7 @@
       
       <div class=" flex-row justify-center">
         <button class="button-73" role="button"><a href="/dashboard/trip/{{TripData.id}}/new">➕ Add Stop</a></button>
+        <button class="button-73" role="button"><a href="/dashboard/trip/{{TripData.id}}/update">Edit Trip</a></button>
       </div>
           {{#each TripData.Stops}}
             <div class="card trip-card">
@@ -33,10 +34,8 @@
           {{/each}}
     </div>
 
-    <div class="col-sm-12 col-md-6 chart-container">
-        <canvas id="budgetChart"></canvas>
-    </div>
-
+  <div id="chart">
+    <canvas id="budgetChartbyType"></canvas>
   </div>
 </div>
 

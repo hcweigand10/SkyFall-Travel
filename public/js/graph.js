@@ -92,6 +92,7 @@ const config = {
   },
 };
 
+<<<<<<< HEAD
 if(stopNames.length < 2) {
 
   let category = document.getElementsByClassName("category");
@@ -160,3 +161,6 @@ if(stopNames.length < 2) {
   const myChart = new Chart(document.getElementById("budgetChart"), config);
 }
 // const myChart = new Chart(document.getElementById("budgetChart"), config);
+=======
+const myChart = new Chart(document.getElementById("budgetChartbyStops"), config);
+>>>>>>> dev

@@ -40,6 +40,36 @@ router.get("/trip/new", withAuth, async (req, res) => {
   }
 });
 
+//update trip
+router.get("/trip/:id/update", withAuth, async (req, res) => {
+  try {
+    const trip = await Trip.findByPk(req.params.id, {
+      include: [Stop]
+    });
+    const stops = await Stop.findAll({
+      where: {
+        tripId: trip.id
+      },
+      include: [Expenditure]
+    });
+    const stopsRaw = stops.map(stop => stop.get({ plain: true }));
+    const tripRaw = trip.get({plain:true});
+    console.log(tripRaw)
+    //boolean for is multiple stops
+    const multiple = (stopsRaw.length > 1)
+    res.render("updateTrip", {
+      layout: "dashboard",
+      User: req.session.user,
+      trip: tripRaw,
+      stops: stopsRaw,
+      multiple
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 // create new stop
 router.get("/trip/:id/new", withAuth, (req, res) => {
   res.render("newStop", {
@@ -83,11 +113,20 @@ router.get("/trip/:id", withAuth, async (req, res) => {
       const rawExpenditureData = await stopData.map((expen) => expen.get({ plain: true }));
       // need to get for each desitantion the expenditures and get the total cost that the user is going to use for the trip
       console.log(rawExpenditureData[0].event_type)
+    if (trip != null && trip.userId == req.session.user.id) {
+      // need to get for each desitantion the expenditures and get the total cost that the user is going to use for the trip
+      const rawTrip = await trip.get({ plain: true });
+      console.log(rawTrip)
+      const multipleStops = false;
+      if ((rawTrip.Stops).length > 1) {
+        multipleStops = true
+      }
       res.render("tripView", {
         layout: "dashboard",
         TripData: rawTrip,
         User: req.session.user,
         Expenditure1: rawExpenditureData,
+        multipleStops: multipleStops
       });
     } else {
       res.render("modalError", {
@@ -96,6 +135,7 @@ router.get("/trip/:id", withAuth, async (req, res) => {
         text: "This isn't your trip!"
       })
     }
+  }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
