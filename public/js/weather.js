@@ -36,7 +36,9 @@ function addIcons(day, description){
     image.src = "../assets/windIcon.png"
   } else if (description.includes('snow')|| description.includes('freezing')|| description.includes('sleet') ||  description.includes('flurries')) {
     image.src = "../assets/snow.png"
-  } else if (description.includes('cloud') || description.includes('overcast')|| description.includes('fog')) {
+  } else if (description.includes('cloud') || description.includes('overcast')) {
+    image.src = "../assets/cloud.png"
+  } else if (description.includes('fog')) {
     image.src = "../assets/fog.png"
   }
   else {
