@@ -5,8 +5,10 @@ const axios = require('axios');
 //Takes the city name or zip code from the user and searches for the weather.
 router.get('/:city', async (req, res) => {
     const city=toTitleCase(req.params.city);
-    console.log('In get weather')
-    return await getWeatherReportByCity(city);
+    const response = await getWeatherReportByCity(city);
+
+    res.json(response);
+    
 })
 
 
@@ -29,9 +31,9 @@ function getWeatherReportByCity(city) {
 
 
 //uses the city name or zip code to get the longitude and latitude needed to get the five day forecast
-function getLongAndLat(city){
+async function getLongAndLat(city){
   var getLogLatUrl = encodeURI(baseURL+'/weather?q=' + city + "&appid=" + APIKey);
-        return axios({
+        return await axios({
             method: 'get',
             url: getLogLatUrl
         }).then(function(response){
@@ -51,11 +53,11 @@ function getWeatherByLongAndLat(lat, long) {
         method: 'get',
         url: queryURL
     }).then(function(response){
+        console.log("Waiting response");
+        console.log(response);
         data = response['data'];
         const currentWeather = data['current'];
         //Adds the current weather information to the forecast object before returning the object
-        console.log('In getWeather')
-        console.log(data);
         return {
             curTemp : currentWeather['temp'],
             feelsLinkTemp: currentWeather['feels_like'],

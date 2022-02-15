@@ -1,50 +1,65 @@
 
   window.onload = async function(){
       console.log('In weatherGetter =====================')
-    const cityList = document.querySelectorAll("[data-city]");
+    const cityList = $("[data-city]");
+  
     console.log(cityList)
     for(let i = 0; i < cityList.length; i++){
         const city = cityList[i].dataset.city;
-        console.log(cityList[i].dataset.city)
-    const response = await fetch(`/weather/${city}`, {
+    fetch(`/weather/${city}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       }
-    });
+    }).then((response) => response.json()).then(response =>{
+    console.log('--------------------')
+    console.log(response);
+    let header = document.createElement('h5');
+    header.className = 'card-title'
+    cityList[i].appendChild(header);
     cityList[i].appendChild(createWeatherWidget(response));
+    });
     }
-
   };
 
 
 //Adds icons based on the contents of the description that is passed in
 function addIcons(day, description){
+  console.log(day)
+  let image = document.createElement('img');
+  image.classList = ("card-img-top");
   if (description.includes('lightening')|| description.includes('thunder')) {
-      day.addClass('fa-bolt');
+    image.src = "../assets/storm.png"
   } else if (description.includes('rain')) {
-      day.addClass('fa-cloud-rain');
+    image.src = "../assets/rain.png"
   } else if (description.includes('wind')) {
-      day.addClass('fa-wind');
-  } else if (description.includes('snow')|| description.includes('freezing')) {
-      day.addClass('fa-snowflake');
-  } else if (description.includes('cloud') || description.includes('overcast')) {
-     day.addClass('fa-cloud');
-   }
-  else {
-      day.addClass('fa-sun');
+    image.src = "../assets/windIcon.png"
+  } else if (description.includes('snow')|| description.includes('freezing')|| description.includes('sleet') ||  description.includes('flurries')) {
+    image.src = "../assets/snow.png"
+  } else if (description.includes('cloud') || description.includes('overcast')|| description.includes('fog')) {
+    image.src = "../assets/fog.png"
   }
+  else {
+    image.src = "../assets/sunny.png"
+  }
+  day.appendChild(image);
+  console.log(day)
+  return day;
 }
 
 //Creates the weather cards with the date, location, icons, and any data.
 function createWeatherWidget(data){
-  console.log("In widget creator");
-  console.log(data);
   let weatherData = document.createElement('div');
-  weatherData.appendChild('<br>' +  '<p class="text">'+ moment().format('LL') + '</p>');
-  weatherData.append('Temp: '+ data['curTemp'] + ' °F<br>');
-  weatherData.append('<p'+ data['description'] + '</p>');
-  weatherData.classList.add('row');
   addIcons(weatherData, data['description']);
+  weatherData.className += ("col card weather-card")
+  let cardBody = document.createElement('div');
+  cardBody.className = 'card-body';
+  let cardText = document.createElement('p');
+  cardText.className = 'card-text';
+  cardText.innerHTML= (`Current Temp:  ${data['curTemp']}°F <br>${data['condition']}`);
+  cardText.style.color = 'black';
+  cardBody.appendChild(cardText);
+  weatherData.appendChild(cardBody);
+  weatherData.classList.add('row');
   return weatherData;
 }
