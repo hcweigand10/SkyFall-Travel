@@ -90,4 +90,4 @@ const config = {
   },
 };
 
-const myChart = new Chart(document.getElementById("budgetChart"), config);
+const myChart = new Chart(document.getElementById("budgetChartbyStops"), config);

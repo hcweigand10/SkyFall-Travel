@@ -1,8 +1,9 @@
 const now = moment();
-console.log((document.querySelectorAll(".stop-form")).length);
-let stopsCount=1;
+let stopsCount = (document.querySelectorAll(".stop-form")).length;
 let stops = [];
 let stopBreakdowns = []
+const updateId = parseInt(document.querySelector("#tripId").innerHTML);
+console.log(updateId)
 
 const tripFormHandler = async function (event) {
   event.stopImmediatePropagation();
@@ -102,8 +103,8 @@ const tripFormHandler = async function (event) {
   if (!valid) {
     return;
   }
-  await fetch("/api/trip", {
-    method: "POST",
+  await fetch(`/api/trip/${updateId}`, {
+    method: "PUT",
     body: JSON.stringify({
       name,
       start_date,
@@ -124,86 +125,8 @@ const tripFormHandler = async function (event) {
       tripId = data.id;
     });
 
-  // location.href = `/dashboard/trip/${tripId}`;
+  location.href = `/dashboard/trip/${updateId}`;
 };
+// hi
 
-$("#additional-stop").on("click", function () {
-  stopsCount++;
-  $("#stops").append(
-    `<div id="stop-${stopsCount}">
-    <br>
-    <hr>
-      <div class="form-group">
-        <div class="row">
-          <label for="stop-name" style="font-size: 24px">
-            Stop:
-          </label>
-          <div class="col-7"></div>
-          <button class="btn btn-danger" style="font-size: 14px; height: 36px;" id="delete-${stopsCount}" onclick="deleteStop(${stopsCount})">Delete Stop</button>
-        </div>
-        <input
-          type="text"
-          id="stop-name-${stopsCount}"
-          class="form-control row item col-12"
-        ></input>
-      </div>
-      <div class="form-group">
-        <div class="row">
-          <label for="start-date-${stopsCount}" class="col-5">
-            Start Date:
-          </label>
-          <div class="col-1"></div>
-          <label for="end-date-${stopsCount}" class="col-5">
-            End Date:
-          </label>
-        </div>
-        <div class="row justify-content-space-between">
-          <input
-            type="date"
-            id="start-date-${stopsCount}"
-            class="form-control item col-5"
-          ></input>
-          <div class="col-1"></div>
-          <input
-            type="date"
-            id="end-date-${stopsCount}"
-            class="form-control item col-5"
-          ></input>
-        </div>
-      </div>
-      <label for="budget-${stopsCount}">Budget Breakdown:</label>
-
-      <div class="form-group">
-          <div class="row">
-              <label for="accomodation-${stopsCount}}" class="col-5" style="font-size: 16px;">Accomodation:</label>
-              <div class="col-1"></div>
-              <label for="travel-costs-${stopsCount}}" class="col-5" style="font-size: 16px;">Travel Costs:</label>
-          </div>
-          <div class="row justify-content-space-between">
-              <span>$</span><input type="number" id="accomodation-${stopsCount}}" class="form-control item col-5" value=0></input>
-              <div class="col-1"></div>
-              <span>$</span><input type="number" id="travel-costs-${stopsCount}}" class="form-control item col-5" value=0></input>
-          </div>
-      </div>
-      <div class="form-group">
-          <div class="row">
-              <label for="food-${stopsCount}}" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
-              <div class="col-1"></div>
-              <label for="other-${stopsCount}}" class="col-5" style="font-size: 16px;">Other:</label>
-          </div>
-          <div class="row justify-content-space-between">
-              <span>$</span><input type="number" id="food-${stopsCount}}" class="form-control item col-5" value=0></input>
-              <div class="col-1"></div>
-              <span>$</span><input type="number" id="other-${stopsCount}}" class="form-control item col-5" value=0></input>
-          </div>
-      </div>
-    </div>`
-  );
-});
-
-const deleteStop = (id) => {
-  stopsCount--;
-  $(`#stop-${id}`).remove();
-};
-
-$("#create-trip-button").on("click", tripFormHandler);
+$("#update-trip-button").on("click", tripFormHandler);

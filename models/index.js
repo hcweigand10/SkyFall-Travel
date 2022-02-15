@@ -23,14 +23,14 @@ Stop.belongsTo(Trip, {
   onDelete: "CASCADE",
 })
 
-Stop.hasMany(Expenditure, {
-  foreignKey: "stopId",
-  onDelete: "CASCADE",
-});
-
 Expenditure.belongsTo(Stop, {
   foreignKey: "stopId",
   onDelete: "CASCADE",
+})
+
+Stop.hasOne(Expenditure, {
+  foreignKey: "stopId",
+  onDelete: "CASCADE"
 })
 
 
