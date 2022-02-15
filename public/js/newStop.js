@@ -3,8 +3,8 @@ const newFormHandler = async function(event) {
     console.log('all good');
 
     const name = document.querySelector('#name').value;
-    const start_date = document.querySelector('#date-arrived').value;
-    const end_date = document.querySelector('#date-leaving').value;
+    const start_date = document.querySelector('#start-date').value;
+    const end_date = document.querySelector('#end-date').value;
     const budget = document.querySelector('#budget').value;
     const tripId = document.querySelector('#tripId').value;
   
