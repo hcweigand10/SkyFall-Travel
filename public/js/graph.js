@@ -35,10 +35,12 @@ for (let i = 0; i < stopBudget.length; i++) {
   colorArr.push(randomHexColor());
 }
 
-console.log(budgetArr);
-console.log(stopArr);
-console.log(colorArr);
-console.log(totalBudget);
+// console.log(budgetArr);
+// console.log(stopArr);
+// console.log(colorArr);
+// console.log(totalBudget);
+
+
 
 const data = {
   labels: stopArr,
@@ -90,4 +92,71 @@ const config = {
   },
 };
 
-const myChart = new Chart(document.getElementById("budgetChart"), config);
+if(stopNames.length < 2) {
+
+  let category = document.getElementsByClassName("category");
+  let price = document.getElementsByClassName("price");
+
+  console.log(price);
+  console.log(category);
+
+  const eventArr = [];
+  const priceArr = [];
+  const colorArr = [];
+
+  for (let i = 0; i < category.length; i++) {
+    eventArr.push(category[i].value);
+    priceArr.push(parseInt(price[i].value));
+    colorArr.push(randomHexColor());
+  }
+
+  console.log(eventArr);
+  console.log(priceArr)
+
+  const xdata = {
+    labels: eventArr,
+    datasets: [
+      {
+        label: "My First Dataset",
+        data: priceArr,
+        backgroundColor: colorArr,
+        hoverOffset: 4,
+      },
+    ],
+  };
+  
+  const xconfig = {
+    type: "doughnut",
+    data: xdata,
+    options: {
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+              color: 'whitesmoke',
+              font: {
+                size: 15
+              }
+          }
+        },
+        title: {
+          display: true,
+          text: "Trip Budget",
+          padding: {
+            top: 10,
+            bottom: 10,
+          },
+          font: {
+            size: 45,
+          },
+          color: "whitesmoke",
+        },
+      },
+    },
+  };
+
+  const myChart = new Chart(document.getElementById("budgetChart"), xconfig);
+} else {
+  const myChart = new Chart(document.getElementById("budgetChart"), config);
+}
+// const myChart = new Chart(document.getElementById("budgetChart"), config);

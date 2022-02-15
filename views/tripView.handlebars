@@ -38,12 +38,13 @@
     </div>
 
   </div>
-
-  
-
 </div>
 
-
+{{!-- hidden expenditure data for the first stop if only 1 present --}}
+  {{#each Expenditure1}}
+  <input type="hidden" value="{{event_type}}" class="category">
+  <input type="hidden" value="{{price}}" class="price">
+  {{/each}}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/graph.js"></script>
