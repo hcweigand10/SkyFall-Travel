@@ -10,6 +10,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="/css/jass.css" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
@@ -51,10 +52,7 @@
               <a class="nav-link" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+              <a class="nav-link" href="/about-us">About</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
@@ -87,7 +85,7 @@
       {{{body}}}
     </main>
 
-    <!-- Footer -->
+        <!-- Footer -->
     <footer>
       <div class="container py-5">
         <div class="row py-4">
@@ -97,8 +95,7 @@
               width="180"
               class="mb-3"
             />
-            <p class="font-italic text-muted">Lorem ipsum dolor sit amet,
-              consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+            <p class="font-italic text-muted">Best travel planning website for all your needs. No need to use anything else other than SKYFALL for your travel needs</p>
             <ul class="list-inline mt-4">
               <li class="list-inline-item"><a
                   href="#"
@@ -127,28 +124,27 @@
                 ><i class="fa fa-vimeo"></i></a></li>
             </ul>
           </div>
-          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          {{!-- <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
             <h6 class="text-uppercase font-weight-bold mb-4">Shop</h6>
             <ul class="list-unstyled mb-0">
               <li class="mb-2"><a href="#" class="text-muted">For Women</a></li>
               <li class="mb-2"><a href="#" class="text-muted">For Men</a></li>
               <li class="mb-2"><a href="#" class="text-muted">Stores</a></li>
-              <li class="mb-2"><a href="/about-us" class="text-muted">About Us</a></li>
+              <li class="mb-2"><a href="#" class="text-muted">Our Blog</a></li>
             </ul>
-          </div>
-          <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+          </div> --}}
+          <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
             <h6 class="text-uppercase font-weight-bold mb-4">Company</h6>
             <ul class="list-unstyled mb-0">
-              <li class="mb-2"><a href="#" class="text-muted">Login</a></li>
-              <li class="mb-2"><a href="#" class="text-muted">Register</a></li>
-              <li class="mb-2"><a href="#" class="text-muted">Wishlist</a></li>
-              <li class="mb-2"><a href="#" class="text-muted">Our Products</a></li>
+              <li class="mb-2"><a href="/login" class="text-muted">Login</a></li>
+              <li class="mb-2"><a href="/signup" class="text-muted">Signup</a></li>
+              {{!-- <li class="mb-2"><a href="#" class="text-muted">Wishlist</a></li> --}}
+              <li class="mb-2"><a href="/about-us" class="text-muted">About Us</a></li>
             </ul>
           </div>
           <div class="col-lg-4 col-md-6 mb-lg-0">
             <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
-            <p class="text-muted mb-4">Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. At itaque temporibus.</p>
+            <p class="text-muted mb-4">Once functioning, we will alert you with deals regarding your planned trips!</p>
             <div class="p-1 rounded border">
               <div class="input-group">
                 <input
@@ -162,7 +158,7 @@
                     id="button-addon1"
                     type="submit"
                     class="btn btn-link"
-                  ><i class="fa fa-paper-plane"></i></button>
+                  ><i class="bi bi-send"></i></button>
                 </div>
               </div>
             </div>
@@ -171,9 +167,9 @@
       </div>
 
       <!-- Copyrights -->
-      <div class="copyright py-4">
+      <div class=" copyright py-4">
         <div class="container text-center">
-          <p class="text-muted mb-0 py-2">© 2019 Bootstrapious All rights
+          <p class="text-muted mb-0 py-2">© 2022 SKYFALL All rights
             reserved.</p>
         </div>
       </div>

@@ -5,14 +5,14 @@
         <div class="container">
           <h1 class="display-2">Stops</h1>
           <p class="lead">Add and edit your dream stops to {{TripData.name}}</p>
-          <button class="btn btn-outline-danger"><a href="#chart">View Budget Distribution</a></button>
+          <button class="btn btn-outline-danger jumbo-btn"><a href="#chart">View Budget Distribution</a></button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="row">
-    <div class="col">
+    <div class="col-sm-12 col-md-6">
       <!-- HTML !-->
       
       <div class=" flex-row justify-center">
@@ -20,20 +20,19 @@
         <button class="button-73" role="button"><a href="/dashboard/trip/{{TripData.id}}/update">Edit Trip</a></button>
       </div>
           {{#each TripData.Stops}}
-            <div class="card">
+            <div class="card trip-card">
               <input type="hidden" value="{{budget}}">
               <div class="card-body">
-                <h5 class="card-title">{{name}} </h5>
-                <p class="card-text">{{start_date}}</p>
-                <p class="card-text">{{end_date}}</p>
-                <p class="card-text budget" id="budget-price">{{budget}}</p>
-                <a href="/dashboard/trip/{{../TripData.id}}/stop/{{id}}" class="btn btn-primary">View/Edit Stop</a>
-                <button class='btn delete-stop-button btn-danger' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Stop</button>
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">Start Date: <span>{{start_date}}</span></p>
+                <p class="card-text">Start Date: <span>{{end_date}}</span></p>
+                <p class="card-text" id="budget-price">Budget: <span class="budget">{{budget}}</span></p>
+                <a href="/dashboard/trip/{{../TripData.id}}/stop/{{id}}" class="btn btn-primary">View Stop</a>
+                <button class='btn delete-stop-button btn-primary' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Stop</button>
               </div>
             </div>
           {{/each}}
     </div>
-  </div>
 
   <div id="chart">
     <canvas id="budgetChartbyType"></canvas>

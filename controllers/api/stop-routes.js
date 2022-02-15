@@ -53,6 +53,7 @@ router.put('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 })
+
 // be able to delete
 router.delete('/:id/:tripId', async (req, res) => {
     try{

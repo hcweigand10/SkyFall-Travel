@@ -60,9 +60,9 @@ const config = {
       legend: {
         display: true,
         labels: {
-            color: 'white',
+            color: 'whitesmoke',
             font: {
-              size: 20
+              size: 15
             }
         }
       },
@@ -71,18 +71,18 @@ const config = {
         text: "Trip Budget",
         padding: {
           top: 10,
-          bottom: 30,
+          bottom: 10,
         },
         font: {
-          size: 60,
+          size: 45,
         },
-        color: "white",
+        color: "whitesmoke",
       },
       subtitle: {
         display: true,
         text: `Total Budget: ${totalBudget}`,
         font: {
-          size: 30,
+          size: 25,
         },
         color: "white",
       },
