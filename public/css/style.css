@@ -371,10 +371,10 @@ main{
   display: flex; 
   margin: 15px 0;
   font-size: 1.5rem;
-  min-width: 75%;
-  max-width: 75%;
+  min-width: 50%;
+  max-width: 50%;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
   flex-direction: row;
   background:linear-gradient(
     rgba(218, 216, 211, 0.841) 35%,
@@ -383,7 +383,7 @@ main{
   );
 }
 .card-img-top{
-  max-width: 20%;
+  max-width: 30%;
 }
 .weather-card.row{
   min-width: 5%;
