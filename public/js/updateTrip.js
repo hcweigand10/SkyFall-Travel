@@ -127,6 +127,6 @@ const tripFormHandler = async function (event) {
 
   location.href = `/dashboard/trip/${updateId}`;
 };
-
+// hi
 
 $("#update-trip-button").on("click", tripFormHandler);
