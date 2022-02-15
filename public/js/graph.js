@@ -35,10 +35,10 @@ for (let i = 0; i < stopBudget.length; i++) {
   colorArr.push(randomHexColor());
 }
 
-// console.log(budgetArr);
-// console.log(stopArr);
-// console.log(colorArr);
-// console.log(totalBudget);
+console.log(budgetArr);
+console.log(stopArr);
+console.log(colorArr);
+console.log(totalBudget);
 
 
 
@@ -92,7 +92,6 @@ const config = {
   },
 };
 
-<<<<<<< HEAD
 if(stopNames.length < 2) {
 
   let category = document.getElementsByClassName("category");
@@ -161,6 +160,3 @@ if(stopNames.length < 2) {
   const myChart = new Chart(document.getElementById("budgetChart"), config);
 }
 // const myChart = new Chart(document.getElementById("budgetChart"), config);
-=======
-const myChart = new Chart(document.getElementById("budgetChartbyStops"), config);
->>>>>>> dev

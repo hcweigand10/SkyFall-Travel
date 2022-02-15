@@ -108,25 +108,21 @@ router.get("/trip/:id", withAuth, async (req, res) => {
         }
       })
 
-      
-    if (trip != null && trip.userId == req.session.user.id) {
-      const rawExpenditureData = await stopData.map((expen) => expen.get({ plain: true }));
-      // need to get for each desitantion the expenditures and get the total cost that the user is going to use for the trip
-      console.log(rawExpenditureData[0].event_type)
     if (trip != null && trip.userId == req.session.user.id) {
       // need to get for each desitantion the expenditures and get the total cost that the user is going to use for the trip
-      const rawTrip = await trip.get({ plain: true });
-      console.log(rawTrip)
-      const multipleStops = false;
-      if ((rawTrip.Stops).length > 1) {
-        multipleStops = true
-      }
+      const rawExpenditureData = stopData.map((expen) => expen.get({ plain: true }));
+
+      console.log(rawExpenditureData)
+      // let multipleStops = false;
+      // if ((rawTrip.Stops).length > 1) {
+      //   multipleStops = true
+      // }
       res.render("tripView", {
         layout: "dashboard",
         TripData: rawTrip,
         User: req.session.user,
         Expenditure1: rawExpenditureData,
-        multipleStops: multipleStops
+        // multipleStops: multipleStops
       });
     } else {
       res.render("modalError", {
@@ -135,7 +131,6 @@ router.get("/trip/:id", withAuth, async (req, res) => {
         text: "This isn't your trip!"
       })
     }
-  }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
