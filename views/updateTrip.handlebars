@@ -47,28 +47,42 @@
                     </div>
                     <label for="budget-{{name}}">Budget Breakdown:</label>
 
-                    <div class="form-group">
+                    <div class="input-group mb-3">
                         <div class="row">
                             <label for="accomodation-{{name}}" class="col-5" style="font-size: 16px;">Accomodation:</label>
-                            <div class="col-1"></div>
-                            <label for="travel-costs-{{name}}" class="col-5" style="font-size: 16px;">Travel Costs:</label>
+                            <div class="col-2"></div>
+                            <label for="travel-costs-{{name}}" class="col-4" style="font-size: 16px;">Travel_Costs:</label>
                         </div>
-                        <div class="row justify-content-space-between">
-                            <span>$</span><input type="number" id="accomodation-{{name}}" class="form-control item col-5" value={{Expenditure.accomodation}}></input>
-                            <div class="col-1"></div>
-                            <span>$</span><input type="number" id="travel-costs-{{name}}" class="form-control item col-5" value={{Expenditure.travel_costs}}></input>
+                        <div class="row">
+                           <div class="input-group col-5">
+                                <span class="input-group-text">$</span>
+                                <input type="number" id="accomodation-{{name}}"class="form-control" aria-label="Amount (to the nearest dollar)" value={{Expenditure.accomodation}}>
+                                <span class="input-group-text">.00</span>
+                            </div>
+                           <div class="input-group col-5">
+                                <span class="input-group-text">$</span>
+                                <input type="number" id="travel-costs-{{name}}"class="form-control" aria-label="Amount (to the nearest dollar)" value={{Expenditure.travel_costs}}>
+                                <span class="input-group-text">.00</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="input-group">
                         <div class="row">
-                            <label for="food-{{name}}" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
-                            <div class="col-1"></div>
-                            <label for="other-{{name}}" class="col-5" style="font-size: 16px;">Other:</label>
+                            <label for="food-entertainment-{{name}}" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
+                            <div class="col-2"></div>
+                            <label for="other-{{name}}" class="col-4" style="font-size: 16px;">Other:</label>
                         </div>
-                        <div class="row justify-content-space-between">
-                            <span>$</span><input type="number" id="food-{{name}}" class="form-control item col-5" value={{Expenditure.food_entertainment}}></input>
-                            <div class="col-1"></div>
-                            <span>$</span><input type="number" id="other-{{name}}" class="form-control item col-5" value={{Expenditure.other}}></input>
+                        <div class="row">
+                           <div class="input-group col-5">
+                                <span class="input-group-text">$</span>
+                                <input type="number" id="food-entertainment-{{name}}"class="form-control" aria-label="Amount (to the nearest dollar)" value={{Expenditure.food_entertainment}}>
+                                <span class="input-group-text">.00</span>
+                            </div>
+                           <div class="input-group col-5">
+                                <span class="input-group-text">$</span>
+                                <input type="number" id="other-{{name}}"class="form-control" aria-label="Amount (to the nearest dollar)" value={{Expenditure.other}}>
+                                <span class="input-group-text">.00</span>
+                            </div>
                         </div>
                     </div>
                 </div>

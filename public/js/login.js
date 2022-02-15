@@ -15,7 +15,10 @@ const loginFormHandler = async function (event) {
   });
 
   if (response.ok) {
-    location.href = "/dashboard";
+    console.log("successful login")
+    setTimeout(() => {
+      location.href = "/dashboard";
+    }, 500);
   } else {
     alert("Failed to login");
   }
