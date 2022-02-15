@@ -156,6 +156,7 @@ router.get("/trip/:id/stop/:id2", async (req, res) => {
       expenditure.get({ plain: true })
     );
 
+    console.log(expenditureRaw);
     res.render("stopView", {
       layout: "dashboard",
       trip: tripRaw,

@@ -94,31 +94,27 @@ const config = {
 
 if(stopNames.length < 2) {
 
-  let category = document.getElementsByClassName("category");
-  let price = document.getElementsByClassName("price");
+  const accomodation = document.getElementsByClassName("accomodation");
+  const travel_costs = document.getElementsByClassName("travel_costs");
+  const food_entertainment = document.getElementsByClassName("food_entertainment");
+  const other = document.getElementsByClassName("other");
 
-  console.log(price);
-  console.log(category);
 
   const eventArr = [];
   const priceArr = [];
   const colorArr = [];
 
-  for (let i = 0; i < category.length; i++) {
-    eventArr.push(category[i].value);
-    priceArr.push(parseInt(price[i].value));
+  for (let i = 0; i < 4; i++) {
     colorArr.push(randomHexColor());
   }
 
-  console.log(eventArr);
-  console.log(priceArr)
-
+  console.log(accomodation.value)
   const xdata = {
-    labels: eventArr,
+    labels: ['Acommodations', 'Travel Costs', 'Food/Enterntainment', 'Other'],
     datasets: [
       {
         label: "My First Dataset",
-        data: priceArr,
+        data: [accomodation.value, travel_costs.value, food_entertainment.value, other.value],
         backgroundColor: colorArr,
         hoverOffset: 4,
       },
