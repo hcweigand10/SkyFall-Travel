@@ -41,17 +41,21 @@ router.delete("/:id/:tripId/:stopId", withAuth, async (req, res) => {
     await Expenditure.findOne({where: {id : req.params.id}
     }).then(expenditure => {
       expenditure = expenditure.get({ plain: true });
+      console.log(expenditure);
       exPrice = expenditure['price'];
     });
     console.log(exPrice);
-    const updateTrip = await Trip.findOne({where: {id : req.params.tripId} });
-    const updateStop = await Stop.findOne({where: {id : req.params.tripId} });
+    let updateTrip = await Trip.findOne({where: {id : req.params.tripId} });
+    let updateStop = await Stop.findOne({where: {id : req.params.stopId} });
+    console.log('In budget');
+    console.log(updateStop);
     updateStop = updateStop.get({ plain: true });
     updateTrip = updateTrip.get({ plain: true });
-    destBudge = updateStop['budget'] - exPrice;
+    stopBudge = updateStop['budget'] - exPrice;
     tripBudge = updateTrip['budget'] - exPrice;
+
     await Stop.update( 
-      {budget: destBudge},
+      {price: stopBudge},
       {where: {
         id: req.params.stopId,
       }
