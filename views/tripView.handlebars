@@ -31,19 +31,21 @@
               </div>
             </div>
           {{/each}}
+    </div >
+      
+    <div class="col-sm-12 col-md-6">
+      <canvas id="budgetChart"></canvas>
     </div>
 
-  <div id="chart">
-    <canvas id="budgetChartbyType"></canvas>
-  </div>
-  {{#if multipleStops}}
-  <div id="chart">
-    <canvas id="budgetChartbyStops"></canvas>
-  </div>
-  {{/if}}
 </div>
 
-
+{{!-- hidden expenditure data for the first stop if only 1 present --}}
+  {{#each Expenditure1}}
+  <input type="hidden" value="{{accomodation}}" class="accomodation">
+  <input type="hidden" value="{{travel_costs}}" class="travel_costs">
+  <input type="hidden" value="{{food_entertainment}}" class="food_entertainment">
+  <input type="hidden" value="{{other}}" class="other">
+  {{/each}}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/graph.js"></script>

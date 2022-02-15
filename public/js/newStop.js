@@ -8,7 +8,7 @@ const newFormHandler = async function(event) {
     const budget = document.querySelector('#budget').value;
     const tripId = document.querySelector('#tripId').value;
   
-    await fetch('/api/stop', {
+    await fetch('/api/stop/new', {
       method: 'POST',
       body: JSON.stringify({
         name,

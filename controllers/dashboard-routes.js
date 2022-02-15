@@ -97,19 +97,32 @@ router.get("/trip/:id", withAuth, async (req, res) => {
       },
       include: [Stop],
     });
+
+    const rawTrip = await trip.get({ plain: true });
+      
+
+      // gets id of the first stop that is on the page
+      const stopData = await Expenditure.findAll({
+        where: {
+          stopId: rawTrip.Stops[0].id
+        }
+      })
+
     if (trip != null && trip.userId == req.session.user.id) {
       // need to get for each desitantion the expenditures and get the total cost that the user is going to use for the trip
-      const rawTrip = await trip.get({ plain: true });
-      console.log(rawTrip)
-      let multipleStops = false;
-      if ((rawTrip.Stops).length > 1) {
-        multipleStops = true
-      }
+      const rawExpenditureData = stopData.map((expen) => expen.get({ plain: true }));
+
+      console.log(rawExpenditureData[0])
+      // let multipleStops = false;
+      // if ((rawTrip.Stops).length > 1) {
+      //   multipleStops = true
+      // }
       res.render("tripView", {
         layout: "dashboard",
         TripData: rawTrip,
         User: req.session.user,
-        multipleStops: multipleStops
+        Expenditure1: rawExpenditureData,
+        // multipleStops: multipleStops
       });
     } else {
       res.render("modalError", {
@@ -143,7 +156,6 @@ router.get("/trip/:id/stop/:id2", async (req, res) => {
       expenditure.get({ plain: true })
     );
 
-    console.log(stopRaw);
     console.log(expenditureRaw);
     res.render("stopView", {
       layout: "dashboard",
@@ -166,9 +178,6 @@ router.get("/trip/:id/stop/:id2/expenditure/:id3", async (req, res) => {
 
     const stopRaw = stopData.get({ plain: true });
     const expenditureRaw = expenditureData.get({ plain: true });
-
-    console.log(stopRaw);
-    console.log(expenditureRaw);
 
     res.render("stopView", {
       layout: "dashboard",

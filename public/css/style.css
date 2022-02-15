@@ -227,6 +227,7 @@ footer {
 .main{
    margin-top: 15px;
    margin-bottom: 15px;
+   min-height: 600px;
 }
 
 

@@ -35,10 +35,12 @@ for (let i = 0; i < stopBudget.length; i++) {
   colorArr.push(randomHexColor());
 }
 
-console.log(budgetArr);
-console.log(stopArr);
-console.log(colorArr);
-console.log(totalBudget);
+// console.log(budgetArr);
+// console.log(stopArr);
+// console.log(colorArr);
+// console.log(totalBudget);
+
+
 
 const data = {
   labels: stopArr,
@@ -90,4 +92,64 @@ const config = {
   },
 };
 
-const myChart = new Chart(document.getElementById("budgetChartbyStops"), config);
+if(stopNames.length < 2) {
+
+  const accomodation = document.getElementsByClassName("accomodation");
+  const travel_costs = document.getElementsByClassName("travel_costs");
+  const food_entertainment = document.getElementsByClassName("food_entertainment");
+  const other = document.getElementsByClassName("other");
+
+  const colorArr = [];
+
+  for (let i = 0; i < 4; i++) {
+    colorArr.push(randomHexColor());
+  }
+
+  console.log(accomodation[0].value)
+  const xdata = {
+    labels: ['Acommodations', 'Travel Costs', 'Food/Enterntainment', 'Other'],
+    datasets: [
+      {
+        label: "My First Dataset",
+        data: [parseInt(accomodation[0].value), parseInt(travel_costs[0].value), parseInt(food_entertainment[0].value), parseInt(other[0].value)],
+        backgroundColor: colorArr,
+        hoverOffset: 4,
+      },
+    ],
+  };
+  
+  const xconfig = {
+    type: "doughnut",
+    data: xdata,
+    options: {
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+              color: 'whitesmoke',
+              font: {
+                size: 15
+              }
+          }
+        },
+        title: {
+          display: true,
+          text: "Budget Breakdown",
+          padding: {
+            top: 10,
+            bottom: 10,
+          },
+          font: {
+            size: 45,
+          },
+          color: "whitesmoke",
+        },
+      },
+    },
+  };
+
+  const myChart = new Chart(document.getElementById("budgetChart"), xconfig);
+} else {
+  const myChart = new Chart(document.getElementById("budgetChart"), config);
+}
+// const myChart = new Chart(document.getElementById("budgetChart"), config);
