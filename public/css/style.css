@@ -172,7 +172,7 @@ body::before {
 }
 
 .navbar-light .navbar-nav .nav-link:focus,
-.navbar-light .navbar-nav .nav-link:hover {
+.navbar-light .navbar-nav .nav-link:hover, .nav-link:hover {
   color: #fff;
 }
 
@@ -371,10 +371,10 @@ main{
   display: flex; 
   margin: 15px 0;
   font-size: 1.5rem;
-  min-width: 50%;
-  max-width: 50%;
+  min-width: 75%;
+  max-width: 75%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-direction: row;
   background:linear-gradient(
     rgba(218, 216, 211, 0.841) 35%,
@@ -383,7 +383,7 @@ main{
   );
 }
 .card-img-top{
-  max-width: 30%;
+  max-width: 20%;
 }
 .weather-card.row{
   min-width: 5%;
