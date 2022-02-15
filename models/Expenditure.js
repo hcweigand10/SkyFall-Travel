@@ -6,16 +6,20 @@ class Expenditure extends Model{}
 
 Expenditure.init( 
     {
-        name: {
-            type: DataTypes.STRING, 
+        accomodation: {
+            type: DataTypes.INTEGER, 
             allowNull: false
         }, 
-        event_type: {
-            type: DataTypes.STRING, 
+        travel_costs: {
+            type: DataTypes.INTEGER,
             allowNull: false
         }, 
-        price: {
-            type: DataTypes.DECIMAL(10,2), 
+        food_entertainment: {
+            type: DataTypes.INTEGER, 
+            allowNull: false
+        },
+        other: {
+            type: DataTypes.INTEGER, 
             allowNull: false
         }
     }, 

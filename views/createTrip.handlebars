@@ -1,78 +1,82 @@
-{{!-- <div class="container">
-    <form class="form" id="new-trip-form">
-        <div id="main" class="form-group" style="font-size:large">
-            <label for="name">Trip Name:</label>
-            <input type="text" class="input-lg col-2" id="name"></input>
 
-            <label for="start-date">Start Date:</label>
-            <input type="date" id="start-date"></input>
-
-            <label for="end-date">End Date:</label>
-            <input type="date" id="end-date"></input>
-        </div>
-
-        <hr>
-        
-        <div id="stops">
-            <div class="form-group-stop">
-                <label for="stop-name">Stop:</label>
-                <input type="text" id="stop-name-1"></input>
-
-                <label for="start-date">Start Date:</label>
-                <input type="date" id="start-date-1"></input>
-
-                <label for="end-date">End Date:</label>
-                <input type="date" id="end-date-1"></input>
-
-                <label for="budget">Budget:</label>
-                <span>$</span>
-                <input type="number" id="budget-1" value="0"></input>
-                <span>.00</span>
-            </div>
-        </div>
-        <div style="display: flex;">
-            <button class="btn btn-primary" id="additional-stop" type="button">Add Stop</button>
-            <button class="btn btn-primary" id="create-trip-button" type="button" style="float: right;">Generate Trip</button>
-        </div>
-    </form>
-</div>  --}}
-
-<div class="registration-form">
-        <form>
+<div class="registration-form container">
+        <form class="mb-3" style="border-radius: 30px;">
             <div class="form-icon">
                 <span><i class="bi bi-send"></i></span>
             </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" id="name" placeholder="Tripname">
+            <div class="input-group-lg">
+                <label for="name" style="font-size: 28px;">Trip Name:</label>
+                <input type="text" class="form-control item row" id="name">
             </div>
-            <div class="form-group">
-                <input type="date" class="form-control item" id="start-date"></input>
-            </div>
-            <div class="form-group">
-                <input type="date" class="form-control item" id="end-date"></input>
-            </div>
-
-            <hr>
-
-            <div id="stops">
-                <div class="form-group">
-                    <label for="stop-name">Stop:</label>
-                    <input type="text" id="stop-name-1" class="form-control item"></input>
-
-                    <label for="start-date">Start Date:</label>
-                    <input type="date" id="start-date-1" class="form-control item"></input>
-
-                    <label for="end-date">End Date:</label>
-                    <input type="date" id="end-date-1" class="form-control item"></input>
-
-                    <label for="budget">Budget:</label>
-                    <span>$</span>
-                    <input type="number" id="budget-1" class="form-control item"></input>
+            <div class="input-group-lg">
+                <div class="row">
+                    <label for="start-date-trip" class="col-5" style="font-size: 24px">Start Date:</label>
+                    <div class="col-1"></div>
+                    <label for="end-date-trip" class="col-5" style="font-size: 24px">End Date:</label>
+                </div>
+                <div class="row justify-content-space-between">
+                    <input type="date" id="start-date-trip" class="form-control item col-5"></input>
+                    <div class="col-1"></div>
+                    <input type="date" id="end-date-trip" class="form-control item col-5"></input>
                 </div>
             </div>
+
+        </form>
+        <form class="mb-3" style="border-radius: 30px;">
+
+            <div id="stops">
+
+                <div id="stop-1" class="stop-form">
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="stop-name" style="font-size: 24px">Stop:</label>
+                        </div>
+                        <input type="text" id="stop-name-1" class="form-control row item col-12"></input>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="start-date-1" class="col-5">Start Date:</label>
+                            <div class="col-1"></div>
+                            <label for="end-date-1" class="col-5">End Date:</label>
+                        </div>
+                        <div class="row justify-content-space-between">
+                            <input type="date" id="start-date-1" class="form-control item col-5"></input>
+                            <div class="col-1"></div>
+                            <input type="date" id="end-date-1" class="form-control item col-5"></input>
+                        </div>
+                    </div>
+                    <label for="budget-1">Budget Breakdown:</label>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="accomodation-1" class="col-5" style="font-size: 16px;">Accomodation:</label>
+                            <div class="col-1"></div>
+                            <label for="travel-costs-1" class="col-5" style="font-size: 16px;">Travel Costs:</label>
+                        </div>
+                        <div class="row justify-content-space-between">
+                            <span>$</span><input type="number" id="accomodation-1" class="form-control item col-5" value=0></input>
+                            <div class="col-1"></div>
+                            <span>$</span><input type="number" id="travel-costs-1" class="form-control item col-5" value=0></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="food-1" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
+                            <div class="col-1"></div>
+                            <label for="other-1" class="col-5" style="font-size: 16px;">Other:</label>
+                        </div>
+                        <div class="row justify-content-space-between">
+                            <span>$</span><input type="number" id="food-1" class="form-control item col-5" value=0></input>
+                            <div class="col-1"></div>
+                            <span>$</span><input type="number" id="other-1" class="form-control item col-5" value=0></input>
+                        </div>
+                    </div>
+                </div>
+                            
+            </div>
             <div class="form-group">
-                <button class="btn btn-block create-account" id="additional-stop" type="button">Add stop</button>
-                <button type="button" class="btn btn-block create-account" id="create-trip-button">Create a Trip</button>
+                <button class="btn btn-block create-account" id="additional-stop" type="button">Add Stop</button>
+                <button type="button" class="btn btn-block create-account" id="create-trip-button">Create Trip!</button>
             </div>
         </form>
     </div>

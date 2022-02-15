@@ -1,0 +1,86 @@
+<div id="tripId" hidden="true">{{trip.id}}</div>
+<div class="registration-form container">
+        <form class="mb-3" style="border-radius: 30px;">
+            <div class="form-icon">
+                <span><i class="bi bi-send"></i></span>
+            </div>
+            <div class="input-group-lg">
+                <label for="name" style="font-size: 28px;" >Trip Name:</label>
+                <input type="text" class="form-control item row" id="name" value="{{trip.name}}">
+            </div>
+            <div class="input-group-lg">
+                <div class="row">
+                    <label for="start-date-trip" class="col-5" style="font-size: 24px">Start Date:</label>
+                    <div class="col-1"></div>
+                    <label for="end-date-trip" class="col-5" style="font-size: 24px">End Date:</label>
+                </div>
+                <div class="row justify-content-space-between">
+                    <input type="date" id="start-date-trip" class="form-control item col-5" value="{{trip.start_date}}"></input>
+                    <div class="col-1"></div>
+                    <input type="date" id="end-date-trip" class="form-control item col-5" value="{{trip.end_date}}"></input>
+                </div>
+            </div>
+
+        </form>
+        <form class="mb-3" style="border-radius: 30px;">
+
+            <div id="stops">
+                {{#each stops}}
+                <div id="stop-{{name}}" class="stop-form">
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="stop-name" style="font-size: 24px">Stop:</label>
+                        </div>
+                        <input type="text" id="stop-name-{{name}}" class="form-control row item col-12" value={{name}}></input>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="start-date-{{name}}" class="col-5">Start Date:</label>
+                            <div class="col-1"></div>
+                            <label for="end-date-{{name}}" class="col-5">End Date:</label>
+                        </div>
+                        <div class="row justify-content-space-between">
+                            <input type="date" id="start-date-{{name}}" class="form-control item col-5" value={{start_date}}></input>
+                            <div class="col-1"></div>
+                            <input type="date" id="end-date-{{name}}" class="form-control item col-5" value={{end_date}}></input>
+                        </div>
+                    </div>
+                    <label for="budget-{{name}}">Budget Breakdown:</label>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="accomodation-{{name}}" class="col-5" style="font-size: 16px;">Accomodation:</label>
+                            <div class="col-1"></div>
+                            <label for="travel-costs-{{name}}" class="col-5" style="font-size: 16px;">Travel Costs:</label>
+                        </div>
+                        <div class="row justify-content-space-between">
+                            <span>$</span><input type="number" id="accomodation-{{name}}" class="form-control item col-5" value={{Expenditure.accomodation}}></input>
+                            <div class="col-1"></div>
+                            <span>$</span><input type="number" id="travel-costs-{{name}}" class="form-control item col-5" value={{Expenditure.travel_costs}}></input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <label for="food-{{name}}" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
+                            <div class="col-1"></div>
+                            <label for="other-{{name}}" class="col-5" style="font-size: 16px;">Other:</label>
+                        </div>
+                        <div class="row justify-content-space-between">
+                            <span>$</span><input type="number" id="food-{{name}}" class="form-control item col-5" value={{Expenditure.food_entertainment}}></input>
+                            <div class="col-1"></div>
+                            <span>$</span><input type="number" id="other-{{name}}" class="form-control item col-5" value={{Expenditure.other}}></input>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                            
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-block create-account" id="update-trip-button">Save Trip</button>
+            </div>
+        </form>
+    </div>
+
+
+
+<script src="/js/updateTrip.js"></script>
