@@ -35,10 +35,10 @@ for (let i = 0; i < stopBudget.length; i++) {
   colorArr.push(randomHexColor());
 }
 
-console.log(budgetArr);
-console.log(stopArr);
-console.log(colorArr);
-console.log(totalBudget);
+// console.log(budgetArr);
+// console.log(stopArr);
+// console.log(colorArr);
+// console.log(totalBudget);
 
 
 
@@ -99,22 +99,19 @@ if(stopNames.length < 2) {
   const food_entertainment = document.getElementsByClassName("food_entertainment");
   const other = document.getElementsByClassName("other");
 
-
-  const eventArr = [];
-  const priceArr = [];
   const colorArr = [];
 
   for (let i = 0; i < 4; i++) {
     colorArr.push(randomHexColor());
   }
 
-  console.log(accomodation.value)
+  console.log(accomodation[0].value)
   const xdata = {
     labels: ['Acommodations', 'Travel Costs', 'Food/Enterntainment', 'Other'],
     datasets: [
       {
         label: "My First Dataset",
-        data: [accomodation.value, travel_costs.value, food_entertainment.value, other.value],
+        data: [parseInt(accomodation[0].value), parseInt(travel_costs[0].value), parseInt(food_entertainment[0].value), parseInt(other[0].value)],
         backgroundColor: colorArr,
         hoverOffset: 4,
       },
@@ -137,7 +134,7 @@ if(stopNames.length < 2) {
         },
         title: {
           display: true,
-          text: "Trip Budget",
+          text: "Budget Breakdown",
           padding: {
             top: 10,
             bottom: 10,

@@ -112,7 +112,7 @@ router.get("/trip/:id", withAuth, async (req, res) => {
       // need to get for each desitantion the expenditures and get the total cost that the user is going to use for the trip
       const rawExpenditureData = stopData.map((expen) => expen.get({ plain: true }));
 
-      console.log(rawExpenditureData)
+      console.log(rawExpenditureData[0])
       // let multipleStops = false;
       // if ((rawTrip.Stops).length > 1) {
       //   multipleStops = true
