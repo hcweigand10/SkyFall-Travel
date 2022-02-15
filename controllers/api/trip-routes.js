@@ -92,6 +92,7 @@ router.put("/:id", withAuth, async (req, res) => {
         }
       );
     }
+    res.status(200).send('Updated');
   } catch (err) {
     res.status(500).json(err);
     console.log(err);

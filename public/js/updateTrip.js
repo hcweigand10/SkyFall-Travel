@@ -103,7 +103,7 @@ const tripFormHandler = async function (event) {
   if (!valid) {
     return;
   }
-  await fetch(`/api/trip/${updateId}`, {
+  const update = await fetch(`/api/trip/${updateId}`, {
     method: "PUT",
     body: JSON.stringify({
       name,
@@ -117,16 +117,9 @@ const tripFormHandler = async function (event) {
       "Content-Type": "application/json",
     },
   })
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data.id);
-      tripId = data.id;
-    });
-
+  console.log("hi")
   location.href = `/dashboard/trip/${updateId}`;
 };
-// hi
+
 
 $("#update-trip-button").on("click", tripFormHandler);
