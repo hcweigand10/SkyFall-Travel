@@ -32,17 +32,22 @@ const tripFormHandler = async function (event) {
   // for each loop for each additional stop
   const stopForms = document.querySelectorAll(".stop-form");
   let i = 0;
+  let j = 0;
+  console.log(stopForms)
   stopForms.forEach((element) => {
     i++;
+    if (i > 1) {
+      j = 2;
+    }
     // getting individual budget breakdowns
-    const accomodation = parseInt(element.children[3].children[1].children[1].value);
-    const travel_costs = parseInt(element.children[3].children[1].children[4].value);
-    const food_entertainment = parseInt(element.children[4].children[1].children[1].value);
-    const other = parseInt(element.children[4].children[1].children[4].value);
+    const accomodation = parseInt(element.children[j+3].children[1].children[0].children[1].value);
+    const travel_costs = parseInt(element.children[j+3].children[1].children[1].children[1].value);
+    const food_entertainment = parseInt(element.children[j+4].children[1].children[0].children[1].value);
+    const other = parseInt(element.children[j+4].children[1].children[1].children[1].value);
     const stopObj = {
-      name: element.children[0].children[1].value.trim(),
-      start_date: element.children[1].children[1].children[0].value,
-      end_date: element.children[1].children[1].children[2].value,
+      name: element.children[j].children[1].value.trim(),
+      start_date: element.children[j+1].children[1].children[0].value,
+      end_date: element.children[j+1].children[1].children[2].value,
       budget: accomodation + travel_costs + food_entertainment + other,
     };
     const expenditureObj = {
@@ -130,16 +135,15 @@ $("#additional-stop").on("click", function () {
   stopsCount++;
   console.log(stopsCount)
   $("#stops").append(
-    `<br>
+    `<div id="stop-${stopsCount}" class="stop-form">
+    <br>
     <hr>
-    <div id="stop-${stopsCount}" class="stop-form">
       <div class="form-group">
         <div class="row">
           <label for="stop-name" style="font-size: 24px">
             Stop:
           </label>
           <div class="col-7"></div>
-          <button class="btn btn-danger" style="font-size: 14px; height: 36px;" id="delete-${stopsCount}" onclick="deleteStop(${stopsCount})">Delete Stop</button>
         </div>
         <input
           type="text"
@@ -173,30 +177,45 @@ $("#additional-stop").on("click", function () {
       </div>
       <label for="budget-${stopsCount}">Budget Breakdown:</label>
 
-      <div class="form-group">
+      <div class="input-group mb-3">
           <div class="row">
-              <label for="accomodation-${stopsCount}}" class="col-5" style="font-size: 16px;">Accomodation:</label>
-              <div class="col-1"></div>
-              <label for="travel-costs-${stopsCount}}" class="col-5" style="font-size: 16px;">Travel Costs:</label>
+              <label for="accomodation-${stopsCount}" class="col-5" style="font-size: 16px;">Accomodation:</label>
+              <div class="col-2"></div>
+              <label for="travel-costs-${stopsCount}" class="col-4" style="font-size: 16px;">Travel_Costs:</label>
           </div>
-          <div class="row justify-content-space-between">
-              <span>$</span><input type="number" id="accomodation-${stopsCount}}" class="form-control item col-5" value=0></input>
-              <div class="col-1"></div>
-              <span>$</span><input type="number" id="travel-costs-${stopsCount}}" class="form-control item col-5" value=0></input>
+          <div class="row">
+              <div class="input-group col-5">
+                  <span class="input-group-text">$</span>
+                  <input type="number" id="accomodation-${stopsCount}"class="form-control" aria-label="Amount (to the nearest dollar)" value=0>
+                  <span class="input-group-text">.00</span>
+              </div>
+              <div class="input-group col-5">
+                  <span class="input-group-text">$</span>
+                  <input type="number" id="travel-costs-${stopsCount}"class="form-control" aria-label="Amount (to the nearest dollar)" value=0>
+                  <span class="input-group-text">.00</span>
+              </div>
           </div>
       </div>
-      <div class="form-group">
+      <div class="input-group mb-3">
           <div class="row">
-              <label for="food-${stopsCount}}" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
-              <div class="col-1"></div>
-              <label for="other-${stopsCount}}" class="col-5" style="font-size: 16px;">Other:</label>
+              <label for="food-entertainment-${stopsCount}" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
+              <div class="col-2"></div>
+              <label for="other-${stopsCount}" class="col-4" style="font-size: 16px;">Other:</label>
           </div>
-          <div class="row justify-content-space-between">
-              <span>$</span><input type="number" id="food-${stopsCount}}" class="form-control item col-5" value=0></input>
-              <div class="col-1"></div>
-              <span>$</span><input type="number" id="other-${stopsCount}}" class="form-control item col-5" value=0></input>
+          <div class="row">
+              <div class="input-group col-5">
+                  <span class="input-group-text">$</span>
+                  <input type="number" id="food-entertainment-${stopsCount}"class="form-control" aria-label="Amount (to the nearest dollar)" value=0>
+                  <span class="input-group-text">.00</span>
+              </div>
+              <div class="input-group col-5">
+                  <span class="input-group-text">$</span>
+                  <input type="number" id="other-${stopsCount}"class="form-control" aria-label="Amount (to the nearest dollar)" value=0>
+                  <span class="input-group-text">.00</span>
+              </div>
           </div>
       </div>
+      <button class="btn btn-danger col-3" style="font-size: 14px; height: 36px;" id="delete-${stopsCount}" onclick="deleteStop(${stopsCount})">Delete Stop</button>
     </div>`
   );
 });

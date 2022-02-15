@@ -24,7 +24,7 @@
         </form>
         <form class="mb-3" style="border-radius: 30px;">
 
-            <div id="stops">
+            <div id="stops" class="mb-5">
 
                 <div id="stop-1" class="stop-form">
                     <div class="form-group">
@@ -47,28 +47,42 @@
                     </div>
                     <label for="budget-1">Budget Breakdown:</label>
 
-                    <div class="form-group">
+                    <div class="input-group mb-3">
                         <div class="row">
                             <label for="accomodation-1" class="col-5" style="font-size: 16px;">Accomodation:</label>
-                            <div class="col-1"></div>
-                            <label for="travel-costs-1" class="col-5" style="font-size: 16px;">Travel Costs:</label>
+                            <div class="col-2"></div>
+                            <label for="travel-costs-1" class="col-4" style="font-size: 16px;">Travel_Costs:</label>
                         </div>
-                        <div class="row justify-content-space-between">
-                            <span>$</span><input type="number" id="accomodation-1" class="form-control item col-5" value=0></input>
-                            <div class="col-1"></div>
-                            <span>$</span><input type="number" id="travel-costs-1" class="form-control item col-5" value=0></input>
+                        <div class="row">
+                           <div class="input-group col-5">
+                                <span class="input-group-text">$</span>
+                                <input type="number" id="accomodation-1"class="form-control" aria-label="Amount (to the nearest dollar)" value=0>
+                                <span class="input-group-text">.00</span>
+                            </div>
+                           <div class="input-group col-5">
+                                <span class="input-group-text">$</span>
+                                <input type="number" id="travel-costs-1"class="form-control" aria-label="Amount (to the nearest dollar)" value=0>
+                                <span class="input-group-text">.00</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="input-group mb-3">
                         <div class="row">
-                            <label for="food-1" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
-                            <div class="col-1"></div>
-                            <label for="other-1" class="col-5" style="font-size: 16px;">Other:</label>
+                            <label for="food-entertainment-1" class="col-5" style="font-size: 16px;">Food/Entertainment:</label>
+                            <div class="col-2"></div>
+                            <label for="other-1" class="col-4" style="font-size: 16px;">Other:</label>
                         </div>
-                        <div class="row justify-content-space-between">
-                            <span>$</span><input type="number" id="food-1" class="form-control item col-5" value=0></input>
-                            <div class="col-1"></div>
-                            <span>$</span><input type="number" id="other-1" class="form-control item col-5" value=0></input>
+                        <div class="row">
+                           <div class="input-group col-5">
+                                <span class="input-group-text">$</span>
+                                <input type="number" id="food-entertainment-1"class="form-control" aria-label="Amount (to the nearest dollar)" value=0>
+                                <span class="input-group-text">.00</span>
+                            </div>
+                           <div class="input-group col-5">
+                                <span class="input-group-text">$</span>
+                                <input type="number" id="other-1"class="form-control" aria-label="Amount (to the nearest dollar)" value=0>
+                                <span class="input-group-text">.00</span>
+                            </div>
                         </div>
                     </div>
                 </div>

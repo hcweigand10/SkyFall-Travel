@@ -1,54 +1,71 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
+  <div class="row mb-5">
+    <div class="col-md-7 col-sm-12">
       <div class="jumbotron jumbotron-fluid trip-view-jumbo">
         <div class="container">
-          <h1 class="display-2">Stops</h1>
+          <h3 class="display-2">Your {{TripData.name}} Trip</h3>
           <p class="lead">Add and edit your dream stops to {{TripData.name}}</p>
-          <button class="btn btn-outline-danger jumbo-btn"><a href="#chart">View Budget Distribution</a></button>
+          <a class="btn btn-primary" href="/dashboard/trip/{{TripData.id}}/update">Edit Trip</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <canvas id="budgetChart"></canvas>
+    </div>
+  </div>
+
+  <h4>All Stops:</h4>
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+  {{#each StopData}}
+  <div class="accordion-item">
+    <h1 class="accordion-header" id="flush-heading-{{id}}">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+        {{name}}
+      </button>
+    </h1>
+    <div id="flush-collapse-{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body row">
+        <div class="col-4">
+          <div class="start-date-block date-block">
+            <p style="font-size: 14px; font-weight: lighter;" class="mb-1">Start Date:</p>  
+            <p id="start-date-{{id}}-visible"></p>  
+          </div>
+          <div class="end-date-block date-block">
+            <p style="font-size: 14px; font-weight: lighter;" class="mb-1">End Date:</p>  
+            <p id="end-date-{{id}}-visible"></p>  
+          </div>
+        </div>
+        <div class="col-6">
+          <p style="font-size: 14px; font-weight: lighter;" >Cost Breakdown</p>
+          <ul style="list-style-type: none">
+            <li>Acommodation: ${{Expenditure.accomodation}}.00</li>
+            <li>Travel Costs: ${{Expenditure.travel_costs}}.00</li>
+            <li>Food and Entertainment: ${{Expenditure.food_entertainment}}.00</li>
+            <li>Other: ${{Expenditure.other}}.00</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
-
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <!-- HTML !-->
-      <div class=" flex-row justify-center">
-        <button class="button-73" role="button"><a href="/dashboard/trip/{{TripData.id}}/new">➕ Add Stop</a></button>
-        <button class="button-73" role="button"><a href="/dashboard/trip/{{TripData.id}}/update">Edit Trip</a></button>
-      </div>
-          {{#each TripData.Stops}}
-            <div class="card trip-card">
-              <input type="hidden" value="{{budget}}">
-              <div class="card-body">
-                <h5 class="card-title">{{name}}</h5>
-                <p class="card-text">Start Date: <span>{{start_date}}</span></p>
-                <p class="card-text">Start Date: <span>{{end_date}}</span></p>
-                <p class="card-text" id="budget-price">Budget: <span class="budget">{{budget}}</span></p>
-                <a href="/dashboard/trip/{{../TripData.id}}/stop/{{id}}" class="btn btn-primary">View Stop</a>
-                <button class='btn delete-stop-button btn-primary' type="click" id="{{id}}" data-trip-id="{{../TripData.id}}">Delete Stop</button>
-              </div>
-            </div>
-          {{/each}}
-    </div >
-      
-    <div class="col-sm-12 col-md-6">
-      <canvas id="budgetChart"></canvas>
-    </div>
+  {{/each}}
+</div>
+    
 
 </div>
 
 {{!-- hidden expenditure data for the first stop if only 1 present --}}
-  {{#each Expenditure1}}
-  <input type="hidden" value="{{accomodation}}" class="accomodation">
-  <input type="hidden" value="{{travel_costs}}" class="travel_costs">
-  <input type="hidden" value="{{food_entertainment}}" class="food_entertainment">
-  <input type="hidden" value="{{other}}" class="other">
+  {{#each StopData}}
+  <input type="hidden" value="{{Expenditure.accomodation}}" class="accomodation">
+  <input type="hidden" value="{{Expenditure.travel_costs}}" class="travel_costs">
+  <input type="hidden" value="{{Expenditure.food_entertainment}}" class="food_entertainment">
+  <input type="hidden" value="{{Expenditure.other}}" class="other">
+  <input type="hidden" value="{{start_date}}" class="start-date" id="start-date-{{id}}"> 
+  <input type="hidden" value="{{end_date}}" class="end-date" id="end-date-{{id}}">
   {{/each}}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/graph.js"></script>
+<script src="/js/tripView.js"></script>
 
 {{!-- <script src="/js/edit-stop.js"></script> --}}
 <script src="/js/deleteStop.js"></script>

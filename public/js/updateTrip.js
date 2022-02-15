@@ -38,10 +38,10 @@ const tripFormHandler = async function (event) {
     console.log(element);
     i++;
     // getting individual budget breakdowns
-    const accomodation = parseInt(element.children[3].children[1].children[1].value);
-    const travel_costs = parseInt(element.children[3].children[1].children[4].value);
-    const food_entertainment = parseInt(element.children[4].children[1].children[1].value);
-    const other = parseInt(element.children[4].children[1].children[4].value);
+    const accomodation = parseInt(element.children[3].children[1].children[0].children[1].value);
+    const travel_costs = parseInt(element.children[3].children[1].children[1].children[1].value);
+    const food_entertainment = parseInt(element.children[4].children[1].children[0].children[1].value);
+    const other = parseInt(element.children[4].children[1].children[1].children[1].value);
     const stopObj = {
       name: element.children[0].children[1].value.trim(),
       start_date: element.children[1].children[1].children[0].value,
