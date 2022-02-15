@@ -31,7 +31,6 @@ const tripFormHandler = async function (event) {
   let tripBudget = 0;
   // for each loop for each additional stop
   const stopForms = document.querySelectorAll(".stop-form");
-  console.log(stopForms)
   let i = 0;
   stopForms.forEach((element) => {
     i++;
