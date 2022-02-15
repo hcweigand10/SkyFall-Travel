@@ -1,5 +1,4 @@
 const now = moment();
-console.log((document.querySelectorAll(".stop-form")).length);
 let stopsCount=1;
 let stops = [];
 let stopBreakdowns = []
@@ -32,9 +31,9 @@ const tripFormHandler = async function (event) {
   let tripBudget = 0;
   // for each loop for each additional stop
   const stopForms = document.querySelectorAll(".stop-form");
+  console.log(stopForms)
   let i = 0;
   stopForms.forEach((element) => {
-    console.log(element);
     i++;
     // getting individual budget breakdowns
     const accomodation = parseInt(element.children[3].children[1].children[1].value);
@@ -102,6 +101,7 @@ const tripFormHandler = async function (event) {
   if (!valid) {
     return;
   }
+  console.log(stops);
   await fetch("/api/trip", {
     method: "POST",
     body: JSON.stringify({
@@ -124,15 +124,16 @@ const tripFormHandler = async function (event) {
       tripId = data.id;
     });
 
-  // location.href = `/dashboard/trip/${tripId}`;
+  location.href = `/dashboard/trip/${tripId}`;
 };
 
 $("#additional-stop").on("click", function () {
   stopsCount++;
+  console.log(stopsCount)
   $("#stops").append(
-    `<div id="stop-${stopsCount}">
-    <br>
+    `<br>
     <hr>
+    <div id="stop-${stopsCount}" class="stop-form">
       <div class="form-group">
         <div class="row">
           <label for="stop-name" style="font-size: 24px">
