@@ -30,7 +30,7 @@ async function editFormHandler(event) {
         console.log('=============');
         // document.location.replace(`/dashboard/trip/${tripId}`);
     } else {
-      alert('Failed to edit dish');
+      alert('Failed to edit stop');
     }
   }
   
