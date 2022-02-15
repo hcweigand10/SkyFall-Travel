@@ -194,7 +194,7 @@ body::before {
   background-size: cover;
   background: contain; 
   width: auto; /* make sure to define width to fill container */
-  height: 40vh;
+  height: 45vh;
 }
 
 .carousel-caption {
