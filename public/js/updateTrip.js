@@ -125,7 +125,7 @@ const tripFormHandler = async function (event) {
       tripId = data.id;
     });
 
-  location.href = `/dashboard/trip/${tripId}`;
+  location.href = `/dashboard/trip/${updateId}`;
 };
 
 
