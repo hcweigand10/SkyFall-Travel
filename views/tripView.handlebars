@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row mb-5">
-    <div class="col-md-7 col-sm-12">
+    <div class="col-sm-12 col-md-6 col-lg-7">
       <div class="jumbotron jumbotron-fluid trip-view-jumbo">
         <div class="container">
-          <h3 class="display-2">Your {{TripData.name}} Trip</h3>
+          <h3 class="display-4">Your {{TripData.name}} Trip</h3>
           <p class="lead">Add and edit your dream stops to {{TripData.name}}</p>
           <a class="btn btn-primary" href="/dashboard/trip/{{TripData.id}}/update">Edit Trip</a>
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-4">
+    <div class="col-sm-12 col-md-6 col-lg-5">
       <canvas id="budgetChart"></canvas>
     </div>
   </div>
@@ -19,12 +19,12 @@
   {{#each StopData}}
   <div class="accordion-item">
     <h1 class="accordion-header" id="flush-heading-{{id}}">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+      <button class="accordion-button collapsed stopName" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
         {{name}}
       </button>
     </h1>
     <div id="flush-collapse-{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-      <div class="accordion-body row">
+      <div class="accordion-body row" data-city={{name}}>
         <div class="col-4">
           <div class="start-date-block date-block">
             <p style="font-size: 14px; font-weight: lighter;" class="mb-1">Start Date:</p>  
@@ -34,9 +34,10 @@
             <p style="font-size: 14px; font-weight: lighter;" class="mb-1">End Date:</p>  
             <p id="end-date-{{id}}-visible"></p>  
           </div>
+          <button class="btn btn-danger" id="delete-{{id}}" onclick="deleteStop({{id}},{{tripId}})">Delete Stop</button>
         </div>
         <div class="col-6">
-          <p style="font-size: 14px; font-weight: lighter;" >Cost Breakdown</p>
+          <p style="font-size: 14px; font-weight: lighter;" >Cost Breakdown: <span class="budget">{{budget}}</span></p>
           <ul style="list-style-type: none">
             <li>Acommodation: ${{Expenditure.accomodation}}.00</li>
             <li>Travel Costs: ${{Expenditure.travel_costs}}.00</li>
@@ -62,11 +63,13 @@
   <input type="hidden" value="{{start_date}}" class="start-date" id="start-date-{{id}}"> 
   <input type="hidden" value="{{end_date}}" class="end-date" id="end-date-{{id}}">
   {{/each}}
+  <input type="hidden" value="{{TripData.id}}" id="trip-id">
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/graph.js"></script>
 <script src="/js/tripView.js"></script>
-
+<script src="/js/weather.js"></script>
 {{!-- <script src="/js/edit-stop.js"></script> --}}
 <script src="/js/deleteStop.js"></script>
 

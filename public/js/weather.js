@@ -1,64 +1,84 @@
 
-  window.onload = async function(){
-      console.log('In weatherGetter =====================')
-    const cityList = $("[data-city]");
-  
-    console.log(cityList)
-    for(let i = 0; i < cityList.length; i++){
-        const city = cityList[i].dataset.city;
-    fetch(`/weather/${city}`, {
+window.onload = getWeatherAndWidget();
+async function getWeatherAndWidget(){
+  const cityList = $("[data-city]");
+  for(let i = 0; i < cityList.length; i++){
+      const city = cityList[i].dataset.city;
+      const path = "";
+     if(cityList[i].classList.contains('accordion')){
+      path = "/../..";
+     }
+      fetch(`/weather/${city}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       }
     }).then((response) => response.json()).then(response =>{
-    console.log('--------------------')
-    console.log(response);
-    let header = document.createElement('h5');
-    header.className = 'card-title'
-    cityList[i].appendChild(header);
-    cityList[i].appendChild(createWeatherWidget(response));
+      if(response.description){
+        cityList[i].appendChild(createWeatherWidget(response,path));
+      }else{
+        cityList[i].appendChild(createFailedWidget());
+      }
     });
-    }
-  };
-
-
+  }
+}
+  
 //Adds icons based on the contents of the description that is passed in
-function addIcons(day, description){
-  console.log(day)
+function addIcons(day, description, path){
   let image = document.createElement('img');
-  image.classList = ("card-img-top");
+   image.classList = ("card-img-top");
   if (description.includes('lightening')|| description.includes('thunder')) {
-    image.src = "../assets/storm.png"
+    image.src = path + "/../assets/storm.png"
   } else if (description.includes('rain')) {
-    image.src = "../assets/rain.png"
+    image.src = path + "/../assets/rain.png"
   } else if (description.includes('wind')) {
-    image.src = "../assets/windIcon.png"
+    image.src = path + "/../assets/windIcon.png"
   } else if (description.includes('snow')|| description.includes('freezing')|| description.includes('sleet') ||  description.includes('flurries')) {
-    image.src = "../assets/snow.png"
+    image.src = path + "/../assets/snow.png"
   } else if (description.includes('cloud') || description.includes('overcast')) {
-    image.src = "../assets/cloud.png"
+    image.src = path + "/../assets/cloud.png";
   } else if (description.includes('fog')) {
-    image.src = "../assets/fog.png"
+    image.src = path + "/../assets/fog.png"
   }
   else {
-    image.src = "../assets/sunny.png"
+    image.src = path + "/../assets/sunny.png"
   }
   day.appendChild(image);
-  console.log(day)
   return day;
 }
 
 //Creates the weather cards with the date, location, icons, and any data.
-function createWeatherWidget(data){
+function createWeatherWidget(data, path){
   let weatherData = document.createElement('div');
-  addIcons(weatherData, data['description']);
+  if(data.description){
+    addIcons(weatherData, data['description'], path);
+  }
+  weatherData.className += ("col card weather-card");
+  let cardBody = document.createElement('div');
+  cardBody.className = 'card-body';
+  let cardText = document.createElement('p');
+  cardText.className = 'card-text';
+  cardText.innerHTML= (`Current:  ${data['curTemp']}°F <br>${data['condition']}`);
+  cardText.style.color = 'black';
+  cardBody.appendChild(cardText);
+  weatherData.appendChild(cardBody);
+  weatherData.classList.add('row');
+  return weatherData;
+}
+
+
+//Creates the weather cards with the date, location, icons, and any data.
+function createFailedWidget(){
+  let weatherData = document.createElement('div');
+  let image = document.createElement('img');
+  image.src = '/../../../assets/car.png'
+  weatherData.appendChild(image);
   weatherData.className += ("col card weather-card")
   let cardBody = document.createElement('div');
   cardBody.className = 'card-body';
   let cardText = document.createElement('p');
   cardText.className = 'card-text';
-  cardText.innerHTML= (`Current Temp:  ${data['curTemp']}°F <br>${data['condition']}`);
+  cardText.innerHTML= (`Change this stop's name for current weather!`);
   cardText.style.color = 'black';
   cardBody.appendChild(cardText);
   weatherData.appendChild(cardBody);

@@ -1,5 +1,5 @@
 let stopBudget = document.getElementsByClassName("budget");
-let stopNames = document.getElementsByClassName("card-title");
+let stopNames = document.getElementsByClassName("stopName");
 
 const budgetArr = [];
 const stopArr = [];
@@ -35,10 +35,10 @@ for (let i = 0; i < stopBudget.length; i++) {
   colorArr.push(randomHexColor());
 }
 
-// console.log(budgetArr);
-// console.log(stopArr);
-// console.log(colorArr);
-// console.log(totalBudget);
+console.log(budgetArr);
+console.log(stopArr);
+console.log(colorArr);
+console.log(totalBudget);
 
 
 
@@ -91,7 +91,7 @@ const config = {
     },
   },
 };
-
+console.log(stopNames);
 if(stopNames.length < 2) {
 
   const accomodation = document.getElementsByClassName("accomodation");
