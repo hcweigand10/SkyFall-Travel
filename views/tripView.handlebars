@@ -34,6 +34,7 @@
             <p style="font-size: 14px; font-weight: lighter;" class="mb-1">End Date:</p>  
             <p id="end-date-{{id}}-visible"></p>  
           </div>
+          <button class="btn btn-danger" id="delete-{{id}}" onclick="deleteStop({{id}},{{tripId}})">Delete Stop</button>
         </div>
         <div class="col-6">
           <p style="font-size: 14px; font-weight: lighter;" >Cost Breakdown</p>
@@ -62,6 +63,8 @@
   <input type="hidden" value="{{start_date}}" class="start-date" id="start-date-{{id}}"> 
   <input type="hidden" value="{{end_date}}" class="end-date" id="end-date-{{id}}">
   {{/each}}
+  <input type="hidden" value="{{TripData.id}}" id="trip-id">
+
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/js/graph.js"></script>
