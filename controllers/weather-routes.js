@@ -6,7 +6,6 @@ const axios = require('axios');
 router.get('/:city', async (req, res) => {
     const city=toTitleCase(req.params.city);
     const response = await getWeatherReportByCity(city);
-
     res.json(response);
     
 })
@@ -42,7 +41,9 @@ async function getLongAndLat(city){
                 lat: data['coord']['lat'],
                 long: data['coord']['lon']
             };
-        });
+        }).catch((error) => {
+            return ['error'];
+        })
 }
 
 
@@ -53,8 +54,6 @@ function getWeatherByLongAndLat(lat, long) {
         method: 'get',
         url: queryURL
     }).then(function(response){
-        console.log("Waiting response");
-        console.log(response);
         data = response['data'];
         const currentWeather = data['current'];
         //Adds the current weather information to the forecast object before returning the object
@@ -64,7 +63,9 @@ function getWeatherByLongAndLat(lat, long) {
             condition: currentWeather['weather'][0]['main'],
             description: currentWeather['weather'][0]['description']
         };
-    });
+    }).catch((error) => {
+        return ['error'];
+    })
 }
 
 module.exports = router;

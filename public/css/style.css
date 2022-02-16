@@ -371,42 +371,7 @@ hr {
 main{
   margin-bottom: 15px;
 }
-.city-name{
-  display: flex; 
-  align-items: center;
-  justify-content: space-evenly;
-}
-.weather-card.card{
-  display: flex; 
-  margin: 15px 0;
-  font-size: 1.5rem;
-  min-width: 75%;
-  max-width: 75%;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-direction: row;
-  background:linear-gradient(
-    rgba(218, 216, 211, 0.841) 35%,
-    rgb(231, 231, 226) 100%
-    rgba(117, 117, 115, 0.633) 0%,
-  );
-}
-.card-img-top{
-  max-width: 20%;
-}
-.weather-card.row{
-  min-width: 5%;
-}
-.weather-card> .card-body{
-  margin: 0;
-  padding: 1% 0;
-  min-width: 50%;
-  max-width: 50%;
-}
-.weather-card> p{
-  padding: 0;
-  
-}
+
 .bi-signpost-split::before, .bi-calendar-plus::before {
   transform: translateY(30px);
 }
@@ -451,4 +416,42 @@ select.form-control:not([size]):not([multiple]) {
 
 .card-text {
   text-align: center;
+}
+
+.city-name{
+  display: flex; 
+  align-items: center;
+  justify-content: space-evenly;
+}
+.weather-card.card{
+  display: flex; 
+  margin: 15px 0;
+  font-size: 1.5rem;
+  min-width: 75%;
+  max-width: 75%;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.card-img-top{
+  max-width: 50%;
+}
+.weather-card.row{
+  min-width: 5%;
+}
+.weather-card> .card-body{
+  margin: 1% 2%;
+  padding: 1%;
+  min-width: 75%;
+  max-width: 75%;
+}
+.weather-card> p{
+  padding: 0;
+}
+.weather-card {
+  background: linear-gradient(
+    #b4d9ed,
+    #80cdf0,
+    #4eb7ec
+  );
 }
