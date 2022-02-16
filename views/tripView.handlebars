@@ -19,7 +19,7 @@
   {{#each StopData}}
   <div class="accordion-item">
     <h1 class="accordion-header" id="flush-heading-{{id}}">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
+      <button class="accordion-button collapsed stopName" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse-{{id}}" aria-expanded="false" aria-controls="flush-collapseOne">
         {{name}}
       </button>
     </h1>
@@ -37,7 +37,7 @@
           <button class="btn btn-danger" id="delete-{{id}}" onclick="deleteStop({{id}},{{tripId}})">Delete Stop</button>
         </div>
         <div class="col-6">
-          <p style="font-size: 14px; font-weight: lighter;" >Cost Breakdown</p>
+          <p style="font-size: 14px; font-weight: lighter;" >Cost Breakdown: <span class="budget">{{budget}}</span></p>
           <ul style="list-style-type: none">
             <li>Acommodation: ${{Expenditure.accomodation}}.00</li>
             <li>Travel Costs: ${{Expenditure.travel_costs}}.00</li>
