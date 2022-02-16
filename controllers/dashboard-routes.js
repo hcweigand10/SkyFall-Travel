@@ -16,7 +16,7 @@ router.get("/", withAuth, async (req, res) => {
     });
     const userRaw = userData.get({ plain: true });
 
-    res.render("userDashboard", {
+    res.render("userdashboard", {
       layout: "dashboard",
       userData: userRaw,
       User: req.session.user,
