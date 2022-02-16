@@ -396,3 +396,41 @@ select.form-control:not([size]):not([multiple]) {
 .card-text {
   text-align: center;
 }
+
+.city-name{
+  display: flex; 
+  align-items: center;
+  justify-content: space-evenly;
+}
+.weather-card.card{
+  display: flex; 
+  margin: 15px 0;
+  font-size: 1.5rem;
+  min-width: 75%;
+  max-width: 75%;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+}
+.card-img-top{
+  max-width: 50%;
+}
+.weather-card.row{
+  min-width: 5%;
+}
+.weather-card> .card-body{
+  margin: 1% 2%;
+  padding: 1%;
+  min-width: 75%;
+  max-width: 75%;
+}
+.weather-card> p{
+  padding: 0;
+}
+.weather-card {
+  background: linear-gradient(
+    #b4d9ed,
+    #80cdf0,
+    #4eb7ec
+  );
+}
