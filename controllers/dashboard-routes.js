@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { User, Trip, Stop, Expenditure } = require("../models/");
 const withAuth = require("../utils/auth");
 
-// display all the trips that the user has created and their stops
+// display all the trips that the user has created and their stop
 router.get("/", withAuth, async (req, res) => {
   try {
     const userData = await User.findByPk(req.session.user.id, {
