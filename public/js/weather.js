@@ -30,7 +30,7 @@ function addIcons(day, description, path){
   if (description.includes('lightening')|| description.includes('thunder')) {
     image.src = path + "/../assets/storm.png"
   } else if (description.includes('rain')) {
-    image.src = path + "/../assets/rain.png"
+    image.src = path + "/../assets/raincloud.png"
   } else if (description.includes('wind')) {
     image.src = path + "/../assets/windIcon.png"
   } else if (description.includes('snow')|| description.includes('freezing')|| description.includes('sleet') ||  description.includes('flurries')) {
