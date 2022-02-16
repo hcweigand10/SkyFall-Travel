@@ -146,6 +146,7 @@ body::before {
 
 .nav-link {
   padding: 0.2rem 1rem;
+  margin-bottom: 5px;
 }
 
 .navbar-toggler {
@@ -386,10 +387,9 @@ select.form-control:not([size]):not([multiple]) {
   background-image: url(/assets/travel.gif);
   background-repeat: no-repeat;
   background-size: cover;
-  /* background-attachment: fixed; */
   background-position: center;
   height: 300px;
-  border-radius: 20px;
+  border-radius: 30px;
   width: 100%;
 }
 
@@ -433,4 +433,9 @@ select.form-control:not([size]):not([multiple]) {
     #80cdf0,
     #4eb7ec
   );
+}
+
+.nav-item:hover {
+  border-bottom: 2px solid skyblue;
+  margin: -2px;
 }
