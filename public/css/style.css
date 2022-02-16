@@ -129,31 +129,15 @@ body::before {
 }
 
 /* navbar css */
-
-nav {
-  max-height: 78px;
+.navbar {
+  background: whitesmoke;
 }
+
 .navbar-light .navbar-brand {
-  /* color: #fff; */
   font-size: 30px;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 2px;
-}
-
-/* .navbar-light .navbar-nav .active > .nav-link,
-.navbar-light .navbar-nav .nav-link.active,
-.navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav .show > .nav-link {
-  color: #fff;
-} */
-
-/* .navbar-light .navbar-nav .nav-link {
-  color: #fff;
-} */
-
-.navbar-toggler {
-  background: #fff;
 }
 
 .navbar-nav {
@@ -164,12 +148,8 @@ nav {
   padding: 0.2rem 1rem;
 }
 
-/* .nav-link.active,
-.nav-link:focus {
-  color: #fff;
-} */
-
 .navbar-toggler {
+  background: #fff;
   padding: 1px 5px;
   font-size: 18px;
   line-height: 0.3;
@@ -180,14 +160,9 @@ nav {
   color: skyblue;
 } 
 
-.nav-link:hover {
-  border-bottom: 2px solid skyblue;
-}
-
 .nav-content {
-  margin-top: 2%;
+  margin-top: 1%;
 }
-
 
 /* carousel styling */
 .carousel {
@@ -223,9 +198,7 @@ nav {
   line-height: 1.9;
 }
 
-.navbar {
-  background: whitesmoke;
-}
+
 
 footer {
   background: whitesmoke;
@@ -252,7 +225,7 @@ footer {
   height: fit-content;
 }
 
-/* login style */
+/* create trips/stops form styling */
 .registration-form{
 	padding: 50px 0;
 }
@@ -297,43 +270,6 @@ footer {
     margin-top: 20px;
 }
 
-.registration-form .social-media{
-    max-width: 600px;
-    background-color: #fff;
-    margin: auto;
-    padding: 35px 0;
-    text-align: center;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    color: #9fadca;
-    border-top: 1px solid #dee9ff;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
-}
-
-.registration-form .social-icons{
-    margin-top: 30px;
-    margin-bottom: 16px;
-}
-
-.registration-form .social-icons a{
-    font-size: 23px;
-    margin: 0 3px;
-    color: #5691ff;
-    border: 1px solid;
-    border-radius: 50%;
-    width: 45px;
-    display: inline-block;
-    height: 45px;
-    text-align: center;
-    background-color: #fff;
-    line-height: 45px;
-}
-
-.registration-form .social-icons a:hover{
-    text-decoration: none;
-    opacity: 0.6;
-}
-
 @media (max-width: 576px) {
     .registration-form form{
         padding: 50px 20px;
@@ -371,11 +307,14 @@ hr {
 main{
   margin-bottom: 15px;
 }
+
+/* carousel content styling */
 .city-name{
   display: flex; 
   align-items: center;
   justify-content: space-evenly;
 }
+
 .weather-card.card{
   display: flex; 
   margin: 15px 0;
@@ -391,12 +330,15 @@ main{
     rgba(117, 117, 115, 0.633) 0%,
   );
 }
+
 .card-img-top{
   max-width: 20%;
 }
+
 .weather-card.row{
   min-width: 5%;
 }
+
 .weather-card> .card-body{
   margin: 0;
   padding: 1% 0;
@@ -407,6 +349,8 @@ main{
   padding: 0;
   
 }
+
+
 .bi-signpost-split::before, .bi-calendar-plus::before {
   transform: translateY(30px);
 }
