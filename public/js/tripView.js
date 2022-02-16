@@ -17,5 +17,16 @@ endDates.forEach(element => {
     document.querySelector(`#${tripId}-visible`).innerHTML = formatDate
 });
 
+const deleteStop = async (id,tripId) => {
+    console.log(id,tripId);
+    const response = await fetch(`/api/stop/${id}/${tripId}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      console.log(response);
+      location.reload();
+}
 
 
