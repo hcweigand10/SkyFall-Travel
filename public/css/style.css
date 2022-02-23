@@ -8,7 +8,6 @@
 
 body {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-  font-weight: bold;
 }
 
 .container-fluid > h3 {
@@ -25,6 +24,7 @@ body {
   background-size: auto;
   /* background-attachment: fixed; */
   background-position: center;
+  padding: 4rem 2rem;
 }
 
 .trip-view-jumbo {
@@ -126,6 +126,9 @@ body::before {
     font-size: 1.5rem;
     padding: 0.75rem 2rem;
   }
+  .accordian-body {
+    text-align: center;
+  }
 }
 
 /* navbar css */
@@ -146,7 +149,8 @@ body::before {
 
 .nav-link {
   padding: 0.2rem 1rem;
-  margin-bottom: 5px;
+  margin-bottom: 3px;
+  margin-top: 5px
 }
 
 .navbar-toggler {
@@ -165,37 +169,42 @@ body::before {
   margin-top: 1%;
 }
 
-/* carousel styling */
+/* carousel styling */ 
 .carousel {
   margin: 20px auto;
 }
 .carousel-item {
-  min-height: 300px;
+  max-height: 45vh;
   background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background: contain; 
-  width: auto; /* make sure to define width to fill container */
-  height: 45vh;
+  -webkit-background-size: auto;
+  -moz-background-size: auto;
+  -o-background-size: auto;
+  background-size: auto;
+  background: contain;  
+  width: 100%; 
 }
 
 .carousel-caption {
-  bottom: 270px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .carousel-caption h5 {
-  font-size: 45px;
+  font-size: 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-top: 25px;
+  margin-top: 25px; 
+}
+@media screen and (max-width: 375px) {
+  .carousel-caption h5 {
+    font-size: 1rem;
+  }
 }
 
 .carousel-caption p {
+  margin: 0 auto;
   width: 75%;
-  margin: auto;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 1.9;
 }
 
@@ -292,7 +301,7 @@ h5 {
 
 hr {
   width: 60%;
-  margin: 0 auto;
+  margin: 20px auto;
 }
 
 .card-link {
@@ -391,6 +400,7 @@ select.form-control:not([size]):not([multiple]) {
   height: 300px;
   border-radius: 30px;
   width: 100%;
+  margin: 15px auto;
 }
 
 .card-text {
@@ -411,6 +421,7 @@ select.form-control:not([size]):not([multiple]) {
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
+  margin: 0 auto;
 }
 .card-img-top{
   max-width: 50%;
@@ -437,5 +448,191 @@ select.form-control:not([size]):not([multiple]) {
 
 .nav-item:hover {
   border-bottom: 2px solid skyblue;
-  margin: -2px;
+  margin: -1px;
+}
+
+
+a:hover{
+  text-decoration: none;
+}
+
+.card {
+  min-height: 140px;
+}
+
+.headerContent {
+  margin: 50px auto;
+}
+
+.title{
+  font-weight: bold;
+}
+
+
+.wrapper {
+  max-width: 350px;
+  min-height: 500px;
+  margin: 80px auto;
+  padding: 40px 30px 30px 30px;
+  background-color: #ecf0f3;
+  border-radius: 15px;
+  /* box-shadow: 13px 13px 20px #cbced1, -13px -13px 20px #fff */
+}
+
+.logo {
+  width: 80px;
+  margin: auto
+}
+
+.logo img {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0px 0px 3px #5f5f5f, 0px 0px 0px 5px #ecf0f3, 8px 8px 15px #a7aaa7, -8px -8px 15px #fff
+}
+
+.wrapper .name {
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 1.3px;
+  padding-left: 10px;
+  color: #555
+}
+
+.wrapper .form-field input {
+  width: 100%;
+  display: block;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 1.2rem;
+  color: #666;
+  padding: 10px 15px 10px 10px
+}
+
+.wrapper .form-field {
+  padding-left: 10px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff
+}
+
+.wrapper .form-field .fas {
+  color: #555
+}
+
+.wrapper .btn {
+  box-shadow: none;
+  width: 100%;
+  height: 40px;
+  background-color: #03A9F4;
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 3px 3px 3px #b1b1b1, -3px -3px 3px #fff;
+  letter-spacing: 1.3px
+}
+
+.wrapper .btn:hover {
+  background-color: #039BE5
+}
+
+.wrapper a {
+  text-decoration: none;
+  font-size: 0.8rem;
+  color: #03A9F4
+}
+
+.wrapper a:hover {
+  color: #039BE5
+}
+
+@media(max-width: 380px) {
+  .wrapper {
+      margin: 30px 20px;
+      padding: 40px 15px 15px 15px
+  }
+}
+
+/* contact form styling  */
+.contact-form {
+  width: 500px;
+  height: 500px;
+  background: whitesmoke;
+  border-radius: 8px;
+  box-shadow: 0 0 40px -10px #000;
+  margin: calc(50vh - 220px) auto;
+  padding: 20px 30px;
+  max-width: calc(100vw - 40px);
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+}
+
+#contactHeader {
+  margin: 10px 0;
+  padding-bottom: 10px;
+  width: 180px;
+  color:skyblue;
+  border-bottom: 3px solid skyblue;
+}
+
+
+#contactInput {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  font-family: "Montserrat", sans-serif;
+  transition: all 0.3s;
+  border-bottom: 2px solid #bebed2;
+}
+
+#contactInput:focus {
+  border-bottom: 2px solid #3232bb;
+}
+
+#contactText:before {
+  content: attr(type);
+  display: block;
+  margin: 28px 0 0;
+  font-size: 14px;
+  color: #5a5a5a;
+}
+
+#messageBtn {
+  float: right;
+  padding: 8px 12px;
+  margin: 8px 0 0;
+  font-family: "Montserrat", sans-serif;
+  border: 2px solid #78788c;
+  background: 0;
+  color: #5a5a6e;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+#messageBtn:hover {
+  background: #78788c;
+  color: #fff;
+}
+
+#company-info {
+  content: "Hi";
+  position: absolute;
+  bottom: -30px;
+  right: -20px;
+  background: #50505a;
+  color: #fff;
+  width: 320px;
+  padding: 16px 4px 16px 0;
+  border-radius: 6px;
+  font-size: 13px;
+  box-shadow: 10px 10px 40px -14px #000;
+}
+
+#companySpan {
+  margin: 0 5px 0 15px;
 }

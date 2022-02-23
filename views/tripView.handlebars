@@ -25,7 +25,7 @@
     </h1>
     <div id="flush-collapse-{{id}}" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
       <div class="accordion-body row" data-city={{name}}>
-        <div class="col-4">
+        <div class="col-sm-12 col-md-4 mx-auto">
           <div class="start-date-block date-block">
             <p style="font-size: 14px; font-weight: lighter;" class="mb-1">Start Date:</p>  
             <p id="start-date-{{id}}-visible"></p>  
@@ -36,7 +36,7 @@
           </div>
           <button class="btn btn-danger" id="delete-{{id}}" onclick="deleteStop({{id}},{{tripId}})">Delete Stop</button>
         </div>
-        <div class="col-6">
+        <div class="col-sm-12 col-md-4 mx-auto">
           <p style="font-size: 14px; font-weight: lighter;" >Cost Breakdown: <span class="budget">{{budget}}</span></p>
           <ul style="list-style-type: none">
             <li>Acommodation: ${{Expenditure.accomodation}}.00</li>
