@@ -53,7 +53,7 @@ function createWeatherWidget(data, path){
   if(data.description){
     addIcons(weatherData, data['description'], path);
   }
-  weatherData.className += ("col card weather-card");
+  weatherData.className += ("col-sm-12 col-md-3 card weather-card");
   let cardBody = document.createElement('div');
   cardBody.className = 'card-body';
   let cardText = document.createElement('p');
