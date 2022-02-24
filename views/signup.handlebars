@@ -1,4 +1,4 @@
-<div class="container bg-white">
+{{!-- <div class="container bg-white">
     <div class="row py-5 mt-4 align-items-center">
         <!-- For Demo Purpose -->
         <div class="col-md-5 pr-lg-5 mb-5 mb-md-0 ml-auto">
@@ -32,22 +32,6 @@
                         </div>
                         <input id="email-signup" type="email" name="email" placeholder="Email Address" class="form-control bg-white border-left-0 border-md">
                     </div>
-
-                    {{!-- <!-- Phone Number -->
-                    <div class="input-group col-lg-12 mb-4">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text bg-white px-4 border-md border-right-0">
-                                <i class="fa fa-phone-square text-muted"></i>
-                            </span>
-                        </div>
-                        <select id="countryCode" name="countryCode" style="max-width: 80px" class="custom-select form-control bg-white border-left-0 border-md h-100 font-weight-bold text-muted">
-                            <option value="">+12</option>
-                            <option value="">+10</option>
-                            <option value="">+15</option>
-                            <option value="">+18</option>
-                        </select>
-                        <input id="phoneNumber" type="tel" name="phone" placeholder="Phone Number" class="form-control bg-white border-md border-left-0 pl-3">
-                    </div> --}}
 
                     <!-- Password -->
                     <div class="input-group col-lg-6 mb-4">
@@ -92,6 +76,19 @@
             </form>
         </div>
     </div>
+</div> --}}
+
+<div class="wrapper">
+    <div class="logo"> <img src="https://www.freepnglogos.com/uploads/twitter-logo-png/twitter-bird-symbols-png-logo-0.png" alt=""> </div>
+    <div class="text-center mt-4 name"> Create an Account </div>
+    <form class="p-3 mt-3" id="signup-form">
+        <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="text" name="name" id="name-signup" placeholder="Name"> </div>
+        <div class="form-field d-flex align-items-center"> <span class="far fa-user"></span> <input type="email" name="email" id="email-signup" placeholder="Email"> </div>
+        <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="password" id="password-signup" placeholder="Password"> </div>
+        <div class="form-field d-flex align-items-center"> <span class="fas fa-key"></span> <input type="password" name="passwordConfirmation" id="confirm-password-signup" placeholder="Confirm Password"> </div>
+        <button class="btn mt-3" type="submit">Create an Account</button>
+    </form>
+    <div class="text-center fs-6"> <a href="#">Forgot Password?</a> or <a href="/login">Login</a> </div>
 </div>
 
   <script src="/js/signup.js"></script>
