@@ -174,14 +174,10 @@ body::before {
   margin: 20px auto;
 }
 .carousel-item {
-  max-height: 45vh;
-  background: no-repeat center center scroll;
-  -webkit-background-size: auto;
-  -moz-background-size: auto;
-  -o-background-size: auto;
-  background-size: auto;
-  background: contain;  
-  width: 100%; 
+  height: 30rem;
+  position: relative;
+  background:rgb(100, 90, 90);
+  color: white;
 }
 
 .carousel-caption {
@@ -195,6 +191,18 @@ body::before {
   letter-spacing: 2px;
   margin-top: 25px; 
 }
+
+.overlay-image {
+  position: absolute;
+  top: 0;
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  background-position: center;
+  background-size: cover;
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 375px) {
   .carousel-caption h5 {
     font-size: 1rem;

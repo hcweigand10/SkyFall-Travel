@@ -1,12 +1,15 @@
 const router = require('express').Router();
-const { User, Trip } = require('../models/');
+const { Locations } = require('../models/');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
-    console.log(req.session)
+    const locationData = await Locations.findAll();
+    const locationsRaw = await locationData.map(location => location.get({ plain: true }));
+    console.log(locationsRaw, "testing location call");
     try {
         res.render('homepage', {
-            User:req.session.user
+            User:req.session.user, 
+            locationData:locationsRaw
         })
     } catch(err) {
         console.log(err);

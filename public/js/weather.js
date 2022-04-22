@@ -85,3 +85,8 @@ function createFailedWidget(){
   weatherData.classList.add('row');
   return weatherData;
 }
+
+Handlebars.registerHelper('isZero', function (value) {
+  return value == 0;
+});
+

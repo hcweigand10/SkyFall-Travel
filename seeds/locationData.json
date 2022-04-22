@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Rome",
+    "desc": "When you visit the Eternal City, prepare to cross a few must-see attractions – including the Colosseum, the Trevi Fountain and the Pantheon – off of your bucket list.",
+    "photo": "../assets/Rome-Fountain.jpg"
+  },
+  {
+    "name": "Maui",
+    "desc": "Whether you're driving along the Road to Hana, enjoying a bird's-eye view of the lush coastline from a helicopter, or snorkeling with sea turtles, you'll find that Maui is unlike any other tropical destination.",
+    "photo": "../assets/maui.jpg"
+  }, 
+  {
+    "name": "London",
+    "desc": "London is a world unto itself. The eclectic neighborhoods, which are home to a blend of historical landmarks and modern-day attractions, can keep you occupied for days. ",
+    "photo": "../assets/london.jpg"
+  }, 
+  {
+    "name": "Santorini",
+    "desc": "Frequently touted as a top honeymoon destination, this Greek isle woos newlyweds every year with its breathtaking sunsets, pastel-hued villages and colorful beaches. ",
+    "photo": "../assets/santorini.jpg"
+  }
+]
