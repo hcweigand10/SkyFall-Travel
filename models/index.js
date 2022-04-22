@@ -2,6 +2,7 @@ const User = require("./User");
 const Trip = require("./Trip");
 const Stop = require("./Stop");
 const Expenditure = require("./Expenditure");
+const Locations = require("./Locations");
 
 User.hasMany(Trip, {
   foreignKey: "userId",
@@ -39,4 +40,5 @@ module.exports = {
   Trip,
   Stop,
   Expenditure,
+  Locations
 };

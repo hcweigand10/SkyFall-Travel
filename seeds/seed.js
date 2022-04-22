@@ -1,10 +1,11 @@
 const sequelize = require('../config/connection');
-const { User, Trip, Stop, Expenditure } = require('../models');
+const { User, Trip, Stop, Expenditure, Locations } = require('../models');
 
 const userData = require('./userData.json');
 const tripData = require('./tripData.json');
 const stopData = require('./stopData.json');
 const expenditureData = require('./expenditureData.json');
+const locationData = require('./locationData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
@@ -32,6 +33,12 @@ const seedDatabase = async () => {
     await Expenditure.create({
       ...expenditure,
       stopId: 1,
+    });
+  }
+
+  for (const location of locationData) {
+    await Locations.create({
+      ...location,
     });
   }
 
