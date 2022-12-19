@@ -39,3 +39,6 @@ CMD ["npm", "start"]
 # It will copy everything in the current folder, to /tmp
 
 # Hope that makes sense :slight_smile:
+
+# build image command
+# make sure in same directory as the dockerfile: docker build -t nameOfImage . 
