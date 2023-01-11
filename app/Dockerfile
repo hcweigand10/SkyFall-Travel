@@ -4,7 +4,7 @@
 # official parent pulled from dockerhub, which stores official images to build up out application from 
 FROM node:14
 
-# app source code
+# app source code within the docker container
 # any subsequent commands will start form this work directory
 WORKDIR /app
 
@@ -16,11 +16,19 @@ COPY package*.json ./
 # command to run which runs in the workding directory
 RUN npm install
 
+# previous layers will be pulled from the cache every time unless we change package json
+# any changes to the code will rebuild the layers below
+
 # copy everything within the app
 COPY . .
 
+# Run the seed command
+RUN npm run seed
+
 # tells Docker that a container listens for traffic on the specified port.
 EXPOSE 8080
+
+
 
 # command: how to run application; done in exec form (preferred);
 CMD ["npm", "start"]

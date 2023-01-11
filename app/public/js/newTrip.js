@@ -1,5 +1,5 @@
 const now = moment();
-let stopsCount=1;
+let stopsCount= 1;
 let stops = [];
 let stopBreakdowns = []
 
@@ -31,6 +31,7 @@ const tripFormHandler = async function (event) {
   let tripBudget = 0;
   // for each loop for each additional stop
   const stopForms = document.querySelectorAll(".stop-form");
+
   let i = 0;
   let j = 0;
   console.log(stopForms)

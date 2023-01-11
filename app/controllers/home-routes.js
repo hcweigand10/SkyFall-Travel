@@ -4,6 +4,7 @@ const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     const locationData = await Locations.findAll();
+    console.log(locationData);
     const locationsRaw = await locationData.map(location => location.get({ plain: true }));
     console.log(locationsRaw, "testing location call");
     try {

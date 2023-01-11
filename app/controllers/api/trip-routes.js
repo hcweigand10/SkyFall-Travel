@@ -5,6 +5,7 @@ const withAuth = require("../../utils/auth");
 router.post("/", withAuth, async (req, res) => {
   console.log("new trip attempt");
   console.log(req.body);
+
   try {
     const newTrip = await Trip.create({
       name: req.body.name,
@@ -58,6 +59,8 @@ router.put("/:id", withAuth, async (req, res) => {
         },
       }
     );
+
+    [1,2,3]
     const trippedRaw = tripped.get({ plain: true });
     console.log(trippedRaw);
     for (let i = 0; i < req.body.stops.length; i++) {

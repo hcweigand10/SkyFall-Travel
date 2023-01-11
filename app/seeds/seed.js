@@ -1,4 +1,4 @@
-const sequelize = require('../config/connection');
+const sequelize = require('../config/connection.js');
 const { User, Trip, Stop, Expenditure, Locations } = require('../models');
 
 const userData = require('./userData.json');
@@ -8,6 +8,7 @@ const expenditureData = require('./expenditureData.json');
 const locationData = require('./locationData.json');
 
 const seedDatabase = async () => {
+  console.log('seeding');
   await sequelize.sync({ force: true });
 
   const users = await User.bulkCreate(userData, {
