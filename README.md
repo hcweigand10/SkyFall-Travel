@@ -8,7 +8,7 @@ This project allows a user to create, view, edit, and delete future travel plans
 
 When creating a trip, users can specificy the dates of the trip and all stops contained within the trip plan. For each stop, the user can also add a budget plan that breaks down costs into four categories: Accomodation, Travel Costs, Food and Entertainment, and Other. Once the trip is created, the users can view the trip and see their cost breakdowns, as well some relevant weather data.
 
-
+Now utilizing Docker
 
 ## Table of Contents 
 
@@ -39,7 +39,7 @@ When creating a trip, users can specificy the dates of the trip and all stops co
     
 ## Usage
     
-To use, visit https://skyfall-travel.herokuapp.com/ 
+To use, visit https://vast-jade-swallow.cyclic.app/ 
 
 Screenshots: 
 ![homepage](public/assets/screenshots/homepage.PNG)
